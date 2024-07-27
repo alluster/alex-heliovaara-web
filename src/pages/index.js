@@ -7,16 +7,16 @@ import SEO from '../components/seo';
 import CardGrid from '../components/CardGrid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { device } from '../device';
 
 const Hero = styled.div`
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  height: 100vh; /* Full height of the viewport */
-  display: flex; /* Use flexbox for centering */
-  align-items: center; /* Vertically center the content */
-//   justify-content: center; /* Horizontally center the content */
-//   border-bottom: 0.5px ${props => props.theme.colors.white} solid;
+	position: relative;
+	z-index: 3;
+	width: 100%;
+	height: 100vh; /* Full height of the viewport */
+	display: flex; /* Use flexbox for centering */
+	align-items: center; /* Vertically center the content */
+	
 
 
 `;
@@ -24,22 +24,34 @@ const Hero = styled.div`
 
 
 const HeroText = styled.p`
-  font-weight: 400;
-  font-size: 20px;
-//   text-transform: uppercase;
+	font-weight: 400;
+	font-size: 20px;
+	//   text-transform: uppercase;
 `;
 
 const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	@media ${device.laptop} {
+		flex-direction: column;
+		align-items: start;
+	}
+`;
+const InfoContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+  @media ${device.laptop} {
+		height: 30px;
+	}
 `;
 
-
 const IconIcon = styled(FontAwesomeIcon)`
-  margin-right: 16px;
-  font-size: 12px;
+	margin-right: 16px;
+	font-size: 12px;
 `;
 
 const IconText = styled.p`
@@ -47,13 +59,9 @@ const IconText = styled.p`
 `;
 
 const HeroContentCentered = styled.div`
-  display: flex;
-  flex-direction: column;
-//   justify-content: center;
-//   text-align: center;
-//   margin-left: auto;
-//   margin-right: auto;
-  max-width: 800px;
+	display: flex;
+	flex-direction: column;
+	max-width: 800px;
 `;
 const GreenBall = styled.div`
 	background-color: #00FF85;
@@ -63,18 +71,18 @@ const GreenBall = styled.div`
 	margin-right: 16px;
 `;
 const ScrollingTextContainer = styled.div`
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  box-sizing: border-box;
-  position: relative;
+	width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	box-sizing: border-box;
+	position: relative;
 `;
 
 const ScrollingText = styled.div`
-  display: inline-block;
-  padding-left: 100%;
-  animation: scroll 10s linear infinite;
-  font-size: 20px;
+	display: inline-block;
+	padding-left: 100%;
+	animation: scroll 10s linear infinite;
+	font-size: 20px;
 `;
 
 const RecentWork = styled.p`
@@ -110,7 +118,7 @@ const IndexPage = ({ data }) => {
 						</HeroText>
 						<Row>
 
-							<Row>
+							<InfoContainer>
 								<GreenBall
 									data-sal="fade"
 									data-sal-delay="1000"
@@ -118,15 +126,15 @@ const IndexPage = ({ data }) => {
 									data-sal-duration="2000"
 								/>
 								<IconText>Available for projects</IconText>
-							</Row>
-							<Row>
+							</InfoContainer>
+							<InfoContainer>
 								<IconIcon icon={faMapMarkerAlt} />
 								<IconText>Helsinki</IconText>
-							</Row>
-							<Row>
+							</InfoContainer>
+							<InfoContainer>
 								<IconIcon icon={faPhone} />
 								<IconText>+358442360304</IconText>
-							</Row>
+							</InfoContainer>
 						</Row>
 					</HeroContentCentered>
 				</Container>

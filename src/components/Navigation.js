@@ -106,6 +106,7 @@ const MenuButton = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
+	font-size: 14px;
 	:hover {
 		cursor: pointer;
 	}

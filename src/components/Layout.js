@@ -45,8 +45,8 @@ const GlobalStyle = createGlobalStyle`
 		font-weight: 300;
 		hyphens: none;
 		@media ${device.laptop} {
-			font-size: 35px;
-			line-height: 50px;
+			font-size: 45px;
+			line-height: 45px;
 			margin-top: 20px;
 			margin-bottom: 20px;
 			hyphens: auto;
