@@ -23,7 +23,7 @@ const Page = styled.div`
 	padding-top: 200px;
     padding-left: 32px;
 	padding-right: 32px;
-	@media ${device.laptop} {
+	@media ${device.tablet} {
 		flex-direction: column;
 		padding-left: 0px;
 		padding-right: 0px;
@@ -33,9 +33,11 @@ const Page = styled.div`
 
 const ImageColumn = styled.div`
 	flex: 1;
+	width: 100%;
 	@media ${device.laptop} {
 		margin-right: 0px;
 		position: relative;		
+		width: 100%;
 
 	}
 `;
@@ -43,7 +45,8 @@ const ContentColumn = styled.div`
 	flex: 3;
 	max-width: 700px;
 	z-index: 10000000;
-	@media ${device.laptop} {
+	margin-left: 30px;
+	@media ${device.tablet} {
 		flex: 1;
 		margin-top: 0px;
 		padding: 0px;
@@ -55,14 +58,10 @@ const ImageContainer = styled.img`
 	position: relative;
 	z-index: 1;
 	object-fit: cover;
-	margin-top: 80px;
-	// margin-right: -300px;
-	max-width: 300px;
-	@media ${device.laptop} {
-		max-width: 100%;
+	@media ${device.tablet} {
 		height: 300px;
-		margin-top: 0px;
 		width: 100%;
+		margin-top: 0px;
 		margin-right: 0px;
 	}
 `;
@@ -87,11 +86,6 @@ const Markdown = styled.div`
 		}
 	}
 `;
-
-
-
-
-
 
 
 

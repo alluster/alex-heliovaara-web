@@ -74,7 +74,7 @@ const Footer = () => {
 			<Content>
 				<Column1>
 					<Link to="/">
-						<h4 >A.E HELIÖVAARA</h4>
+						<h5 >A.E HELIÖVAARA</h5>
 
 					</Link>
 					<p>Creative Technologist</p>
@@ -82,7 +82,7 @@ const Footer = () => {
 					<Link to="https://www.behance.net/aleksanterb9c4">
 						<FontAwesomeIcon style={{ fontSize: '40px', color: 'white' }} icon={faBehance} />
 					</Link>
-					<Link to="https://fi.linkedin.com/company/helau-solutions?trk=public_profile_experience-item_profile-section-card_subtitle-click">
+					<Link to="https://www.linkedin.com/in/aleksanteri1/">
 						<FontAwesomeIcon style={{ fontSize: '40px', marginLeft: '40px', color: 'white' }} icon={faLinkedin} />
 					</Link>
 				</Column1>

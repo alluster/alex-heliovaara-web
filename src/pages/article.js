@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { device } from '../device';
 import ContentBlock from '../components/ContentBlock';
 import useScrollPosition from '../support-functions/useScrollPosition';
+import Loader from '../components/Loader';
 
 
 const Hero = styled.div`
@@ -14,7 +15,6 @@ const Hero = styled.div`
 	z-index: 3;
 	width: 100%;
 	height: 100%;
-	border-bottom: .5px white solid;
 
 	@media ${device.laptop} {
 		height: 100%;
@@ -22,11 +22,7 @@ const Hero = styled.div`
 `;
 
 const HeroText = styled.h1`
-// background: rgba(255, 255, 255, 0.9);
-	// margin-top: 100px;
-	// font-size: 70px;
-	// line-height: 80px;
-	// width: 600px;
+
 	padding-top: 0px;
 	padding-bottom: 0px;
 	// color: ${props => props.theme.colors.black};	
@@ -151,6 +147,13 @@ const HeroTextContainer = styled.div`
 	height: 100vh;
 	align-items: center;
 	justify-content: center;
+	@media ${device.laptop} {
+		align-items: start;
+		text-align: left;
+		justify-content: start;
+		margin-top: 50px;
+
+	}
 	
 `;
 
@@ -174,6 +177,58 @@ const BackgroundImage = styled.img`
 	// }	
 `;
 
+const InfoContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	align-items: start;
+	justify-content: start;
+	width: 100%;
+`;
+
+const InfoTitle = styled.p`
+	text-transform: uppercase;
+	margin-bottom: 10px;
+	font-size: 14px;
+
+`;
+const InfoDivider = styled.div`
+	width: 100%;
+	border-bottom: 0.5px solid white;
+`;
+const InfoText = styled.p`
+	margin-top: 20px;
+	font-size: 20px;
+`;
+
+const InfoRow = styled.div`
+	display: flex;
+    flex-direction: row;
+	gap: 40px;
+    justify-content: space-between;
+	align-items: start;
+	margin-top: 40px;
+	width: 100%;
+    @media ${device.laptop} {
+        flex-direction: column;
+        align-items: start;
+		margin-bottom: 80px;
+    }
+`;
+
+const HeroImageContainer = styled.div`
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 40px;
+	padding-right: 40px;
+	max-width: 100%;
+	@media ${device.laptop} {
+		padding-left: 16px;
+		padding-right: 16px;
+    }
+`;
+
+
 
 
 const Article = ({ data }) => {
@@ -191,8 +246,12 @@ const Article = ({ data }) => {
 				image={data.contentfulArticle.image.file.url}
 				article={true}
 			/>
+			<Loader >
+				<h5 style={{ color: 'black' }}>{data.contentfulArticle.title}</h5>
+			</Loader>
 			<Hero>
 				<Container>
+
 					{/* {data.contentfulArticle.clientName != undefined ? <HeroDescription> {
 						data.contentfulArticle.description != undefined ?
 							<Markdown
@@ -203,9 +262,41 @@ const Article = ({ data }) => {
 					} </HeroDescription> : null} */}
 					<HeroTextContainer>
 						<HeroText>{data.contentfulArticle.title}</HeroText>
+						<LeadingText>{data.contentfulArticle.leadingText}</LeadingText>
 
-						{data.contentfulArticle.clientName != undefined ? <p>Client:<span style={{ fontWeight: 'bold' }}> {data.contentfulArticle.clientName}</span> </p> : null}
-						{data.contentfulArticle.clientName != undefined ? <p>Role:<span style={{ fontWeight: 'bold' }}> {data.contentfulArticle.professionalRole}</span> </p> : null}
+						<InfoRow>
+							<InfoContainer>
+								<InfoTitle>
+									Client
+								</InfoTitle>
+								<InfoDivider />
+								<InfoText>
+									{data.contentfulArticle.clientName}
+
+								</InfoText>
+							</InfoContainer>
+							<InfoContainer>
+								<InfoTitle>
+									Role / service
+								</InfoTitle>
+								<InfoDivider />
+								<InfoText>
+									{data.contentfulArticle.professionalRole}
+
+								</InfoText>
+							</InfoContainer>
+							<InfoContainer>
+								<InfoTitle>
+									Location / Year
+								</InfoTitle>
+								<InfoDivider />
+								<InfoText>
+									@{data.contentfulArticle.location} {data.contentfulArticle.year}
+
+
+								</InfoText>
+							</InfoContainer>
+						</InfoRow>
 
 						{/* {data.contentfulArticle.author != undefined ? <AuthorCard
 						name={data.contentfulArticle.author.personName}
@@ -214,17 +305,14 @@ const Article = ({ data }) => {
 						email={data.contentfulArticle.author.personEmail}
 						slug={data.contentfulArticle.author.slug}
 					/> :null} */}
-
 					</HeroTextContainer>
-
-
-					<BackgroundImage src={data.contentfulArticle.image.file.url} />
-					<LeadingText>{data.contentfulArticle.leadingText}</LeadingText>
-
 				</Container>
 
 
 			</Hero>
+			<HeroImageContainer>
+				<BackgroundImage src={data.contentfulArticle.image.file.url} />
+			</HeroImageContainer>
 			<Container>
 
 				<Page>
@@ -272,7 +360,7 @@ const Article = ({ data }) => {
 
 			</Container>
 
-		</Layout>
+		</Layout >
 	);
 };
 export default Article;
@@ -284,6 +372,8 @@ export const query = graphql`query ($slug: String) {
 		clientName
 		professionalRole
 		backgroundColor
+		year
+		location
 		description{
 			childMarkdownRemark {
 				html

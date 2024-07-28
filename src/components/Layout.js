@@ -1,22 +1,17 @@
 import React from 'react';
-import { createGlobalStyle, css, ThemeProvider, keyframes } from 'styled-components';
+import { createGlobalStyle, css, ThemeProvider } from 'styled-components';
 import theme from '../theme';
 import Navigation from './Navigation';
 import Footer from './Footer';
 import styled from 'styled-components';
 
 import { device } from '../device';
-const scroll = keyframes`
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-`;
+
 const GlobalStyle = createGlobalStyle`
 
     body, html {
+	    scroll-behavior: smooth;
+		scrollbar-width: none; 
         margin: 0px;
         padding: 0px;
 		max-width: 100% ;
@@ -216,6 +211,7 @@ textarea {
     
 `;
 const BackgroundImage = styled.img`
+	z-index: 1;
 	position: fixed;
 	top: 0px;
 	height: 100vh;
@@ -234,8 +230,13 @@ const Divider = styled.div`
 `;
 
 export default function Layout({ children, page, changeBackground, changeBackgroundColor }) {
+
+
+
+
 	return (
 		<React.Fragment>
+
 			<ThemeProvider theme={theme}>
 				<GlobalStyle changeBackground={changeBackground} changeBackgroundColor={changeBackgroundColor} />
 				{

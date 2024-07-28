@@ -6,7 +6,7 @@ require('dotenv').config({
 module.exports = {
 	siteMetadata: {
 		title: 'ALEKSANTERI HELIÖVAARA',
-		titleTemplate: 'CREATIVE TECHNOLOGIST',
+		titleTemplate: 'Aleksanteri Eliel Heliövaara',
 		description: 'Based in Helsinki Finland',
 		siteUrl: process.env.SITE_URL, // No trailing slash allowed!
 		image: `${process.env.SITE_URL}/seo.jpeg`, // Path to your image you placed in the 'static' folder
