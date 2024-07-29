@@ -6,12 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBehance, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { Link } from 'gatsby';
+import ContactForm from './ContactForm';
+import Container from './Container';
 
 library.add(faBehance, faLinkedin);
 
 const Footer = () => {
 
-	const Container = styled.div`
+	const CustomContainer = styled.div`
 		position: relative;
 		z-index: 3;
 		// background-color: ${props => props.theme.colors.black};
@@ -25,7 +27,7 @@ const Footer = () => {
 `;
 
 	const Content = styled.div`
-		max-width: 1500px;
+		// max-width: 1500px;
 		margin-left:auto;
 		margin-right: auto;
 		display: flex;
@@ -44,7 +46,6 @@ const Footer = () => {
 
 	const Column1 = styled.div`
 		flex: 1;
-		margin: 40px;	
 		@media ${device.laptop} {
 			flex: 1;
 			margin: 24px;	
@@ -69,32 +70,37 @@ const Footer = () => {
 	}, [])
 
 	return (
-		<Container>
-			{/* <ContactForm /> */}
-			<Content>
-				<Column1>
-					<Link to="/">
-						<h5 >A.E HELIÖVAARA</h5>
+		<CustomContainer>
+			<Container>
 
-					</Link>
-					<p>Creative Technologist</p>
-					{/* <p>aleksanteri@helau.io</p> */}
-					<Link to="https://www.behance.net/aleksanterb9c4">
-						<FontAwesomeIcon style={{ fontSize: '40px', color: 'white' }} icon={faBehance} />
-					</Link>
-					<Link to="https://www.linkedin.com/in/aleksanteri1/">
-						<FontAwesomeIcon style={{ fontSize: '40px', marginLeft: '40px', color: 'white' }} icon={faLinkedin} />
-					</Link>
-				</Column1>
-				<div></div>
-				<Column2 >
-					{/* <h3 style={{ marginTop: '0px' }}>Helau Solutions</h3> */}
-					{/* <h4>We are the rebels of digital design, the ones who dare to challenge the status quo and create something truly meaningful. We are on a mission to use technology and design to make a positive impact on the world. That&apos;s why we welcome all bold and curious companies to join us on this journey. Together, we&apos;ll create modern digital experiences that bring about a more open and connected world. Are you ready to join the rebellion?</h4> */}
-					<h5>2020 - 2024 © Code by Aleksanteri Heliövaara</h5>
+				<Content>
+					<Column1>
+						<Link to="/">
+							<h5 >A.E HELIÖVAARA</h5>
 
-				</Column2>
-			</Content>
-		</Container>
+						</Link>
+						<p>Creative Technologist</p>
+						{/* <p>aleksanteri@helau.io</p> */}
+						<Link to="https://www.behance.net/aleksanterb9c4">
+							<FontAwesomeIcon style={{ fontSize: '40px', color: 'white' }} icon={faBehance} />
+						</Link>
+						<Link to="https://www.linkedin.com/in/aleksanteri1/">
+							<FontAwesomeIcon style={{ fontSize: '40px', marginLeft: '40px', color: 'white' }} icon={faLinkedin} />
+						</Link>
+					</Column1>
+					<div></div>
+					<Column2 >
+						{/* <h3 style={{ marginTop: '0px' }}>Helau Solutions</h3> */}
+						{/* <h4>We are the rebels of digital design, the ones who dare to challenge the status quo and create something truly meaningful. We are on a mission to use technology and design to make a positive impact on the world. That&apos;s why we welcome all bold and curious companies to join us on this journey. Together, we&apos;ll create modern digital experiences that bring about a more open and connected world. Are you ready to join the rebellion?</h4> */}
+						<h5>2020 - 2024 © Code by Aleksanteri Heliövaara</h5>
+
+					</Column2>
+				</Content>
+				<ContactForm />
+
+			</Container>
+
+		</CustomContainer>
 	);
 };
 

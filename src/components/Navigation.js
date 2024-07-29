@@ -4,20 +4,44 @@ import Container from './Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { device } from '../device';
 import CustomLink from './CustomLink';
-
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const NavContainer = styled.div`
-	max-height: 40px;
-	position: absolute;
+	display: block;	
+	position: fixed;
 	min-width: 100%;
-	z-index: 1000000000;
+	z-index: 100000000;
 	top: 0;
-	// background-color: white;
 	@media ${device.laptop} {
-		background-color: ${props => (props.navOpen ? '#FAFAFA' : 'transparent')};
-		position: ${props => (props.navOpen ? 'fixed' : 'relative')}
-	}
+		display: none;
+`;
+
+const NavColorOverlay = styled.div`
+	position: fixed;
+	width: 100%;
+	z-index: 100000;
+	height: 60px;
+	left: 0;
+	top: 0;
+	background-color: ${props => props.theme.colors.black};
+	opacity: 0.5;
+	@media ${device.laptop} {
+		display: none;
 	
+`;
+
+const MobileNavContainer = styled.div`
+	display: none;	
+	position: fixed;
+	min-width: 100%;
+	z-index: 10000000000000;
+	top: 0;
+	background-color: ${props => (props.navOpen ? '#1C1D20' : 'transparent')};
+	@media ${device.laptop} {
+		display: block;
+		background-color: ${props => (props.navOpen ? '#1C1D20' : 'transparent')};
+		// position: ${props => (props.navOpen ? 'fixed' : 'relative')}
+
 `;
 
 
@@ -59,12 +83,12 @@ const LogoText = styled.p`
 
 const OpenNav = styled.div`
 	top: 80px;
-	position: relative;
+	position: fixed;
 	min-height: 100vh;
 	text-align: center;
 	padding-top: 50px;
-	background-color: white;
-	z-index: 100000;
+	background-color: ${props => props.theme.colors.black};
+	z-index: 10000000000;
 	width: 100vw;
 	// @media ${device.laptop} {
 	// 	position: fixed;
@@ -138,13 +162,38 @@ const Row = styled.div`
 	align-items: center;
 `;
 
-
+const Divider = styled.div`
+	margin-top: 40px;
+	margin-bottom: 40px;
+	width: 100%;
+	border-bottom: 0.5px solid white;
+`;
 const Navigation = ({ className }) => {
 	const [navOpen, setNavOpen] = useState(false);
 
 	return (
 		<>
 			<NavContainer className={className} navOpen={navOpen} >
+
+				<Row>
+					<CustomLink to="/" >
+						<LogoContainer>
+							<LogoText>A.E HELIÖVAARA</LogoText>
+						</LogoContainer>
+					</CustomLink>
+					<MenuButtonContainer  >
+						<MenuButton>
+							<CustomLink className="text-white" to="/services">SERVICES</CustomLink>
+						</MenuButton>
+						<MenuButton>
+							<CustomLink className="text-white" to="/about">ABOUT</CustomLink>
+						</MenuButton>
+					</MenuButtonContainer>
+				</Row>
+			</NavContainer >
+			<NavColorOverlay />
+
+			<MobileNavContainer className={className} navOpen={navOpen} >
 				<Row>
 					<CustomLink to="/" >
 						<LogoContainer>
@@ -159,24 +208,26 @@ const Navigation = ({ className }) => {
 							!navOpen ?
 								<MenuButton>
 
-									{/* <BurgerIcon icon={faBars} /> */}
-									<CustomLink className="text-white" to="/about">ABOUT</CustomLink>
+									<BurgerIcon icon={faBars} onClick={() => setNavOpen(true)} />
 								</MenuButton>
 								:
 								<MenuButton >
-									{/* <BurgerIcon icon={faTimes} style={{ zIndex: 10000 }} /> */}
-									<MenuText className="text-white" to="/about">ABOUT</MenuText>
+									<BurgerIcon icon={faTimes} style={{ zIndex: 10000 }} onClick={() => setNavOpen(false)} />
 								</MenuButton>
 						}
 					</MenuButtonContainer>
 				</Row>
-			</NavContainer >
+			</MobileNavContainer >
 			{
 				navOpen ?
 					<OpenNav
 					>
 						<Container >
 							<LinkTextMobile onClick={() => setNavOpen(false)} >
+								<CustomLink className="text-white" to="/services">
+									Services
+								</CustomLink>
+								<Divider />
 								<CustomLink className="text-white" to="/about">
 									About
 								</CustomLink>

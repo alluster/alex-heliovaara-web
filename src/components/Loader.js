@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import React from 'react';
 
 const moveUp = keyframes`
@@ -57,13 +57,17 @@ const AnimationContainer = styled.div`
     top: 0;
 	justify-content: center;
 	align-items: center;
-	animation: ${moveUp} 3s forwards;
-		
+	${props => props.speed === true && css`
+			animation: ${moveUp} 1s forwards;
+
+		`}
+	animation: ${moveUp} 1s forwards;
+
 `;
 
 const Loader = ({ children }) => {
 	return (
-		<AnimationContainer>
+		<AnimationContainer speed={!sessionStorage.getItem('loader')}>
 			<Bg >
 				<Content>
 					{children}

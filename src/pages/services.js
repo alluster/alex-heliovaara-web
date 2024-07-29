@@ -1,153 +1,251 @@
 import * as React from 'react';
-import { graphql } from 'gatsby';
 import SEO from '../components/seo';
 import Layout from '../components/Layout';
+import Container from '../components/Container';
 import styled from 'styled-components';
 import { device } from '../device';
+import useScrollPosition from '../support-functions/useScrollPosition';
+import Loader from '../components/Loader';
+import ContactForm from '../components/ContactForm';
 
 
+const Hero = styled.div`
+	z-index: 3;
+	width: 100%;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	@media ${device.laptop} {
+		height: 100%;
+	}
+`;
 
 const HeroText = styled.h1`
-	// color: ${props => props.theme.colors.black};	
+	padding-top: 0px;
+	padding-bottom: 0px;
 	@media ${device.laptop} {
 		padding-top: 30px;
 		padding-bottom: 0px;
+		width: 80%;
+		margin-top: 0px;
+
+
 	}
 `;
-const Page = styled.div`
+
+const LeadingText = styled.h4`
+	margin-right: auto;
+	width: 800px;
+	position: relative;
+	z-index: 3;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	@media ${device.laptop} {
+		padding-top: 0px;
+		padding-bottom: 0px;
+		margin-top: 0px;
+		width: 100%;	
+		margin-bottom: 0px;
+
+
+	}
+`;
+
+
+
+const HeroTextContainer = styled.div`
+	max-width: 1000px;
 	display: flex;
-	flex-direction: row;
-	max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 32px;
-	padding-right: 32px;
+	flex-direction: column;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
 	@media ${device.laptop} {
-		flex-direction: column;
+		align-items: start;
+		text-align: left;
+		// justify-content: start;
+		margin-top: 50px;
 
 	}
+	
 `;
 
-const Column = styled.div`
-	position: absolute;		
-	flex: 1;
-	margin-right: 60px;
+const InfoContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	align-items: start;
+	justify-content: start;
+	max-width: 300px;
 	@media ${device.laptop} {
-		margin-right: 0px;
-		position: relative;		
-
-	}
+		max-width: 100%;
+	}	
 `;
 
-const ImageContainer = styled.img`
-	object-fit: cover;
-	margin-top: 80px;
-	margin-right: -300px;
-	max-width: 700px;
-
-	@media ${device.laptop} {
-		height: 200px;
-		margin-top: 0px;
-		width: 100%;
-		margin-right: 0px;
-
-
-	}
+const InfoRow = styled.div`
+	display: flex;
+	height: 100%;
+    flex-direction: row;
+	flex-wrap: wrap;
+	gap: 40px;
+    justify-content: space-between;
+	align-items: start;
+	margin-top: 40px;
+	width: 100%;
+    @media ${device.laptop} {
+        flex-direction: column;
+        align-items: start;
+		margin-bottom: 80px;
+    }
 `;
+const InfoTitle = styled.p`
+	// text-transform: uppercase;
+	margin-bottom: 10px;
+	font-size: 34px;
 
-const Content = styled.div`
-	margin-top: 200px;
-	padding: 50px;
-	flex: 2;
-	margin-left: 30%;
-	background-color: white;
-	z-index: 10000000;
-	@media ${device.laptop} {
-		flex: 1;
-		margin-top: 0px;
-		padding: 0px;
-		margin-left: 0px;
-
-	}
 `;
-
-const Markdown = styled.div`
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	li {
-		font-size: 24px;
-		line-height: 40px;
-	}
-  	-webkit-hyphens: auto;
-	-moz-hyphens: auto;
-	hyphens: auto;
-	hyphens: auto;
-	max-width: 900px;
-	@media ${device.laptop} {
-		margin-top: 30px;
-		li {
-			font-size: 16px;
-			line-height: 24px;
-		}
-	}
+const InfoDivider = styled.div`
+	width: 100%;
+	border-bottom: 0.5px solid white;
+`;
+const InfoText = styled.p`
+	margin-top: 20px;
+	font-size: 18px;
+	color: ${props => props.theme.colors.darkGray}
 `;
 
 
 
+const services = [
+	{
+		id: 1,
+		title: 'Brand & Identity',
+		description: 'Logo, identity, marketing material and web design projects often start digital projects. I have designed multiple brand identities for startup companies.'
+	},
+	{
+		id: 2,
+		title: 'Development',
+		description: 'Full-stack web and mobile app development from planning to production deployment. I build apps from websites to complex SaaS projects from ground up.'
+	},
+	{
+		id: 3,
+		title: 'Design',
+		description: 'User centric services are built using research methods, prototyping and service design methodologies.'
+	},
+	{
+		id: 4,
+		title: 'AI Development',
+		description: 'Provisioning isolated AI with open source LLM to Azure and developing customized Chat GPT like chat views.'
+	}
 
 
+];
 
-const About = ({ data }) => {
+
+const Services = () => {
+	const scrollPosition = useScrollPosition();
+	const heroHeight = 600; // Adjust this based on your Hero section's height
+
+	const [offsetY, setOffsetY] = React.useState(0);
+	const [offsetX, setOffsetX] = React.useState(0);
+
+	const handleScroll = () => {
+		setOffsetY(window.scrollY);
+		setOffsetX(window.scrollY);
+
+	};
+
+	React.useEffect(() => {
+		window.scroll({
+			top: 0,
+			behavior: 'smooth',
+		});
+		window.addEventListener('scroll', handleScroll);
+
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
+
 	return (
-		<Layout>
+		<Layout
+			changeBackground={scrollPosition > heroHeight}
+			changeBackgroundColor={null}
+		>
+
 			<SEO
-				title={data.contentfulPage.title}
-				description={data.contentfulPage.description}
-				image={data.contentfulPage.image.file.url}
-				article="true"
+				title='Sevices'
+				description='These are the services provided'
+				image={null}
+				article={false}
 			/>
-		
-			<Page>
-				<Column>
-					<ImageContainer src={data.contentfulPage.image.file.url} />
+			<Loader >
+				<h5 style={{ color: 'black' }}>Services</h5>
+			</Loader>
+			<Container>
 
-				</Column>
-				<Content>
-					<HeroText>{data.contentfulPage.title}</HeroText>
+				<Hero>
 
-					<Markdown
-						dangerouslySetInnerHTML={{
-							__html: data.contentfulPage.content.childMarkdownRemark.html,
-						}}
-					/>
-						
-				</Content>
+					{/* {data.contentfulArticle.clientName != undefined ? <HeroDescription> {
+						data.contentfulArticle.description != undefined ?
+							<Markdown
+								dangerouslySetInnerHTML={{
+									__html: data.contentfulArticle.description.childMarkdownRemark.html,
+								}}
+							/>: null
+					} </HeroDescription> : null} */}
+					<HeroTextContainer>
+						<HeroText >Helping companies succeed in the digital world</HeroText>
+						<LeadingText >Brands from around the world have trusted my expertise in digital design and development projects.</LeadingText>
 
-			</Page>
 
-		</Layout>
+						{/* {data.contentfulArticle.author != undefined ? <AuthorCard
+						name={data.contentfulArticle.author.personName}
+						description={data.contentfulArticle.author.personDesxription}
+						image={data.contentfulArticle.author.personImage.file.url}
+						email={data.contentfulArticle.author.personEmail}
+						slug={data.contentfulArticle.author.slug}
+					/> :null} */}
+					</HeroTextContainer>
+
+
+
+				</Hero>
+				<InfoRow>
+					<LeadingText >Services I can help your company succeed with...</LeadingText>
+
+					{
+						services.map((item, i) => {
+							return (
+								<InfoContainer key={i}>
+									<InfoTitle>
+										{item.title}
+									</InfoTitle>
+									<InfoDivider />
+									<InfoText>
+										{item.description}
+
+									</InfoText>
+								</InfoContainer>
+							);
+						})
+					}
+
+				</InfoRow>
+				<InfoDivider />
+			</Container>
+			<Container>
+				<br></br>
+				<h2 style={{ color: 'white' }}>Contact me for new projects or collaboration</h2>
+				<h4 style={{ color: 'white' }}>Lets work together</h4>
+				<ContactForm />
+
+			</Container>
+
+
+		</Layout >
 	);
 };
-export default About;
-
-export const query = graphql`query ServiceQuery {
-	contentfulPage(contentful_id: {eq: "3zC6OYsCKW1YGd2xjLi0di"}) {
-	  image {
-		file {
-		  url
-		}
-		description
-	  }
-	  slug
-	  title
-	  leadingText
-	  content {
-		childMarkdownRemark {
-			html
-			}
-	  }
-	}
-  }
-  `;
-
+export default Services;
 

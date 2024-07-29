@@ -4,34 +4,39 @@ import styled from 'styled-components';
 import { device } from '../device';
 import ReactPlayer from 'react-player/lazy';
 
-const Container = styled.div`
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-´
-	@media ${device.laptop} {
-		width: 100%;
-		margin: 1%;
-		min-height: 100%;
-		margin-bottom: 0px;
+import Container from './Container';
 
+
+const Wrapper = styled.div`
+	position: relative;
+	z-index: 10000000;
+`;
+
+const ImageContainer = styled.div`
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 40px;
+	padding-right: 40px;
+	max-width: 100%;
+	@media ${device.laptop} {
+		padding-left: 16px;
+		padding-right: 16px;
 	}
 `;
 
-const ImageContainer = styled.img`
-	border: 0px solid white;
-	border-radius: 20px;
-	margin-bottom: 100px;
+const Image = styled.img`
+	width: 100%;
+	
 `;
 
 
-const TextContainer = styled.div`
+const TextContainer = styled(Container)`
 	display: flex;
-	width: 100%;
+	max-width: 100%;
 	flex-direction: row;
+	max-width: 1200px;
 	@media ${device.laptop} {
 		height: 100%;
 		margin-top: 0px;
@@ -46,7 +51,8 @@ const Title = styled.h4`
 	font-weight: 600;
 	// color: ${props => props.theme.colors.white};
 	@media ${device.laptop} {
-		font-size: 20px;
+		font-size: 30px;
+		line-height: 34px;
 		margin-top: 0px;
 		margin-bottom: 10px;
 
@@ -54,8 +60,7 @@ const Title = styled.h4`
 	}
 `;
 const Markdown = styled.div`
-	width: 600px;
-	max-width: 100%;
+	width: 100%;
 	margin-bottom: 50px;
 	justify-content: flex-end;
 	margin-left: auto;
@@ -96,11 +101,11 @@ const PlayerContainer = styled.div`
 
 
 
-const ContentBlock = ({title,content, images, video}) => {
+const ContentBlock = ({ title, content, images, video }) => {
 
 	return (
-		<Container>
-			
+		<Wrapper>
+
 			<TextContainer>
 				<Title>
 					{title}
@@ -110,36 +115,40 @@ const ContentBlock = ({title,content, images, video}) => {
 						__html: content,
 					}}
 				/>
-					
+
 			</TextContainer>
 			{
 				images != undefined && images.length > 0 ?
 					images.map((item, i) => {
-						return(
-							<ImageContainer key={i} src={item.file.url} />
+						return (
+							<ImageContainer key={i} >
+								<Image src={item.file.url} />
+							</ImageContainer>
 						);
-					}):
+					}) :
 					null
 			}
 
 
-			{		
+			{
 				video != undefined ?
 					<PlayerContainer>
-						<ReactPlayer 
+						<ReactPlayer
 							width='100%'
-							height='100%' 
-							loop={true} 
+							height='100%'
+							loop={true}
 							playing={true}
-							url={video} 
+							url={video}
 							playsinline
+							muted
+
 
 						/>
 					</PlayerContainer>
-					
+
 					: null
 			}
-		</Container>
+		</Wrapper>
 
 	);
 };

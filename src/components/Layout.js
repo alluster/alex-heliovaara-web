@@ -33,15 +33,15 @@ const GlobalStyle = createGlobalStyle`
     
     h1 {
 		// font-family: 'Libre Baskerville', sans-serif !important;
-		font-size: 60px;
-		line-height: 70px;
+		font-size: 90px;
+		line-height: 80px;
 		letter-spacing: 0.02em;
 		margin-bottom: 40px;
 		font-weight: 300;
 		hyphens: none;
 		@media ${device.laptop} {
-			font-size: 45px;
-			line-height: 45px;
+			font-size: 65px;
+			line-height: 60px;
 			margin-top: 20px;
 			margin-bottom: 20px;
 			hyphens: auto;
@@ -52,15 +52,15 @@ const GlobalStyle = createGlobalStyle`
 		}
 	}	
     h2 {
-		font-size: 40px;
-		line-height: 60px;
+		font-size: 70px;
+		line-height: 80px;
 		margin-top: 24px;
 		margin-bottom: 24px;
 		font-weight: 400;
 		letter-spacing: 0px;
 		@media ${device.tablet} {
-			font-size: 25.63px;
-			line-height: 32px;
+			font-size: 38px;
+			line-height: 40px;
 			margin-bottom: 0px;
 
 		 }
@@ -88,8 +88,8 @@ const GlobalStyle = createGlobalStyle`
 		font-weight: 400;
 		letter-spacing: 0px;
 		@media ${device.tablet} {
-			font-size: 20.25px;
-			line-height: 24px;
+			font-size: 28px;
+			line-height: 33px;
 			margin-bottom: 0px;
 
 		 }
@@ -240,7 +240,7 @@ export default function Layout({ children, page, changeBackground, changeBackgro
 			<ThemeProvider theme={theme}>
 				<GlobalStyle changeBackground={changeBackground} changeBackgroundColor={changeBackgroundColor} />
 				{
-					page === 'home' ?
+					page === 'home' || 'services' ?
 						<BackgroundImage src="/bg-circle.svg" />
 						: null
 				}

@@ -8,6 +8,7 @@ import { device } from '../device';
 import ContentBlock from '../components/ContentBlock';
 import useScrollPosition from '../support-functions/useScrollPosition';
 import Loader from '../components/Loader';
+import { useEffect } from 'react';
 
 
 const Hero = styled.div`
@@ -172,9 +173,9 @@ const BackgroundImage = styled.img`
 	z-index: 1;
 	object-fit: cover;
 	width: 100%
-	// @media ${device.laptop} {
-	// 	height: 300px;
-	// }	
+	@media ${device.laptop} {
+		margin-bottom: 30px;
+	}	
 `;
 
 const InfoContainer = styled.div`
@@ -217,14 +218,15 @@ const InfoRow = styled.div`
 `;
 
 const HeroImageContainer = styled.div`
+padding-right: 16px;
+padding-left: 16px;
+	display: flex;
+	justify-content: center;
 	margin-left: auto;
 	margin-right: auto;
-	padding-left: 40px;
-	padding-right: 40px;
-	max-width: 100%;
+	// width: 100%;
 	@media ${device.laptop} {
-		padding-left: 16px;
-		padding-right: 16px;
+	
     }
 `;
 
@@ -232,6 +234,13 @@ const HeroImageContainer = styled.div`
 
 
 const Article = ({ data }) => {
+	useEffect(() => {
+		window.scroll({
+			top: 0,
+			behavior: 'smooth',
+		});
+	}, []);
+
 	const scrollPosition = useScrollPosition();
 	const heroHeight = 600; // Adjust this based on your Hero section's height
 	return (
@@ -313,7 +322,7 @@ const Article = ({ data }) => {
 			<HeroImageContainer>
 				<BackgroundImage src={data.contentfulArticle.image.file.url} />
 			</HeroImageContainer>
-			<Container>
+			<div>
 
 				<Page>
 					{/* <Column>
@@ -338,27 +347,25 @@ const Article = ({ data }) => {
 						})
 						: null
 				}
-				<Content>
-					{
-						data.contentfulArticle.content != undefined ?
-							<Markdown
-								dangerouslySetInnerHTML={{
-									__html: data.contentfulArticle.content.childMarkdownRemark.html,
-								}}
-							/> : null
-					}
+				{
+					data.contentfulArticle.content != undefined ?
+						<Markdown
+							dangerouslySetInnerHTML={{
+								__html: data.contentfulArticle.content.childMarkdownRemark.html,
+							}}
+						/> : null
+				}
 
 
 
 
-				</Content>
 
 				<Divider />
 
 				<Divider />
 				{/* <CardGrid content={data.allContentfulArticle.edges} /> */}
 
-			</Container>
+			</div>
 
 		</Layout >
 	);

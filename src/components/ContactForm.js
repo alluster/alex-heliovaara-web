@@ -4,25 +4,21 @@ import styled from 'styled-components';
 import { device } from '../device';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Container from './Container';
 
 const Wrapper = styled.div`
-	background-color: ${props => props.theme.colors.white};
-	height: 100%;
-	color: ${props => props.theme.colors.black};
-
+	z-index: 1000000000;
+	position: relative;
 `;
 
-const Content = styled(Container)`
-	max-width: 1400px;
-	margin-left:auto;
+const Content = styled.div`
+	width: 100%;
+	margin-left: auto;
 	margin-right: auto;
 	display: flex;
 	justify-content: space-around;
+	gap: 60px;
 	flex-direction: row;
-	padding-top: 64px;
 	padding-bottom: 64px;
-	align-items: center;
 	@media ${device.laptop} {
 		flex-direction: column;
 		text-align: center;
@@ -34,9 +30,8 @@ const Content = styled(Container)`
 
 const Column = styled.div`
 	flex: 2;
+	color: white;
 	@media ${device.laptop} {
-		margin: 40px;	
-
 		flex: 1;
 		justify-content: center;
 		align-items: center;
@@ -45,17 +40,14 @@ const Column = styled.div`
 	}
 `;
 
-
 const Input = styled.input`
-	border: 1px solid ${props => props.theme.colors.linkGray};
+	color: white !important;
 	height: 42px;
 	width: 100%;
-	margin-top: 16px;
 	margin-bottom: 32px;
-	padding-left: 20px;
 	font-size: 18px;
 	border-radius: 4px;
-
+  }
 	@media ${device.laptop} {
 		padding-left: 0px;
 	}
@@ -63,13 +55,11 @@ const Input = styled.input`
 `;
 
 const TextArea = styled.textarea`
-	border: 1px solid ${props => props.theme.colors.linkGray};
 	margin-top: 16px;
 	margin-bottom: 32px;
 	border-radius: 4px;
 	width: 100%;
-	padding-left: 20px;
-	font-size: 24px;
+	font-size: 18px;
 	padding-top: 20px;
 	@media ${device.laptop} {
 		padding-left: 0px;
@@ -78,23 +68,25 @@ const TextArea = styled.textarea`
 `;
 
 const Button = styled.button`
-margin-top: 0px;		
-height: 48px;
-border: 2px white solid;
-max-width: 300px;
-display: flex;
-flex-direction: row;
-padding-left: 20px;
-@media ${device.laptop} {
-	margin-left: auto;
-	margin-right: auto;
-}
-&:hover {
-	cursor: pointer;
-	background-color: #ffffff;
-	border: 2px  #121212 solid;
-	color: black;
-}
+	margin-top: 0px;		
+	height: 48px;
+	border: 2px white solid;
+	max-width: 300px;
+	display: flex;
+	flex-direction: row;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: white;
+	@media ${device.laptop} {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	&:hover {
+		cursor: pointer;
+		background-color: #ffffff;
+		border: 2px  #121212 solid;
+		color: black;
+	}
 
 `;
 const ButtonText = styled.p`
@@ -105,7 +97,7 @@ const ButtonText = styled.p`
 const ButtonIconContainer = styled.div`
 	line-height: 48px;
 	align-self: flex-end;
-	margin-right: 40px;
+	margin-right: auto;
 	margin-left: 40px;
 `;
 
@@ -114,50 +106,59 @@ const ButtonIcon = styled(FontAwesomeIcon)`
 `;
 const Label = styled.label`
 	font-size: 18px;
+	color: white;
 `;
 
 const Form = styled.form`
-	margin-left: 30px;
-	margin-right: auto;
+	margin-top: 16px;
 	@media ${device.laptop} {
-		margin-left: 0px;
 	}
 `;
 
-const Clear = styled.input`
-	text-align: center;
-	margin-top: 32px;
+const InputContainer = styled.div`
+	padding-top: 40px;
+	border-top: 0.5px solid ${props => props.theme.colors.darkGray};
+
 `;
 
 
-const ContactForm = (props) => {
+const ContactInfoTitle = styled.p`
+	text-transform: uppercase;
+	margin-bottom: 10px;
+	font-size: 12px;
+	color: ${props => props.theme.colors.darkGray}
+
+`;
+const ContactForm = () => {
 	return (
 		<Wrapper>
+
 			<Content>
-
-				<Column>
-					<h4>Get in touch</h4>
-					<h6 style={{ marginBottom: '0px' }}>
-						aleksanteri.heliovaara at gmail.com
-					</h6>
-
-				</Column>
 				<Column>
 					<Form form="true" method="post" action="https://getform.io/f/3c369d83-1968-4cb2-a847-807c9fc830c9" >
-						<Label>
-							Your name:
-						</Label>
+						<InputContainer>
+							<Label>
+								What is your name?
+							</Label>
 
-						<Input type="text" name="name" id="name" />
-						<Label>
-							Email Address
-						</Label>
-						<Input type="email" name="email" id="email" />
+							<Input placeholder='John Doe *' type="text" name="name" id="name" style={{ color: 'white' }} />
+						</InputContainer>
+						<InputContainer>
 
-						<Label>
-							Your brief note:
-						</Label>
-						<TextArea name="message" id="message" wrap="hard" />
+							<Label>
+								What is your email address?
+							</Label>
+							<Input placeholder='john@acme.com *' type="email" name="email" id="email" />
+						</InputContainer>
+						<InputContainer>
+
+							<Label>
+								What services are you looking for?
+							</Label>
+							<TextArea placeholder='Web Design, App Development... *' name="message" id="message" wrap="hard" />
+						</InputContainer>
+
+
 
 						<Button
 							type="submit">
@@ -166,6 +167,24 @@ const ContactForm = (props) => {
 								<ButtonIcon icon={faArrowRight} />
 							</ButtonIconContainer>
 						</Button>					</ Form>
+				</Column>
+
+				<Column>
+					<ContactInfoTitle>Contact</ContactInfoTitle>
+					<p style={{ marginBottom: '0px' }}>
+						aleksanteri.heliovaara@gmail.com
+					</p>
+					<p style={{ marginBottom: '0px' }}>
+						+358442360304
+					</p>
+					<ContactInfoTitle>Business</ContactInfoTitle>
+					<p style={{ marginBottom: '0px' }}>
+						Helau Solutions Oy
+					</p>
+					<p style={{ marginBottom: '0px' }}>
+						3168391-6
+					</p>
+
 				</Column>
 			</Content>
 

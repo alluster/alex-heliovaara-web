@@ -13,6 +13,7 @@ const theme = {
 		secondaryDark: '#E69000',
 		backgroundLight: '#FAFAFA',
 		backgroundDark: '#E9EFF3',
+		darkGray: '#818181',
 		linkGray: '#C8CCD4',
 		lightGray: '#F0F0F0',
 		salmon: '#FF7676',

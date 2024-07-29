@@ -12,8 +12,8 @@ import Loader from '../components/Loader';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const TextAnimation = keyframes`
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+    0% { transform: translateX(-100%); }
 `;
 
 const Hero = styled.div`
@@ -30,16 +30,21 @@ const Hero = styled.div`
 const HeroText = styled.p`
     font-weight: 400;
     font-size: 20px;
+    position: relative; /* Make sure the element's position can be manipulated */
+
 `;
 
 const Row = styled.div`
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    align-items: start;
+    justify-content: start;
+	gap: 40px;
     @media ${device.laptop} {
         flex-direction: column;
         align-items: start;
+			gap: 0px;
+
     }
 `;
 
@@ -49,7 +54,7 @@ const InfoContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     @media ${device.laptop} {
-        height: 30px;
+        // height: 10px;
     }
 `;
 
@@ -82,12 +87,13 @@ const ScrollingTextContainer = styled.div`
     white-space: nowrap;
     box-sizing: border-box;
     position: relative;
+		margin-top: 80px;
+
 `;
 
 const ScrollingText = styled.h1`
     font-size: 200px;
     font-weight: 400;
-	margin-top: 40px;
     animation: ${TextAnimation} 20s linear infinite;
     @media ${device.laptop} {
         font-size: 70px;
@@ -113,9 +119,9 @@ const QuoteContainer = styled.div`
 	margin-right: auto;
 	text-align: center;
 	border-top: 0.5px solid white;
-	border-bottom: 0.5px solid white;
 	padding-top: 40px;
 	padding-bottom: 40px;
+	margin-bottom: 40px;
 `;
 const QuotePerson = styled.p`
 `;
@@ -123,9 +129,58 @@ const Quote = styled.h4`
 	letter-spacing: 1.3px;
 `;
 
+const PersonImageContainer1 = styled.img`
+	align-self: start;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	object-fit: cover;
+	margin-right: 32px;
+	min-width: 100px;
+	display: none;
+	@media ${device.laptop} {
+			display: flex;
+		}
+	`;
+
+const PersonImageContainer2 = styled.img`
+	align-self: start;
+	height: 100px;
+		margin-top: 30px;
+
+	width: 100px;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	object-fit: cover;
+	margin-right: 32px;
+	min-width: 100px;
+	display: flex;
+	@media ${device.laptop} {
+			display: none;
+		}
+
+`;
 const IndexPage = ({ data }) => {
+	const [offsetY, setOffsetY] = useState(0);
+
+	const handleScroll = () => {
+		setOffsetY(window.pageYOffset);
+	};
+
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll);
+
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
 
 	const [text, setText] = useState('Welcome');
+	useEffect(() => {
+		window.scroll({
+			top: 0,
+			behavior: 'smooth',
+		});
+	}, []);
 	useEffect(() => {
 		const texts = [
 			'Tervetuloa',  // Finnish
@@ -141,15 +196,22 @@ const IndexPage = ({ data }) => {
 
 		const getRandomIndex = () => Math.floor(Math.random() * texts.length);
 
-		const interval = setInterval(() => {
-			setText(texts[getRandomIndex()]);
-		}, 500);
+		if (sessionStorage.getItem('loaded')) {
+			setText('Home');
+		}
+		else {
+			const interval = setInterval(() => {
+				setText(texts[getRandomIndex()]);
+			}, 500);
+			sessionStorage.setItem('loaded', true);
+			return () => clearInterval(interval);
+		}
 
-		return () => clearInterval(interval);
+
 	}, []);
 
 	return (
-		<Layout page="home">
+		<Layout page="home" >
 			<SEO
 				title="Aleksanteri Heliövaara"
 				description="Creative Technologist"
@@ -166,14 +228,19 @@ const IndexPage = ({ data }) => {
 				data-sal-duration="1000"
 			>
 				<Container>
-					<HeroContentCentered>
+					<HeroContentCentered style={{ transform: `translateY(${offsetY * 0.1}px)` }}>
+						<PersonImageContainer1 src='./aleksanteri.png' />
 						<h1>Freelancer Developer & Designer</h1>
-						<HeroText>
-							Aleksanteri Eliel Heliövaara is an award-winning, tech-forward,
-							culture-driven, Creative Technologist and Freelance Developer & Designer with a background in digital
-							product, branding and entrepreneurship, based in Helsinki
-							Finland. Worked with WHO, Helsinki City, Osuuspankki, Fazer, SSAB
-						</HeroText>
+						<Row>
+							<PersonImageContainer2 src='./aleksanteri.png' />
+							<HeroText >
+								Aleksanteri Eliel Heliövaara is an award-winning, tech-forward,
+								culture-driven, Creative Technologist and Freelance Developer & Designer with a background in digital
+								product, branding and entrepreneurship, based in Helsinki
+								Finland. Worked with WHO, Helsinki City, Osuuspankki, Fazer, SSAB
+							</HeroText>
+						</Row>
+
 						<Row>
 							<InfoContainer>
 								<GreenBall
@@ -186,7 +253,7 @@ const IndexPage = ({ data }) => {
 							</InfoContainer>
 							<InfoContainer>
 								<IconIcon icon={faMapMarkerAlt} />
-								<IconText>Helsinki</IconText>
+								<IconText>Current location: @Helsinki Finland </IconText>
 							</InfoContainer>
 							<InfoContainer>
 								<IconIcon icon={faPhone} />
@@ -195,12 +262,15 @@ const IndexPage = ({ data }) => {
 						</Row>
 					</HeroContentCentered>
 				</Container>
-				<ScrollingTextContainer>
+				<ScrollingTextContainer style={{ transform: `translateY(${offsetY * 0.1}px)` }}>
 					<ScrollingText>Aleksanteri Eliel Heliövaara - Aleksanteri Eliel Heliövaara</ScrollingText>
 				</ScrollingTextContainer>
 			</Hero>
 			<Container>
-				<QuoteContainer>
+				<QuoteContainer data-sal="fade"
+					data-sal-delay="100"
+					data-sal-easing="ease"
+					data-sal-duration="1000">
 					<Quote>
 						...Aleksanteri's professionalism, intelligence, and passion for his work became very clear over the more than 2 years of daily collaboration, and he made the entire team better...
 					</Quote>
@@ -213,8 +283,14 @@ const IndexPage = ({ data }) => {
 						<FontAwesomeIcon style={{ fontSize: '20px', marginLeft: '10px', color: 'white' }} icon={faLinkedin} />
 					</Link>
 				</QuoteContainer>
-				<RecentWork>Recent Work</RecentWork>
-				<CardGrid content={data.allContentfulArticle.edges} />
+				<RecentWork data-sal="fade"
+					data-sal-delay="100"
+					data-sal-easing="ease"
+					data-sal-duration="1000">Recent Work</RecentWork>
+				<CardGrid data-sal="fade"
+					data-sal-delay="100"
+					data-sal-easing="ease"
+					data-sal-duration="1000" content={data.allContentfulArticle.edges} />
 			</Container>
 		</Layout>
 	);

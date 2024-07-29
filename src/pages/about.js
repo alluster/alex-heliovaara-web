@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import Container from '../components/Container';
 import styled from 'styled-components';
 import { device } from '../device';
+import { useEffect } from 'react';
 
 
 const HeroText = styled.h1`
@@ -90,6 +91,12 @@ const Markdown = styled.div`
 
 
 const About = ({ data }) => {
+	useEffect(() => {
+		window.scroll({
+			top: 0,
+			behavior: 'smooth',
+		});
+	}, []);
 	return (
 		<Layout>
 			<SEO
