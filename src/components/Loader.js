@@ -65,9 +65,15 @@ const AnimationContainer = styled.div`
 
 `;
 
+
 const Loader = ({ children }) => {
+	// const [loader, setLoader] = useState(false);
+	// useEffect(() => {
+	// 	if (sessionStorage.getItem('loader')) { setLoader(true); }
+
+	// }, []);
 	return (
-		<AnimationContainer speed={!sessionStorage.getItem('loader')}>
+		<AnimationContainer speed={true}>
 			<Bg >
 				<Content>
 					{children}

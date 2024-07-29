@@ -218,8 +218,8 @@ const InfoRow = styled.div`
 `;
 
 const HeroImageContainer = styled.div`
-padding-right: 16px;
-padding-left: 16px;
+	padding-right: 16px;
+	padding-left: 16px;
 	display: flex;
 	justify-content: center;
 	margin-left: auto;

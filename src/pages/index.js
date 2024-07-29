@@ -147,8 +147,7 @@ const PersonImageContainer1 = styled.img`
 const PersonImageContainer2 = styled.img`
 	align-self: start;
 	height: 100px;
-		margin-top: 30px;
-
+	margin-top: 30px;
 	width: 100px;
 	border-radius: 50%;
 	background-repeat: no-repeat;
@@ -165,7 +164,7 @@ const IndexPage = ({ data }) => {
 	const [offsetY, setOffsetY] = useState(0);
 
 	const handleScroll = () => {
-		setOffsetY(window.pageYOffset);
+		setOffsetY(window.scrollY);
 	};
 
 	useEffect(() => {
@@ -174,41 +173,49 @@ const IndexPage = ({ data }) => {
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
-	const [text, setText] = useState('Welcome');
+	// const [text, setText] = useState('Welcome');
+	// const [loader, setLoader] = useState(false);
+
+	// useEffect(() => {
+	// 	const load = sessionStorage.getItem('loader');
+	// 	if (load) { setLoader(true); }
+	// 	console.log(sessionStorage.getItem('loader'));
+	// }, []);
+
 	useEffect(() => {
 		window.scroll({
 			top: 0,
 			behavior: 'smooth',
 		});
 	}, []);
-	useEffect(() => {
-		const texts = [
-			'Tervetuloa',  // Finnish
-			'Welcome',     // English
-			'Bienvenido',  // Spanish
-			'Bienvenue',   // French
-			'Willkommen',  // German
-			'Benvenuto',   // Italian
-			'歡迎',        // Chinese (Traditional)
-			'ようこそ',    // Japanese
-			'환영합니다'    // Korean
-		];
+	// useEffect(() => {
+	// 	const texts = [
+	// 		'Tervetuloa',  // Finnish
+	// 		'Welcome',     // English
+	// 		'Bienvenido',  // Spanish
+	// 		'Bienvenue',   // French
+	// 		'Willkommen',  // German
+	// 		'Benvenuto',   // Italian
+	// 		'歡迎',        // Chinese (Traditional)
+	// 		'ようこそ',    // Japanese
+	// 		'환영합니다'    // Korean
+	// 	];
 
-		const getRandomIndex = () => Math.floor(Math.random() * texts.length);
+	// 	const getRandomIndex = () => Math.floor(Math.random() * texts.length);
 
-		if (sessionStorage.getItem('loaded')) {
-			setText('Home');
-		}
-		else {
-			const interval = setInterval(() => {
-				setText(texts[getRandomIndex()]);
-			}, 500);
-			sessionStorage.setItem('loaded', true);
-			return () => clearInterval(interval);
-		}
+	// 	if (loader === true) {
+	// 		setText('Home');
+	// 	}
+	// 	else {
+	// 		const interval = setInterval(() => {
+	// 			setText(texts[getRandomIndex()]);
+	// 		}, 500);
+	// 		sessionStorage.setItem('loaded', true);
+	// 		return () => clearInterval(interval);
+	// 	}
 
 
-	}, []);
+	// }, []);
 
 	return (
 		<Layout page="home" >
@@ -219,7 +226,9 @@ const IndexPage = ({ data }) => {
 				article={false}
 			/>
 			<Loader>
-				<ChangingText style={{ color: 'black' }}>{text}</ChangingText>
+				<h5 style={{ color: 'black' }}>Welcome</h5>
+
+				{/* <ChangingText style={{ color: 'black' }}>{text}</ChangingText> */}
 			</Loader>
 			<Hero
 				data-sal="fade"
