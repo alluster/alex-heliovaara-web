@@ -20,11 +20,14 @@ const Hero = styled.div`
     position: relative;
     z-index: 3;
     width: 100%;
-    height: 120vh;
     display: flex;
+	height: 1000px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+	@media ${device.laptop} {
+        margin-top: 80px;
+    }
 `;
 
 const HeroText = styled.p`
@@ -71,6 +74,9 @@ const HeroContentCentered = styled.div`
     display: flex;
     flex-direction: column;
     max-width: 800px;
+	@media ${device.laptop} {
+		margin-top: 60px;
+    }
 `;
 
 const GreenBall = styled.div`

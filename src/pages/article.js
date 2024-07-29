@@ -24,16 +24,14 @@ const Hero = styled.div`
 
 const HeroText = styled.h1`
 
-	padding-top: 0px;
-	padding-bottom: 0px;
 	// color: ${props => props.theme.colors.black};	
 	@media ${device.laptop} {
-		padding-top: 30px;
+		// padding-top: 30px;
 		padding-bottom: 0px;
-		// font-size: 40px;
-		// line-height: 40px;
+		font-size: 50px;
+		line-height: 50px;
 		width: 80%;
-		margin-top: 0px;
+		margin-top: 100px;
 
 
 	}
@@ -161,10 +159,10 @@ const HeroTextContainer = styled.div`
 
 const BackgroundImage = styled.img`
 	// margin-top: 100px;
-	margin-bottom: 100px;
+	margin-bottom: 80px;
 	border: 0px solid white;
 	border-radius: 20px;
-	align-self: center;
+	// align-self: center;
 	position: relative;
 	margin-left: auto; 
 	margin-right: auto;
@@ -174,7 +172,7 @@ const BackgroundImage = styled.img`
 	object-fit: cover;
 	width: 100%
 	@media ${device.laptop} {
-		margin-bottom: 30px;
+		margin-bottom: 0px;
 	}	
 `;
 
@@ -185,6 +183,7 @@ const InfoContainer = styled.div`
 	align-items: start;
 	justify-content: start;
 	width: 100%;
+	height: 100%;
 `;
 
 const InfoTitle = styled.p`
@@ -213,11 +212,12 @@ const InfoRow = styled.div`
     @media ${device.laptop} {
         flex-direction: column;
         align-items: start;
-		margin-bottom: 80px;
+		margin-bottom: 20px;
     }
 `;
 
 const HeroImageContainer = styled.div`
+	position: relative;
 	padding-right: 16px;
 	padding-left: 16px;
 	display: flex;
@@ -317,11 +317,11 @@ const Article = ({ data }) => {
 					</HeroTextContainer>
 				</Container>
 
-
+				<HeroImageContainer>
+					<BackgroundImage src={data.contentfulArticle.image.file.url} />
+				</HeroImageContainer>
 			</Hero>
-			<HeroImageContainer>
-				<BackgroundImage src={data.contentfulArticle.image.file.url} />
-			</HeroImageContainer>
+
 			<div>
 
 				<Page>
