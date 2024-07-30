@@ -7,19 +7,40 @@ import { device } from '../device';
 import useScrollPosition from '../support-functions/useScrollPosition';
 import Loader from '../components/Loader';
 import ContactForm from '../components/ContactForm';
+import Pill from '../components/Pill';
 
 
 const Hero = styled.div`
 	z-index: 3;
 	width: 100%;
-	height: 100vh;
-	justify-content: center;
-	align-items: center;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: start;
 	@media ${device.laptop} {
 		height: 100%;
 	}
 `;
+const HeroTextContainer = styled.div`
+	// max-width: 1000px;
+	display: flex;
+	flex-direction: column;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+	@media ${device.laptop} {
+		align-items: start;
+		text-align: left;
+		// justify-content: start;
+		margin-top: 50px;
 
+	}
+	
+`;
 const HeroText = styled.h1`
 	padding-top: 0px;
 	padding-bottom: 0px;
@@ -33,7 +54,7 @@ const HeroText = styled.h1`
 	}
 `;
 
-const LeadingText = styled.h4`
+const LeadingText = styled.h2`
 	margin-right: auto;
 	width: 800px;
 	position: relative;
@@ -53,25 +74,7 @@ const LeadingText = styled.h4`
 
 
 
-const HeroTextContainer = styled.div`
-	max-width: 1000px;
-	display: flex;
-	flex-direction: column;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: left;
-	height: 100vh;
-	align-items: center;
-	justify-content: center;
-	@media ${device.laptop} {
-		align-items: start;
-		text-align: left;
-		// justify-content: start;
-		margin-top: 50px;
 
-	}
-	
-`;
 
 const InfoContainer = styled.div`
 	display: flex;
@@ -95,6 +98,7 @@ const InfoRow = styled.div`
 	align-items: start;
 	margin-top: 40px;
 	width: 100%;
+	margin-bottom: 200px;
     @media ${device.laptop} {
         flex-direction: column;
         align-items: start;
@@ -117,6 +121,17 @@ const InfoText = styled.p`
 	color: ${props => props.theme.colors.darkGray}
 `;
 
+const PillRow = styled.div`
+	display: flex;
+	flex-direction: row;
+	gap: 16px;
+	margin-top: 40px;
+	justify-content: start;
+	align-items: center;
+	width: 100%;
+	flex-wrap: wrap;
+	height: 100%;
+`;
 
 
 const services = [
@@ -144,6 +159,20 @@ const services = [
 
 ];
 
+const servicesTags = [
+	{ id: 1, title: 'Brand & Identity Design' },
+	{ id: 2, title: 'Mobile App Design' },
+	{ id: 3, title: 'Mobile App Development' },
+	{ id: 4, title: 'Concept Design' },
+	{ id: 5, title: 'Web Design' },
+	{ id: 6, title: 'Web Development' },
+	{ id: 7, title: 'SaaS Development' },
+	{ id: 8, title: 'UX Design' },
+	{ id: 9, title: 'Service Design' },
+	{ id: 10, title: 'Software Architecture' },
+	{ id: 11, title: 'Agile Coaching' },
+	{ id: 12, title: 'Responsive Design' }
+];
 
 const Services = () => {
 	const scrollPosition = useScrollPosition();
@@ -200,6 +229,7 @@ const Services = () => {
 						<LeadingText >Brands from around the world have trusted my expertise in digital design and development projects.</LeadingText>
 
 
+
 						{/* {data.contentfulArticle.author != undefined ? <AuthorCard
 						name={data.contentfulArticle.author.personName}
 						description={data.contentfulArticle.author.personDesxription}
@@ -211,9 +241,20 @@ const Services = () => {
 
 
 
+
 				</Hero>
 				<InfoRow>
-					<LeadingText >Services I can help your company succeed with...</LeadingText>
+					<div>
+						<LeadingText >Services I can help your company succeed with...</LeadingText>
+
+						<PillRow>
+							{servicesTags.map((item, i) => {
+								return (
+									<Pill key={i} title={item.title} />
+								);
+							})}
+						</PillRow>
+					</div>
 
 					{
 						services.map((item, i) => {

@@ -10,25 +10,12 @@ import Container from './Container';
 const Wrapper = styled.div`
 	position: relative;
 	z-index: 10000000;
-`;
-
-const ImageContainer = styled.div`
-	margin-top: 50px;
-	margin-bottom: 50px;
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: 40px;
-	padding-right: 40px;
-	max-width: 100%;
+	margin-top: 80px;
+	margin-bottom: 80px;
 	@media ${device.laptop} {
-		padding-left: 16px;
-		padding-right: 16px;
+		margin-top: 20px;
+		margin-bottom: 20px;
 	}
-`;
-
-const Image = styled.img`
-	width: 100%;
-	
 `;
 
 
@@ -47,7 +34,8 @@ const TextContainer = styled(Container)`
 
 
 const Title = styled.h4`
-	// max-width: 300px;
+	line-height: 32px;
+	flex: 2;
 	font-weight: 600;
 	// color: ${props => props.theme.colors.white};
 	@media ${device.laptop} {
@@ -60,11 +48,12 @@ const Title = styled.h4`
 	}
 `;
 const Markdown = styled.div`
+	flex: 3;
 	width: 100%;
 	margin-bottom: 50px;
 	justify-content: flex-end;
-	margin-left: auto;
-	align-self: flex-end;
+	// margin-left: auto;
+	// align-self: flex-end;
 	z-index: 3;
 	h3 {
 		margin-bottom: 60px;
@@ -92,6 +81,25 @@ const Markdown = styled.div`
 			line-height: 24px;
 		}
 	}
+`;
+
+const ImageContainer = styled.div`
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 40px;
+	padding-right: 40px;
+	max-width: 100%;
+	@media ${device.laptop} {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+`;
+
+const Image = styled.img`
+	width: 100%;
+	
 `;
 
 const PlayerContainer = styled.div`

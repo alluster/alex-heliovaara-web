@@ -33,8 +33,8 @@ const GlobalStyle = createGlobalStyle`
     
     h1 {
 		// font-family: 'Libre Baskerville', sans-serif !important;
-		font-size: 70px;
-		line-height: 60px;
+		font-size: 90px;
+		line-height: 100px;
 		letter-spacing: 0.02em;
 		margin-bottom: 40px;
 		font-weight: 300;
@@ -238,7 +238,7 @@ export default function Layout({ children, page, changeBackground, changeBackgro
 		<React.Fragment>
 
 			<ThemeProvider theme={theme}>
-				<GlobalStyle changeBackground={changeBackground} changeBackgroundColor={changeBackgroundColor} />
+				<GlobalStyle changeBackground={changeBackground} changeBackgroundColor={null} />
 				{
 					page === 'home' || 'services' ?
 						<BackgroundImage src="/bg-circle.svg" />

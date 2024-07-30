@@ -24,33 +24,29 @@ const CardContent = styled.div`
 	padding-left: 16px; 
 	padding-right: 16px;
 	&:hover {
-		background-color: rgba(0, 0, 0, 0.5); // Semi-transparent background for text
-
+		background-color: rgba(0, 0, 0, 0.5); 
 	}
 `;
 
 const CardTextContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-//   align-items: center; // Center align items vertically
-
-  @media ${device.laptop} {
-    height: 100%;
-    flex-direction: column;
-  }
+	display: flex;
+	flex-direction: row;
+  	@media ${device.laptop} {
+		height: 100%;
+		flex-direction: column;
+  	}
 `;
 
 const LeadingText = styled.h6`
-  font-size: 32px;
-  margin-left: 10px;
-  text-transform: uppercase;
-  margin-left: auto;
-color: #C8CCD4;
-  @media ${device.laptop} {
-    font-size: 22px;
-    margin-top: 0px;
-    margin-left: 0;
-
+  	font-size: 32px;
+  	margin-left: 10px;
+  	text-transform: uppercase;
+  	margin-left: auto;
+	color: #C8CCD4;
+  	@media ${device.laptop} {
+    	font-size: 22px;
+    	margin-top: 0px;
+    	margin-left: 0;
   }
 `;
 
@@ -65,7 +61,6 @@ const Title = styled.h6`
   @media ${device.laptop} {
     font-size: 18px;
     margin-top: 20px;
-		  color: #C8CCD4;
 
   }
 `;

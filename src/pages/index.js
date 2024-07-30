@@ -21,7 +21,7 @@ const Hero = styled.div`
     z-index: 3;
     width: 100%;
     display: flex;
-	height: 1000px;
+	min-height: 60vh;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -29,11 +29,26 @@ const Hero = styled.div`
         margin-top: 80px;
     }
 `;
+const HeroContent = styled(Container)`
+	margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+	height: 100%;
+	@media ${device.laptop} {
+		margin-top: 60px;
+    }
+`;
+
+const HeroTitle = styled.h1`
+    margin-top: 30px;
+
+`;
 
 const HeroText = styled.p`
     font-weight: 400;
     font-size: 20px;
-    position: relative; /* Make sure the element's position can be manipulated */
+    position: relative; 
 
 `;
 
@@ -70,15 +85,6 @@ const IconText = styled.p`
     font-size: 14px;
 `;
 
-const HeroContentCentered = styled.div`
-    display: flex;
-    flex-direction: column;
-    max-width: 800px;
-	@media ${device.laptop} {
-		margin-top: 60px;
-    }
-`;
-
 const GreenBall = styled.div`
     background-color: #00FF85;
     height: 10px;
@@ -93,16 +99,24 @@ const ScrollingTextContainer = styled.div`
     white-space: nowrap;
     box-sizing: border-box;
     position: relative;
-		margin-top: 80px;
-
+	height: 100%;
+	z-index: 100;
+	@media ${device.laptop} {
+		margin-top: 0px;
+    }
 `;
 
 const ScrollingText = styled.h1`
     font-size: 200px;
+	line-height: 200px;
     font-weight: 400;
+	opacity: 0.3;
+	color: ${props => props.theme.colors.darkGray};
+
     animation: ${TextAnimation} 20s linear infinite;
     @media ${device.laptop} {
-        font-size: 70px;
+		opacity: 0.1;
+		color: ${props => props.theme.colors.darkGray};
     }
 `;
 
@@ -110,10 +124,21 @@ const RecentWork = styled.p`
     color: white;
 `;
 
-const ChangingText = styled.h1`
+const QuoteRow = styled.div`
+	display: flex;
+	flex-direction: row;
+	// align-items: center;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+	 @media ${device.laptop} {
+		flex-direction: column;
+
+    }
 `;
 
 const QuoteContainer = styled.div`
+	height: 100%;
 	position: relative;
 	z-index: 1000000000;
 	display: flex;
@@ -128,10 +153,12 @@ const QuoteContainer = styled.div`
 	padding-top: 40px;
 	padding-bottom: 40px;
 	margin-bottom: 40px;
+	
 `;
 const QuotePerson = styled.p`
+	justify-self: end;
 `;
-const Quote = styled.h4`
+const Quote = styled.h5`
 	letter-spacing: 1.3px;
 `;
 
@@ -242,62 +269,86 @@ const IndexPage = ({ data }) => {
 				data-sal-easing="ease"
 				data-sal-duration="1000"
 			>
-				<Container>
-					<HeroContentCentered style={{ transform: `translateY(${offsetY * 0.1}px)` }}>
-						<PersonImageContainer1 src='./aleksanteri.png' />
-						<h1>Freelancer Developer & Designer</h1>
-						<Row>
-							<PersonImageContainer2 src='./aleksanteri.png' />
-							<HeroText >
-								Aleksanteri Eliel Heliövaara is an award-winning, tech-forward,
-								culture-driven, Creative Technologist and Freelance Developer & Designer with a background in digital
-								product, branding and entrepreneurship, based in Helsinki
-								Finland. Worked with WHO, Helsinki City, Osuuspankki, Fazer, SSAB
-							</HeroText>
-						</Row>
+				<HeroContent style={{ transform: `translateY(${offsetY * 0.1}px)` }}>
+					<PersonImageContainer1 src='./aleksanteri.png' />
+					<HeroTitle>Freelancer Developer & Designer</HeroTitle>
+					<Row>
+						<PersonImageContainer2 src='./aleksanteri.png' />
+						<HeroText >
+							Aleksanteri Eliel Heliövaara is an award-winning, tech-forward,
+							culture-driven, Creative Technologist and Freelance Developer & Designer with a background in digital
+							product, branding and entrepreneurship, based in Helsinki
+							Finland. Worked with WHO, Helsinki City, Osuuspankki, Fazer, SSAB
+						</HeroText>
+					</Row>
 
-						<Row>
-							<InfoContainer>
-								<GreenBall
-									data-sal="fade"
-									data-sal-delay="1000"
-									data-sal-easing="ease"
-									data-sal-duration="2000"
-								/>
-								<IconText>Available for projects</IconText>
-							</InfoContainer>
-							<InfoContainer>
-								<IconIcon icon={faMapMarkerAlt} />
-								<IconText>Current location: @Helsinki Finland </IconText>
-							</InfoContainer>
-							<InfoContainer>
-								<IconIcon icon={faPhone} />
-								<IconText>+358442360304</IconText>
-							</InfoContainer>
-						</Row>
-					</HeroContentCentered>
-				</Container>
-				<ScrollingTextContainer style={{ transform: `translateY(${offsetY * 0.1}px)` }}>
-					<ScrollingText>Aleksanteri Eliel Heliövaara - Aleksanteri Eliel Heliövaara</ScrollingText>
-				</ScrollingTextContainer>
+					<Row>
+						<InfoContainer>
+							<GreenBall
+								data-sal="fade"
+								data-sal-delay="1000"
+								data-sal-easing="ease"
+								data-sal-duration="2000"
+							/>
+							<IconText>Available for projects</IconText>
+						</InfoContainer>
+						<InfoContainer>
+							<IconIcon icon={faMapMarkerAlt} />
+							<IconText>Current location: @Helsinki Finland </IconText>
+						</InfoContainer>
+						<InfoContainer>
+							<IconIcon icon={faPhone} />
+							<IconText>+358442360304</IconText>
+						</InfoContainer>
+					</Row>
+				</HeroContent>
+
 			</Hero>
+			<ScrollingTextContainer style={{ transform: `translateY(${offsetY * 0.5}px)` }}>
+				<ScrollingText>Aleksanteri Eliel Heliövaara - Aleksanteri Eliel Heliövaara</ScrollingText>
+			</ScrollingTextContainer>
 			<Container>
-				<QuoteContainer data-sal="fade"
-					data-sal-delay="100"
-					data-sal-easing="ease"
-					data-sal-duration="1000">
-					<Quote>
-						...Aleksanteri's professionalism, intelligence, and passion for his work became very clear over the more than 2 years of daily collaboration, and he made the entire team better...
-					</Quote>
+				<QuoteRow>
+					<QuoteContainer data-sal="fade"
+						data-sal-delay="100"
+						data-sal-easing="ease"
+						data-sal-duration="1000">
+						<Quote>
+							...Aleksanteri's professionalism, intelligence, and passion for his work became very clear over the more than 2 years of daily collaboration, and he made the entire team better...
+						</Quote>
 
-					<QuotePerson>
-						- Tuukka Miettinen, Tahto Group Oy
-					</QuotePerson>
-					<Link target='_blank' to="https://www.linkedin.com/in/aleksanteri1/">
-						Read more in LinkedIn
-						<FontAwesomeIcon style={{ fontSize: '20px', marginLeft: '10px', color: 'white' }} icon={faLinkedin} />
-					</Link>
-				</QuoteContainer>
+						<QuotePerson>
+							- Tuukka Miettinen, Tahto Group Oy
+						</QuotePerson>
+						<Link target='_blank' to="https://www.linkedin.com/in/aleksanteri1/">
+							Read more in LinkedIn
+							<FontAwesomeIcon style={{ fontSize: '20px', marginLeft: '10px', color: 'white' }} icon={faLinkedin} />
+						</Link>
+
+					</QuoteContainer>
+					<QuoteContainer data-sal="fade"
+						data-sal-delay="100"
+						data-sal-easing="ease"
+						data-sal-duration="1000">
+						<Quote>
+							...the WHO experienced an enormous increase in traffic to their site – 1.4 billion unique visitors in 2020...
+						</Quote>
+
+						<QuotePerson>
+							- Progress Sitefinity
+						</QuotePerson>
+						<Link target='_blank' to="https://www.progress.com/sitefinity-cms/user-awards/associations---non-profit-and-most-impactful-digital-experience-2021">
+							<p style={{ textDecoration: 'underline' }}>Read more in www.progress.com</p>
+							{/* <FontAwesomeIcon style={{ fontSize: '20px', marginLeft: '10px', color: 'white' }} icon={faLinkedin} /> */}
+						</Link>
+						<Link to="/article/who-international-website-design/">
+							<p style={{ textDecoration: 'underline' }}>View Project</p>
+							{/* <FontAwesomeIcon style={{ fontSize: '20px', marginLeft: '10px', color: 'white' }} icon={faLinkedin} /> */}
+						</Link>
+
+					</QuoteContainer>
+				</QuoteRow>
+
 				<RecentWork data-sal="fade"
 					data-sal-delay="100"
 					data-sal-easing="ease"

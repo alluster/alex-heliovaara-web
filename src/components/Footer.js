@@ -19,6 +19,7 @@ const Footer = () => {
 		// background-color: ${props => props.theme.colors.black};
 		height: 100%;
 		margin-top: 150px;
+		padding-bottom: 100px;
 		@media ${device.laptop} {
 			margin-top: 0px;
 	
@@ -92,7 +93,7 @@ const Footer = () => {
 					<Column2 >
 						{/* <h3 style={{ marginTop: '0px' }}>Helau Solutions</h3> */}
 						{/* <h4>We are the rebels of digital design, the ones who dare to challenge the status quo and create something truly meaningful. We are on a mission to use technology and design to make a positive impact on the world. That&apos;s why we welcome all bold and curious companies to join us on this journey. Together, we&apos;ll create modern digital experiences that bring about a more open and connected world. Are you ready to join the rebellion?</h4> */}
-						<h5>2020 - 2024 © Code by Aleksanteri Heliövaara</h5>
+						<h5>2020 - 2024 © Code & Design by Aleksanteri Heliövaara</h5>
 
 					</Column2>
 				</Content>

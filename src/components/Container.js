@@ -9,10 +9,10 @@ const Wrapper = styled.div`
     margin-right: auto;
     padding-left: 32px;
 	padding-right: 32px;
-	
 	@media ${device.laptop} {
-	
-		}
+	    padding-left: 16px;
+		padding-right: 16px;
+	}
 
 `;
 

@@ -9,103 +9,98 @@ import ContentBlock from '../components/ContentBlock';
 import useScrollPosition from '../support-functions/useScrollPosition';
 import Loader from '../components/Loader';
 import { useEffect } from 'react';
+import CardGrid from '../components/CardGrid';
+import Pill from '../components/Pill';
 
 
 const Hero = styled.div`
+	display: flex;
+	flex-direction: column;
 	position: relative;
 	z-index: 3;
-	width: 100%;
-	height: 100%;
-
+	max-width: 100%;
+	min-height: 100vh;
+	justify-content: center;
 	@media ${device.laptop} {
 		height: 100%;
 	}
 `;
-
-const HeroText = styled.h1`
-
-	// color: ${props => props.theme.colors.black};	
+const HeroTextContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
 	@media ${device.laptop} {
-		// padding-top: 30px;
+		align-items: start;
+		text-align: left;
+		justify-content: start;
+		margin-top: 50px;
+
+	}
+	
+`;
+const HeroText = styled.h1`
+	@media ${device.laptop} {
 		padding-bottom: 0px;
 		font-size: 50px;
 		line-height: 50px;
-		width: 80%;
 		margin-top: 100px;
-
-
 	}
 `;
 
 const LeadingText = styled.h3`
-// background: rgba(255, 255, 255, 0.9);
+	max-width: 100%;
 	width: 800px;
 	position: relative;
 	z-index: 3;
 	margin-top: 10px;
 	margin-bottom: 30px;
-	// color: ${props => props.theme.colors.black};	
 	@media ${device.laptop} {
 		padding-top: 0px;
 		padding-bottom: 0px;
 		margin-top: 0px;
-
 		width: 100%;	
 		margin-bottom: 0px;
-
-
 	}
 `;
 
-const Page = styled.div`
-	position: relative;
-	z-index: 3;
+const PillRow = styled.div`
 	display: flex;
 	flex-direction: row;
-	margin-top: 60px;
-
+	gap: 20px;
+	justify-content: center;
+	align-items: center;
 	@media ${device.laptop} {
-		flex-direction: column;
+		margin-top: 20px;
+		gap: 10px;
 
-	}
-
+    }
 `;
 
-const Column = styled.div`
-	position: relative;
-	z-index: 3;
-	flex: 1;
-	margin-right: 32px;
-	@media ${device.laptop} {
-		margin-right: 0px;
-
-	}
-`;
-
-
-
-const Content = styled.div`
-	position: relative;
-	z-index: 3;
-	flex: 2;
-	// background-color: white;
-	margin-left: -80px;
-	margin-top: 40px;
-	padding: 60px;
-	max-width: 600px;
+const HeroImageContainer = styled.div`
+	padding-right: 32px;
+	padding-left: 32px;
 	margin-left: auto;
 	margin-right: auto;
-	padding-bottom: 50px;
-
+	margin-bottom: 100px;
 	@media ${device.laptop} {
-		flex: 1;
-		margin-left: 0px;
-		margin-top: 0px;
-		padding: 0px;
-		padding-bottom: 50px;
-
-	}
-	
+		padding-right: 16px;
+		padding-left: 16px;
+		margin-bottom: 60px;
+    }
+`;
+const HeroImage = styled.img`
+	border-radius: 20px;
+	position: relative;
+	margin-left: auto; 
+	margin-right: auto;
+	z-index: 10000;
+	object-fit: cover;
+	width: 100%
 `;
 
 const Divider = styled.div`
@@ -136,44 +131,25 @@ const Markdown = styled.div`
 		}
 	}
 `;
-const HeroTextContainer = styled.div`
-	max-width: 1000px;
+
+
+
+
+const InfoRow = styled.div`
 	display: flex;
-	flex-direction: column;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-	height: 100vh;
-	align-items: center;
-	justify-content: center;
-	@media ${device.laptop} {
-		align-items: start;
-		text-align: left;
-		justify-content: start;
-		margin-top: 50px;
-
-	}
-	
-`;
-
-
-const BackgroundImage = styled.img`
-	// margin-top: 100px;
-	margin-bottom: 80px;
-	border: 0px solid white;
-	border-radius: 20px;
-	// align-self: center;
-	position: relative;
-	margin-left: auto; 
-	margin-right: auto;
-	// top: 0px:
-	// left: 0px;
-	z-index: 1;
-	object-fit: cover;
-	width: 100%
-	@media ${device.laptop} {
-		margin-bottom: 0px;
-	}	
+    flex-direction: row;
+	gap: 40px;
+    justify-content: space-between;
+	align-items: start;
+	margin-top: 40px;
+	width: 100%;
+	height: 100%;
+    @media ${device.laptop} {
+        flex-direction: column;
+        align-items: start;
+		margin-bottom: 30px;
+		gap: 10px;
+    }
 `;
 
 const InfoContainer = styled.div`
@@ -201,37 +177,46 @@ const InfoText = styled.p`
 	font-size: 20px;
 `;
 
-const InfoRow = styled.div`
-	display: flex;
-    flex-direction: row;
-	gap: 40px;
-    justify-content: space-between;
-	align-items: start;
-	margin-top: 40px;
-	width: 100%;
-    @media ${device.laptop} {
-        flex-direction: column;
-        align-items: start;
-		margin-bottom: 20px;
-    }
+
+const ColorLayer = styled.div`
+  position: relative;
+  z-index: 1000000;
+  display: flex;
+  flex-direction: column;
+  width: 200vw;
+  min-height: calc(100% + 50vh);
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-25%);
+  border-bottom-left-radius: 100% 50vw;
+  border-bottom-right-radius: 100% 50vw;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: ${props => props.backgroundColor || 'transparent'};
+    ${props => props.backgroundColor && `
+      filter: brightness(0.8); /* Darkens the background color by 20% */
+    `}
+    border-bottom-left-radius: 100% 50vw;
+    border-bottom-right-radius: 100% 50vw;
+    z-index: -1; /* Ensure the pseudo-element is behind the content */
+  }
 `;
 
-const HeroImageContainer = styled.div`
-	position: relative;
-	padding-right: 16px;
-	padding-left: 16px;
-	display: flex;
-	justify-content: center;
+const ColorLayerContent = styled.div`
+	width: 100vw;
 	margin-left: auto;
 	margin-right: auto;
-	// width: 100%;
-	@media ${device.laptop} {
-	
-    }
+	margin-top: 40px;
+	margin-bottom: 100px;
+
+
 `;
-
-
-
 
 const Article = ({ data }) => {
 	useEffect(() => {
@@ -260,112 +245,95 @@ const Article = ({ data }) => {
 			</Loader>
 			<Hero>
 				<Container>
-
-					{/* {data.contentfulArticle.clientName != undefined ? <HeroDescription> {
-						data.contentfulArticle.description != undefined ?
-							<Markdown
-								dangerouslySetInnerHTML={{
-									__html: data.contentfulArticle.description.childMarkdownRemark.html,
-								}}
-							/>: null
-					} </HeroDescription> : null} */}
 					<HeroTextContainer>
 						<HeroText>{data.contentfulArticle.title}</HeroText>
 						<LeadingText>{data.contentfulArticle.leadingText}</LeadingText>
-
-						<InfoRow>
-							<InfoContainer>
-								<InfoTitle>
-									Client
-								</InfoTitle>
-								<InfoDivider />
-								<InfoText>
-									{data.contentfulArticle.clientName}
-
-								</InfoText>
-							</InfoContainer>
-							<InfoContainer>
-								<InfoTitle>
-									Role / service
-								</InfoTitle>
-								<InfoDivider />
-								<InfoText>
-									{data.contentfulArticle.professionalRole}
-
-								</InfoText>
-							</InfoContainer>
-							<InfoContainer>
-								<InfoTitle>
-									Location / Year
-								</InfoTitle>
-								<InfoDivider />
-								<InfoText>
-									@{data.contentfulArticle.location} {data.contentfulArticle.year}
+						<PillRow>
+							{
+								data.contentfulArticle.services ? data.contentfulArticle.services.map((item, i) => {
+									return (
+										<Pill key={i} title={item} />
+									);
+								})
+									:
+									null
+							}
+						</PillRow>
 
 
-								</InfoText>
-							</InfoContainer>
-						</InfoRow>
-
-						{/* {data.contentfulArticle.author != undefined ? <AuthorCard
-						name={data.contentfulArticle.author.personName}
-						description={data.contentfulArticle.author.personDesxription}
-						image={data.contentfulArticle.author.personImage.file.url}
-						email={data.contentfulArticle.author.personEmail}
-						slug={data.contentfulArticle.author.slug}
-					/> :null} */}
 					</HeroTextContainer>
+					<InfoRow>
+						<InfoContainer>
+							<InfoTitle>
+								Client
+							</InfoTitle>
+							<InfoDivider />
+							<InfoText>
+								{data.contentfulArticle.clientName}
+
+							</InfoText>
+						</InfoContainer>
+						<InfoContainer>
+							<InfoTitle>
+								Role / service
+							</InfoTitle>
+							<InfoDivider />
+							<InfoText>
+								{data.contentfulArticle.professionalRole}
+
+							</InfoText>
+						</InfoContainer>
+						<InfoContainer>
+							<InfoTitle>
+								Location / Year
+							</InfoTitle>
+							<InfoDivider />
+							<InfoText>
+								@{data.contentfulArticle.location} {data.contentfulArticle.year}
+
+
+							</InfoText>
+						</InfoContainer>
+					</InfoRow>
+
 				</Container>
 
-				<HeroImageContainer>
-					<BackgroundImage src={data.contentfulArticle.image.file.url} />
-				</HeroImageContainer>
 			</Hero>
+			<HeroImageContainer>
+				<HeroImage src={data.contentfulArticle.image.file.url} />
+			</HeroImageContainer>
 
-			<div>
-
-				<Page>
-					{/* <Column>
-						<ImageContainer src={data.contentfulArticle.image.file.url} />
-
-					</Column> */}
-
-
-				</Page>
-				{
-					data.contentfulArticle.contentBlock != undefined && data.contentfulArticle.contentBlock.length > 0 ?
-						data.contentfulArticle.contentBlock.map((item, i) => {
-							return (
-								<ContentBlock
-									key={i}
-									title={item.title}
-									content={item.content.childMarkdownRemark.html}
-									images={item.images}
-									video={item.video ? item.video.file.url : null}
-								/>
-							);
-						})
-						: null
-				}
-				{
-					data.contentfulArticle.content != undefined ?
-						<Markdown
-							dangerouslySetInnerHTML={{
-								__html: data.contentfulArticle.content.childMarkdownRemark.html,
-							}}
-						/> : null
-				}
+			<ColorLayer backgroundColor={data.contentfulArticle.backgroundColor}>
+				<ColorLayerContent>
+					{
+						data.contentfulArticle.contentBlock != undefined && data.contentfulArticle.contentBlock.length > 0 ?
+							data.contentfulArticle.contentBlock.map((item, i) => {
+								return (
+									<ContentBlock
+										key={i}
+										title={item.title}
+										content={item.content.childMarkdownRemark.html}
+										images={item.images}
+										video={item.video ? item.video.file.url : null}
+									/>
+								);
+							})
+							: null
+					}
 
 
+				</ColorLayerContent>
 
 
+			</ColorLayer>
 
-				<Divider />
+			<Divider />
 
-				<Divider />
-				{/* <CardGrid content={data.allContentfulArticle.edges} /> */}
+			<Divider />
+			<Container>
+				<CardGrid content={data.allContentfulArticle.edges} />
+			</Container>
 
-			</div>
 
 		</Layout >
 	);
@@ -379,6 +347,7 @@ export const query = graphql`query ($slug: String) {
 		clientName
 		professionalRole
 		backgroundColor
+		services
 		year
 		location
 		description{
@@ -442,6 +411,7 @@ export const query = graphql`query ($slug: String) {
 					node {
 						cardStyle
 						backgroundColor
+						professionalRole
 						id
 						ingress
 						slug

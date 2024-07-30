@@ -1,6 +1,6 @@
 
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
+import styled, { css } from 'styled-components';
 import { device } from '../device';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,37 +8,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Wrapper = styled.div`
 	z-index: 1000000000;
 	position: relative;
-`;
-
-const Content = styled.div`
-	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	display: flex;
-	justify-content: space-around;
-	gap: 60px;
-	flex-direction: row;
-	padding-bottom: 64px;
 	@media ${device.laptop} {
-		flex-direction: column;
-		text-align: center;
-		justify-content: center;
-		align-items: center;
+		padding-left: 0px;
 
 	}
 `;
 
-const Column = styled.div`
-	flex: 2;
-	color: white;
-	@media ${device.laptop} {
-		flex: 1;
-		justify-content: center;
-		align-items: center;
-
-
-	}
-`;
 
 const Input = styled.input`
 	color: white !important;
@@ -70,22 +45,19 @@ const TextArea = styled.textarea`
 const Button = styled.button`
 	margin-top: 0px;		
 	height: 48px;
-	border: 2px white solid;
 	max-width: 300px;
 	display: flex;
 	flex-direction: row;
 	padding-left: 20px;
 	padding-right: 20px;
-	color: white;
-	@media ${device.laptop} {
-		margin-left: auto;
-		margin-right: auto;
-	}
+	border: ${props => props.disabled ? css`2px solid ${props => props.theme.colors.darkGray}` : css`2px white solid`};
+	color: ${props => props.disabled ? css`${props => props.theme.colors.darkGray}` : css`white`};
+	
 	&:hover {
-		cursor: pointer;
-		background-color: #ffffff;
-		border: 2px  #121212 solid;
-		color: black;
+		cursor: ${props => props.disabled ? css`not-allowed` : css`not-allowed`}!important;
+		background-color: ${props => props.disabled ? css`transparent` : css`white`};
+		border: ${props => props.disabled ? css`2px solid ${props => props.theme.colors.darkGray}` : css`2px white solid`};
+		color: ${props => props.disabled ? css`${props => props.theme.colors.darkGray}` : css`black`};
 	}
 
 `;
@@ -107,13 +79,9 @@ const ButtonIcon = styled(FontAwesomeIcon)`
 const Label = styled.label`
 	font-size: 18px;
 	color: white;
+	
 `;
 
-const Form = styled.form`
-	margin-top: 16px;
-	@media ${device.laptop} {
-	}
-`;
 
 const InputContainer = styled.div`
 	padding-top: 40px;
@@ -121,81 +89,85 @@ const InputContainer = styled.div`
 
 `;
 
-
-const ContactInfoTitle = styled.p`
-	text-transform: uppercase;
-	margin-bottom: 10px;
-	font-size: 12px;
-	color: ${props => props.theme.colors.darkGray}
-
-`;
 const ContactForm = () => {
+	const [formValues, setFormValues] = useState({
+		name: '',
+		email: '',
+		message: ''
+	});
+
+	const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+	useEffect(() => {
+		const isFormValid = Object.values(formValues).every(value => value.trim() !== '');
+		setIsButtonDisabled(!isFormValid);
+	}, [formValues]);
+
+	const handleInputChange = (e) => {
+		const { name, value } = e.target;
+		setFormValues({
+			...formValues,
+			[name]: value
+		});
+	};
+
 	return (
 		<Wrapper>
-
-			<Content>
-				<Column>
-					<Form form="true" method="post" action="https://getform.io/f/3c369d83-1968-4cb2-a847-807c9fc830c9" >
-						<InputContainer>
-							<Label>
-								What is your name?
-							</Label>
-
-							<Input placeholder='John Doe *' type="text" name="name" id="name" style={{ color: 'white' }} />
-						</InputContainer>
-						<InputContainer>
-
-							<Label>
-								What is your email address?
-							</Label>
-							<Input placeholder='john@acme.com *' type="email" name="email" id="email" />
-						</InputContainer>
-						<InputContainer>
-
-							<Label>
-								What services are you looking for?
-							</Label>
-							<TextArea placeholder='Web Design, App Development... *' name="message" id="message" wrap="hard" />
-						</InputContainer>
-
-
-
-						<Button
-							type="submit">
-							<ButtonText>Send</ButtonText>
-							<ButtonIconContainer>
-								<ButtonIcon icon={faArrowRight} />
-							</ButtonIconContainer>
-						</Button>					</ Form>
-				</Column>
-
-				<Column>
-					<ContactInfoTitle>Contact</ContactInfoTitle>
-					<p style={{ marginBottom: '0px' }}>
-						aleksanteri.heliovaara@gmail.com
-					</p>
-					<p style={{ marginBottom: '0px' }}>
-						+358442360304
-					</p>
-					<ContactInfoTitle>Business</ContactInfoTitle>
-					<p style={{ marginBottom: '0px' }}>
-						Helau Solutions Oy
-					</p>
-					<p style={{ marginBottom: '0px' }}>
-						3168391-6
-					</p>
-
-				</Column>
-			</Content>
-
+			<form form="true" method="post" action="https://getform.io/f/3c369d83-1968-4cb2-a847-807c9fc830c9">
+				<InputContainer>
+					<Label>
+						What is your name?
+					</Label>
+					<Input
+						placeholder='John Doe *'
+						type="text"
+						name="name"
+						id="name"
+						style={{ color: 'white' }}
+						value={formValues.name}
+						onChange={handleInputChange}
+					/>
+				</InputContainer>
+				<InputContainer>
+					<Label>
+						What is your email address?
+					</Label>
+					<Input
+						placeholder='john@acme.com *'
+						type="email"
+						name="email"
+						id="email"
+						value={formValues.email}
+						onChange={handleInputChange}
+					/>
+				</InputContainer>
+				<InputContainer>
+					<Label>
+						What services are you looking for?
+					</Label>
+					<TextArea
+						placeholder='Web Design, App Development... *'
+						name="message"
+						id="message"
+						wrap="hard"
+						value={formValues.message}
+						onChange={handleInputChange}
+					/>
+				</InputContainer>
+				<Button
+					type="submit"
+					disabled={isButtonDisabled}>
+					<ButtonText>Send</ButtonText>
+					<ButtonIconContainer>
+						<ButtonIcon icon={faArrowRight} />
+					</ButtonIconContainer>
+				</Button>
+			</form>
 		</Wrapper>
-
 
 	);
 };
 
-
 export default ContactForm;
-
 
 

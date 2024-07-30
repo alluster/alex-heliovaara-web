@@ -1,9 +1,11 @@
 import styled, { css, keyframes } from 'styled-components';
 import React from 'react';
+import Container from './Container';
 
 const moveUp = keyframes`
     0% { 
 		transform: translateY(0); 
+		cursor: wait;
  
 		}
 	90% { 
@@ -11,6 +13,7 @@ const moveUp = keyframes`
  
 		}
     100% { 
+		cursor: auto;
 		transform: translateY(-100%);  
 		display: none;
 	}
@@ -36,8 +39,12 @@ const Bg = styled.div`
 	border-bottom-left-radius: 100vw 200px;
     border-bottom-right-radius: 100vw 200px;  
 `;
-const Content = styled.div`
+const Content = styled(Container)`
 	margin-top: -50vh;
+	max-width: 80vw;
+	text-align: center;
+	margin-left: 32px;
+	margin-right: 32px;
 
 `;
 
