@@ -301,6 +301,11 @@ const IndexPage = ({ data }) => {
 							<IconText>+358442360304</IconText>
 						</InfoContainer>
 					</Row>
+					<Row>
+						<IconText>My AI SaaS product Hyperfigures has been launched on Product Hunt platform. Please have a look and support my product.</IconText>
+						<a href="https://www.producthunt.com/posts/hyperfigures?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-hyperfigures" target="_blank" rel="noreferrer"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=475586&theme=light" alt="Hyperfigures - AI&#0045;Driven&#0032;Data&#0032;Analysis&#0032;for&#0032;Managers&#0032;and&#0032;Leaders | Product Hunt" style={{ width: '250px', height: '54px' }} /></a>
+
+					</Row>
 				</HeroContent>
 
 			</Hero>
@@ -316,7 +321,6 @@ const IndexPage = ({ data }) => {
 						<Quote>
 							...Aleksanteri's professionalism, intelligence, and passion for his work became very clear over the more than 2 years of daily collaboration, and he made the entire team better...
 						</Quote>
-
 						<QuotePerson>
 							- Tuukka Miettinen, Tahto Group Oy
 						</QuotePerson>

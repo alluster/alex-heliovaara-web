@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { device } from '../device';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const CardContainer = styled(Link)`
 	z-index: 100000;
@@ -10,14 +12,31 @@ const CardContainer = styled(Link)`
 	flex-direction: column;
 	width: 100%;
 	border-top: 0.5px solid white;
+	
 
 	@media ${device.laptop} {
 		width: 100%;
 		height: 100%;
 		min-height: 100%;
 		overflow: hidden;
+		display: flex;
+		flex-direction: row;
 	}
 	`;
+
+const ArrowIcon = styled(FontAwesomeIcon)`
+		
+	display: none;
+	@media ${device.laptop} {
+		display: flex;
+		margin-left: auto;
+		text-align: right;
+		justify-self: end;
+		font-size: 12px;
+			flex: 1;
+	}
+`;
+
 const CardContent = styled.div`
 	padding-top: 28px;
 	padding-bottom: 28px;
@@ -29,6 +48,7 @@ const CardContent = styled.div`
 `;
 
 const CardTextContainer = styled.div`
+	flex: 10;
 	display: flex;
 	flex-direction: row;
   	@media ${device.laptop} {
@@ -37,16 +57,20 @@ const CardTextContainer = styled.div`
   	}
 `;
 
-const LeadingText = styled.h6`
+const LeadingText = styled.div`
   	font-size: 32px;
   	margin-left: 10px;
   	text-transform: uppercase;
   	margin-left: auto;
 	color: #C8CCD4;
   	@media ${device.laptop} {
+	width: 100%;
     	font-size: 22px;
     	margin-top: 0px;
     	margin-left: 0;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
   }
 `;
 
@@ -72,10 +96,11 @@ const Card = ({ role, slug, clientName }) => {
 			<CardContent>
 				<CardTextContainer>
 					<Title>{clientName}</Title>
-					<LeadingText>{role}</LeadingText>
+					<LeadingText><h6>{role}</h6> <ArrowIcon icon={faArrowRight} /></LeadingText>
 				</CardTextContainer>
+
 			</CardContent>
-		</CardContainer>
+		</CardContainer >
 
 	);
 };

@@ -16,8 +16,7 @@ import Pill from '../components/Pill';
 const Hero = styled.div`
 	display: flex;
 	flex-direction: column;
-	position: relative;
-	z-index: 3;
+	z-index: 30000000;
 	max-width: 100%;
 	min-height: 100vh;
 	justify-content: center;
@@ -32,6 +31,7 @@ const HeroTextContainer = styled.div`
 	margin-right: auto;
 	text-align: center;
 	height: 100%;
+	max-width: 100%;
 	align-items: center;
 	justify-content: center;
 	@media ${device.laptop} {
@@ -53,10 +53,10 @@ const HeroText = styled.h1`
 `;
 
 const LeadingText = styled.h3`
-	max-width: 100%;
 	width: 800px;
 	position: relative;
 	z-index: 3;
+	max-width: 100%;
 	margin-top: 10px;
 	margin-bottom: 30px;
 	@media ${device.laptop} {
@@ -70,6 +70,8 @@ const LeadingText = styled.h3`
 
 const PillRow = styled.div`
 	display: flex;
+	max-width: 100%;
+	flex-wrap: wrap;
 	flex-direction: row;
 	gap: 20px;
 	justify-content: center;
@@ -77,6 +79,8 @@ const PillRow = styled.div`
 	@media ${device.laptop} {
 		margin-top: 20px;
 		gap: 10px;
+		justify-content: start;
+
 
     }
 `;
@@ -212,7 +216,7 @@ const ColorLayerContent = styled.div`
 	width: 100vw;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 40px;
+	margin-top: 20px;
 	margin-bottom: 100px;
 
 
@@ -243,8 +247,9 @@ const Article = ({ data }) => {
 			<Loader >
 				<h5 style={{ color: 'black' }}>{data.contentfulArticle.title}</h5>
 			</Loader>
-			<Hero>
-				<Container>
+			<Container>
+
+				<Hero>
 					<HeroTextContainer>
 						<HeroText>{data.contentfulArticle.title}</HeroText>
 						<LeadingText>{data.contentfulArticle.leadingText}</LeadingText>
@@ -295,10 +300,9 @@ const Article = ({ data }) => {
 							</InfoText>
 						</InfoContainer>
 					</InfoRow>
+				</Hero>
+			</Container>
 
-				</Container>
-
-			</Hero>
 			<HeroImageContainer>
 				<HeroImage src={data.contentfulArticle.image.file.url} />
 			</HeroImageContainer>
