@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { device } from '../device';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const CardContainer = styled(Link)`
 	z-index: 100000;
@@ -58,7 +57,8 @@ const CardTextContainer = styled.div`
 `;
 
 const LeadingText = styled.div`
-  	font-size: 32px;
+	margin-left: auto;
+	font-size: 32px;
   	margin-left: 10px;
   	text-transform: uppercase;
   	margin-left: auto;
@@ -72,6 +72,14 @@ const LeadingText = styled.div`
 		flex-direction: row;
 		align-items: center;
   }
+`;
+
+const Role = styled.h6`
+	font-size: 32px;
+  	margin-left: 10px;
+  	text-transform: uppercase;
+  	margin-left: auto;
+	color: #C8CCD4;
 `;
 
 const Title = styled.h6`
@@ -96,7 +104,7 @@ const Card = ({ role, slug, clientName }) => {
 			<CardContent>
 				<CardTextContainer>
 					<Title>{clientName}</Title>
-					<LeadingText><h6>{role}</h6> <ArrowIcon icon={faArrowRight} /></LeadingText>
+					<LeadingText>{role}</LeadingText>
 				</CardTextContainer>
 
 			</CardContent>
