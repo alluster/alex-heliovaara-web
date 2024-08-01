@@ -215,12 +215,12 @@ const IndexPage = ({ data }) => {
 	// 	console.log(sessionStorage.getItem('loader'));
 	// }, []);
 
-	useEffect(() => {
-		window.scroll({
-			top: 0,
-			behavior: 'smooth',
-		});
-	}, []);
+	// useEffect(() => {
+	// 	window.scroll({
+	// 		top: 0,
+	// 		behavior: 'smooth',
+	// 	});
+	// }, []);
 	// useEffect(() => {
 	// 	const texts = [
 	// 		'Tervetuloa',  // Finnish
@@ -298,7 +298,7 @@ const IndexPage = ({ data }) => {
 						</InfoContainer>
 						<InfoContainer>
 							<IconIcon icon={faPhone} />
-							<a href="tel:8182129201"><IconText >+358442360304</IconText></a>
+							<a href="tel:+358442360304"><IconText >+358442360304</IconText></a>
 						</InfoContainer>
 					</Row>
 					<Row>

@@ -11,72 +11,76 @@ import Pill from '../components/Pill';
 
 
 const Hero = styled.div`
-	z-index: 3;
-	width: 100%;
-	height: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: start;
-	align-items: start;
+	z-index: 30000000;
+	max-width: 100%;
+	min-height: 100vh;
+	justify-content: center;
 	@media ${device.laptop} {
 		height: 100%;
 	}
 `;
 const HeroTextContainer = styled.div`
-	// max-width: 1000px;
 	display: flex;
 	flex-direction: column;
 	margin-left: auto;
 	margin-right: auto;
-	text-align: left;
-	height: 100vh;
+	text-align: center;
+	height: 100%;
+	max-width: 100%;
 	align-items: center;
 	justify-content: center;
 	@media ${device.laptop} {
 		align-items: start;
 		text-align: left;
-		// justify-content: start;
-		// margin-top: 50px;
+		justify-content: start;
+		margin-top: 50px;
 
 	}
 	
 `;
 const HeroText = styled.h1`
-	padding-top: 0px;
-	padding-bottom: 0px;
 	@media ${device.laptop} {
+		padding-bottom: 0px;
 		font-size: 50px;
 		line-height: 50px;
-		padding-top: 30px;
-		padding-bottom: 0px;
-		width: 80%;
-		margin-top: 0px;
-
-
+		margin-top: 100px;
 	}
 `;
 
-const LeadingText = styled.h2`
-	margin-right: auto;
+const LeadingText = styled.h3`
 	width: 800px;
 	position: relative;
 	z-index: 3;
+	max-width: 100%;
 	margin-top: 10px;
 	margin-bottom: 30px;
 	@media ${device.laptop} {
-		font-size: 20px;
-		line-height: 28px;
-
 		padding-top: 0px;
 		padding-bottom: 0px;
 		margin-top: 0px;
 		width: 100%;	
 		margin-bottom: 0px;
-
-
 	}
 `;
 
+const PillRow = styled.div`
+	display: flex;
+	max-width: 100%;
+	flex-wrap: wrap;
+	flex-direction: row;
+	gap: 20px;
+	justify-content: center;
+	align-items: center;
+	@media ${device.laptop} {
+		margin-top: 20px;
+		gap: 10px;
+		justify-content: start;
+
+
+    }
+`;
 
 
 
@@ -126,17 +130,6 @@ const InfoText = styled.p`
 	color: ${props => props.theme.colors.darkGray}
 `;
 
-const PillRow = styled.div`
-	display: flex;
-	flex-direction: row;
-	gap: 16px;
-	margin-top: 40px;
-	justify-content: start;
-	align-items: center;
-	width: 100%;
-	flex-wrap: wrap;
-	height: 100%;
-`;
 
 
 const services = [
@@ -220,30 +213,14 @@ const Services = () => {
 			<Container>
 
 				<Hero>
-
-					{/* {data.contentfulArticle.clientName != undefined ? <HeroDescription> {
-						data.contentfulArticle.description != undefined ?
-							<Markdown
-								dangerouslySetInnerHTML={{
-									__html: data.contentfulArticle.description.childMarkdownRemark.html,
-								}}
-							/>: null
-					} </HeroDescription> : null} */}
 					<HeroTextContainer>
 						<HeroText >Helping companies succeed in the digital world</HeroText>
 						<LeadingText >Brands from around the world have trusted my expertise in digital design and development projects.</LeadingText>
 
 
 
-						{/* {data.contentfulArticle.author != undefined ? <AuthorCard
-						name={data.contentfulArticle.author.personName}
-						description={data.contentfulArticle.author.personDesxription}
-						image={data.contentfulArticle.author.personImage.file.url}
-						email={data.contentfulArticle.author.personEmail}
-						slug={data.contentfulArticle.author.slug}
-					/> :null} */}
-					</HeroTextContainer>
 
+					</HeroTextContainer>
 					<InfoRow>
 						<div>
 							<LeadingText >Services I can help your company succeed with...</LeadingText>
@@ -275,8 +252,6 @@ const Services = () => {
 						}
 
 					</InfoRow>
-
-
 				</Hero>
 
 				<InfoDivider />

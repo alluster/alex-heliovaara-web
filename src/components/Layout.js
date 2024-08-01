@@ -135,7 +135,7 @@ const GlobalStyle = createGlobalStyle`
 		letter-spacing: 0.03em;
 		font-weight: 400;
 		@media ${device.tablet} {
-			font-size: 16px;
+			font-size: 16px !important;
 			line-height: 24px;
 		 }
 	}

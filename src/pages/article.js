@@ -17,7 +17,9 @@ const Hero = styled.div`
 	display: flex;
 	flex-direction: column;
 	z-index: 30000000;
-	max-width: 100%;
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
 	min-height: 100vh;
 	justify-content: center;
 	@media ${device.laptop} {

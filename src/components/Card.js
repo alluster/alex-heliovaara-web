@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { device } from '../device';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const CardContainer = styled(Link)`
 	z-index: 100000;
@@ -12,7 +11,6 @@ const CardContainer = styled(Link)`
 	width: 100%;
 	border-top: 0.5px solid white;
 
-
 	@media ${device.laptop} {
 		width: 100%;
 		height: 100%;
@@ -20,27 +18,22 @@ const CardContainer = styled(Link)`
 		overflow: hidden;
 		display: flex;
 		flex-direction: row;
+		align-items: start;
+
 	}
 	`;
-
-const ArrowIcon = styled(FontAwesomeIcon)`
-		
-	display: none;
-	@media ${device.laptop} {
-		display: flex;
-		margin-left: auto;
-		text-align: right;
-		justify-self: end;
-		font-size: 12px;
-			flex: 1;
-	}
-`;
 
 const CardContent = styled.div`
 	padding-top: 28px;
 	padding-bottom: 28px;
 	padding-left: 16px; 
 	padding-right: 16px;
+
+	@media ${device.laptop} {
+		width: 100%;
+		padding-top: 0px;
+
+  	}
 	&:hover {
 		background-color: rgba(0, 0, 0, 0.5); 
 		cursor: pointer;
@@ -50,14 +43,18 @@ const CardContent = styled.div`
 `;
 
 const CardTextContainer = styled.div`
+	align-items: center;
+
 	flex: 10;
 	display: flex;
 	flex-direction: row;
-		align-items: center;
+		// align-items: center;
 
   	@media ${device.laptop} {
 		height: 100%;
 		flex-direction: column;
+			align-items: start;
+
   	}
 `;
 
