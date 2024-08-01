@@ -11,7 +11,7 @@ const CardContainer = styled(Link)`
 	flex-direction: column;
 	width: 100%;
 	border-top: 0.5px solid white;
-	
+
 
 	@media ${device.laptop} {
 		width: 100%;
@@ -43,13 +43,18 @@ const CardContent = styled.div`
 	padding-right: 16px;
 	&:hover {
 		background-color: rgba(0, 0, 0, 0.5); 
+		cursor: pointer;
+
 	}
+		
 `;
 
 const CardTextContainer = styled.div`
 	flex: 10;
 	display: flex;
 	flex-direction: row;
+		align-items: center;
+
   	@media ${device.laptop} {
 		height: 100%;
 		flex-direction: column;
@@ -63,6 +68,7 @@ const LeadingText = styled.div`
   	text-transform: uppercase;
   	margin-left: auto;
 	color: #C8CCD4;
+	align-items: center;
   	@media ${device.laptop} {
 	width: 100%;
     	font-size: 22px;

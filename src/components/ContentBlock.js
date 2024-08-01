@@ -10,11 +10,12 @@ import Container from './Container';
 const Wrapper = styled.div`
 	position: relative;
 	z-index: 10000000;
-	margin-top: 80px;
-	margin-bottom: 80px;
+	padding-top: 80px;
+	padding-bottom: 80px;
+	background-color: ${props => props.backgroundColor || 'transparent'};
 	@media ${device.laptop} {
-		margin-top: 20px;
-		margin-bottom: 20px;
+		padding-top: 80px;
+		padding-bottom: 20px;
 	}
 `;
 
@@ -37,8 +38,11 @@ const Title = styled.h4`
 	line-height: 32px;
 	flex: 2;
 	font-weight: 600;
+	margin-right: 80px;
 	// color: ${props => props.theme.colors.white};
 	@media ${device.laptop} {
+		margin-right: 0px;
+
 		font-size: 30px;
 		line-height: 34px;
 		margin-top: 0px;
@@ -56,14 +60,17 @@ const Markdown = styled.div`
 	// align-self: flex-end;
 	z-index: 3;
 	h3 {
-		margin-bottom: 60px;
+		margin-bottom: 30px;
+		margin-top: 16px !important;
 	}
 	ul {
 		list-style-position: outside;
+		padding-left: 20px !important;
 	  }
 	li {
+		margin-bottom: 16px;
 		font-size: 24px;
-		line-height: 40px;
+		line-height: 28px;
 	}
 
 	@media ${device.laptop} {
@@ -75,6 +82,10 @@ const Markdown = styled.div`
 
 		h3 {
 			margin-bottom: 20px;
+		ul {
+			list-style-position: outside;
+			padding-left: 0px !important;
+	  }
 		}
 		li {
 			font-size: 16px;
@@ -85,7 +96,7 @@ const Markdown = styled.div`
 
 const ImageContainer = styled.div`
 	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-bottom: 200px;
 	margin-left: auto;
 	margin-right: auto;
 	padding-left: 40px;
@@ -94,25 +105,33 @@ const ImageContainer = styled.div`
 	@media ${device.laptop} {
 		padding-left: 16px;
 		padding-right: 16px;
+		margin-bottom: 80px;
+
 	}
 `;
 
 const Image = styled.img`
 	width: 100%;
 	
+
+	
 `;
 
-const PlayerContainer = styled.div`
-	margin-bottom: 20px;
-	width: 100%;
+const PlayerContainer = styled(Container)`
+	margin-bottom: 200px;
+	// width: 100%;
+	@media ${device.laptop} {
+		margin-bottom: 80px;
+
+	}
 `;
 
 
 
-const ContentBlock = ({ title, content, images, video }) => {
+const ContentBlock = ({ title, content, images, video, backgroundColor }) => {
 
 	return (
-		<Wrapper>
+		<Wrapper backgroundColor={backgroundColor}>
 
 			<TextContainer>
 				<Title>

@@ -36,7 +36,7 @@ const HeroTextContainer = styled.div`
 		align-items: start;
 		text-align: left;
 		// justify-content: start;
-		margin-top: 50px;
+		// margin-top: 50px;
 
 	}
 	
@@ -45,6 +45,8 @@ const HeroText = styled.h1`
 	padding-top: 0px;
 	padding-bottom: 0px;
 	@media ${device.laptop} {
+		font-size: 50px;
+		line-height: 50px;
 		padding-top: 30px;
 		padding-bottom: 0px;
 		width: 80%;
@@ -62,6 +64,9 @@ const LeadingText = styled.h2`
 	margin-top: 10px;
 	margin-bottom: 30px;
 	@media ${device.laptop} {
+		font-size: 20px;
+		line-height: 28px;
+
 		padding-top: 0px;
 		padding-bottom: 0px;
 		margin-top: 0px;
@@ -239,41 +244,41 @@ const Services = () => {
 					/> :null} */}
 					</HeroTextContainer>
 
+					<InfoRow>
+						<div>
+							<LeadingText >Services I can help your company succeed with...</LeadingText>
 
+							<PillRow>
+								{servicesTags.map((item, i) => {
+									return (
+										<Pill key={i} title={item.title} />
+									);
+								})}
+							</PillRow>
+						</div>
+
+						{
+							services.map((item, i) => {
+								return (
+									<InfoContainer key={i}>
+										<InfoTitle>
+											{item.title}
+										</InfoTitle>
+										<InfoDivider />
+										<InfoText>
+											{item.description}
+
+										</InfoText>
+									</InfoContainer>
+								);
+							})
+						}
+
+					</InfoRow>
 
 
 				</Hero>
-				<InfoRow>
-					<div>
-						<LeadingText >Services I can help your company succeed with...</LeadingText>
 
-						<PillRow>
-							{servicesTags.map((item, i) => {
-								return (
-									<Pill key={i} title={item.title} />
-								);
-							})}
-						</PillRow>
-					</div>
-
-					{
-						services.map((item, i) => {
-							return (
-								<InfoContainer key={i}>
-									<InfoTitle>
-										{item.title}
-									</InfoTitle>
-									<InfoDivider />
-									<InfoText>
-										{item.description}
-
-									</InfoText>
-								</InfoContainer>
-							);
-						})
-					}
-
-				</InfoRow>
 				<InfoDivider />
 			</Container>
 			<Container>

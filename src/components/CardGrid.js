@@ -15,7 +15,7 @@ const Grid = styled.div`
 const CardGrid = ({ content }) => {
 	return (
 		<Grid>
-			{content.map((node, i) => (
+			{content.sort((a, b) => a.node.orderNumber - b.node.orderNumber).map((node, i) => (
 
 
 				<Card

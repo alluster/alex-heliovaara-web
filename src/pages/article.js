@@ -216,7 +216,6 @@ const ColorLayerContent = styled.div`
 	width: 100vw;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 20px;
 	margin-bottom: 100px;
 
 
@@ -315,6 +314,7 @@ const Article = ({ data }) => {
 								return (
 									<ContentBlock
 										key={i}
+										backgroundColor={item.backgroundColor}
 										title={item.title}
 										content={item.content.childMarkdownRemark.html}
 										images={item.images}
@@ -361,6 +361,7 @@ export const query = graphql`query ($slug: String) {
 		}
 		contentBlock{
 			title
+			backgroundColor
 			video {
 				file {
 					url
@@ -413,6 +414,7 @@ export const query = graphql`query ($slug: String) {
 			{
 				edges {
 					node {
+						orderNumber
 						cardStyle
 						backgroundColor
 						professionalRole

@@ -68,16 +68,17 @@ const ImageContainer = styled.img`
 `;
 
 const Markdown = styled.div`
-	word-wrap: break-word;
-	overflow-wrap: break-word;
+	// word-wrap: break-word;
+	// overflow-wrap: break-word;
+	// -webkit-hyphens: auto;
+	// -moz-hyphens: auto;
+	// hyphens: auto;
+	// hyphens: auto;
 	li {
 		font-size: 24px;
 		line-height: 40px;
 	}
-  	-webkit-hyphens: auto;
-	-moz-hyphens: auto;
-	hyphens: auto;
-	hyphens: auto;
+
 	max-width: 900px;
 	@media ${device.laptop} {
 		margin-top: 30px;

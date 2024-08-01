@@ -82,7 +82,7 @@ const IconIcon = styled(FontAwesomeIcon)`
 `;
 
 const IconText = styled.p`
-    font-size: 14px;
+    font-size: 16px;
 `;
 
 const GreenBall = styled.div`
@@ -298,7 +298,7 @@ const IndexPage = ({ data }) => {
 						</InfoContainer>
 						<InfoContainer>
 							<IconIcon icon={faPhone} />
-							<IconText>+358442360304</IconText>
+							<a href="tel:8182129201"><IconText >+358442360304</IconText></a>
 						</InfoContainer>
 					</Row>
 					<Row>
@@ -371,54 +371,55 @@ export default IndexPage;
 export const query = graphql`
   query MyQuery {
     allContentfulArticle(filter: { professional: { eq: "aleksanteri" } }) {
-      edges {
-        node {
-          cardStyle
-          id
-          slug
-		  professionalRole
-          ingress
-          author {
-            personEmail
-            personName
-            personImage {
-              file {
-                url
-              }
-            }
-          }
-          tags
-          clientName
-          title
-          leadingText
-          image {
-            file {
-              url
-            }
-          }
-          companyLogo {
-            file {
-              url
-            }
-          }
-          cardImage {
-            file {
-              url
-            }
-          }
-        }
-      }
-    }
-    contentfulAuthor(contentful_id: { eq: "XTQ8ZZ7WYZR89yVvWcOT9" }) {
-      personEmail
-      slug
-      personName
-      personDesxription
-      personImage {
-        file {
-          url
-        }
-      }
-    }
-  }
+		edges {
+			node {
+				orderNumber
+				cardStyle
+				id
+				slug
+				professionalRole
+				ingress
+				author {
+					personEmail
+					personName
+					personImage {
+						file {
+							url
+						}
+					}
+				}
+				tags
+				clientName
+				title
+				leadingText
+				image {
+					file {
+						url
+					}
+				}
+				companyLogo {
+					file {
+						url
+					}
+				}
+				cardImage {
+					file {
+						url
+					}
+				}
+			}
+			}
+		}
+		contentfulAuthor(contentful_id: { eq: "XTQ8ZZ7WYZR89yVvWcOT9" }) {
+			personEmail
+			slug
+			personName
+			personDesxription
+			personImage {
+				file {
+					url
+				}
+			}
+		}
+	}
 `;
