@@ -10,6 +10,7 @@ import { faMapMarkerAlt, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { device } from '../device';
 import Loader from '../components/Loader';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import Pill from '../components/Pill';
 
 const TextAnimation = keyframes`
     100% { transform: translateX(100%); }
@@ -200,6 +201,7 @@ const IndexPage = ({ data }) => {
 		setOffsetY(window.scrollY);
 	};
 
+
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll);
 
@@ -249,7 +251,56 @@ const IndexPage = ({ data }) => {
 
 
 	// }, []);
+	const LeadingText = styled.h3`
+	width: 800px;
+	position: relative;
+	z-index: 3;
+	max-width: 100%;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	@media ${device.laptop} {
+		padding-top: 0px;
+		padding-bottom: 0px;
+		margin-top: 0px;
+		width: 100%;	
+		margin-bottom: 0px;
+	}
+`;
 
+	const PillRow = styled.div`
+	display: flex;
+	max-width: 100%;
+	flex-wrap: wrap;
+	flex-direction: row;
+	gap: 20px;
+	justify-content: start;
+	align-items: center;
+	margin-bottom: 80px;
+	@media ${device.laptop} {
+		margin-bottom: 40px;
+		margin-top: 20px;
+		gap: 10px;
+		justify-content: start;
+
+    }
+`;
+	const servicesTags = [
+		{ id: 1, title: 'AI Interface Design' },
+		{ id: 1, title: 'AI Interface Development' },
+		{ id: 1, title: 'Custom AI Provisioning to Azure' },
+
+		{ id: 2, title: 'Mobile App Design' },
+		{ id: 3, title: 'Mobile App Development' },
+		{ id: 4, title: 'Concept Design' },
+		{ id: 5, title: 'Web Design' },
+		{ id: 6, title: 'Web Development' },
+		{ id: 7, title: 'SaaS Development' },
+		{ id: 8, title: 'UX Design' },
+		{ id: 9, title: 'Service Design' },
+		{ id: 10, title: 'Software Architecture' },
+		{ id: 11, title: 'Agile Coaching' },
+		{ id: 12, title: 'Responsive Design' }
+	];
 	return (
 		<Layout page="home" >
 			<SEO
@@ -280,8 +331,19 @@ const IndexPage = ({ data }) => {
 							product, branding and entrepreneurship, based in Helsinki
 							Finland. Worked with WHO, Helsinki City, Osuuspankki, Fazer, SSAB
 						</HeroText>
-					</Row>
 
+					</Row>
+					<div>
+						<LeadingText >Services I can help your company succeed with:</LeadingText>
+
+						<PillRow>
+							{servicesTags.map((item, i) => {
+								return (
+									<Pill key={i} title={item.title} />
+								);
+							})}
+						</PillRow>
+					</div>
 					<Row>
 						<InfoContainer>
 							<GreenBall

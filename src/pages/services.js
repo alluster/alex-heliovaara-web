@@ -158,6 +158,9 @@ const services = [
 ];
 
 const servicesTags = [
+	{ id: 1, title: 'AI Interface Design' },
+	{ id: 1, title: 'AI Interface Development' },
+	{ id: 1, title: 'Custom AI Provisioning to Azure' },
 	{ id: 1, title: 'Brand & Identity Design' },
 	{ id: 2, title: 'Mobile App Design' },
 	{ id: 3, title: 'Mobile App Development' },
