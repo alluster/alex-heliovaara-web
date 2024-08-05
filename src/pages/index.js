@@ -251,19 +251,19 @@ const IndexPage = ({ data }) => {
 
 
 	// }, []);
-	const LeadingText = styled.h3`
-	width: 800px;
-	position: relative;
-	z-index: 3;
-	max-width: 100%;
-	margin-top: 10px;
-	margin-bottom: 30px;
-	@media ${device.laptop} {
-		padding-top: 0px;
-		padding-bottom: 0px;
-		margin-top: 0px;
-		width: 100%;	
-		margin-bottom: 0px;
+	const LeadingText = styled.h5`
+		width: 800px;
+		position: relative;
+		z-index: 3;
+		max-width: 100%;
+		margin-top: 10px;
+		margin-bottom: 30px;
+		@media ${device.laptop} {
+			padding-top: 0px;
+			padding-bottom: 0px;
+			margin-top: 0px;
+			width: 100%;	
+			margin-bottom: 0px;
 	}
 `;
 
@@ -334,7 +334,7 @@ const IndexPage = ({ data }) => {
 
 					</Row>
 					<div>
-						<LeadingText >Services I can help your company succeed with:</LeadingText>
+						<LeadingText >Services I help my clients succeed with:</LeadingText>
 
 						<PillRow>
 							{servicesTags.map((item, i) => {
