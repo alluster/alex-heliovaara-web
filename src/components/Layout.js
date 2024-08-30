@@ -239,11 +239,11 @@ export default function Layout({ children, page, changeBackground, changeBackgro
 
 			<ThemeProvider theme={theme}>
 				<GlobalStyle changeBackground={changeBackground} changeBackgroundColor={null} />
-				{
+				{/* {
 					page === 'home' || 'services' ?
 						<BackgroundImage src="/bg-circle.svg" />
 						: null
-				}
+				} */}
 				{
 					page === 'home' ?
 						<Navigation /> : <Navigation />

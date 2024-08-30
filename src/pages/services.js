@@ -17,8 +17,11 @@ const Hero = styled.div`
 	max-width: 100%;
 	min-height: 100vh;
 	justify-content: center;
+	margin-top: 150px;
 	@media ${device.laptop} {
 		height: 100%;
+		margin-top: 0px;
+
 	}
 `;
 const HeroTextContainer = styled.div`
@@ -49,10 +52,11 @@ const HeroText = styled.h1`
 	}
 `;
 
-const LeadingText = styled.h3`
-	width: 800px;
+const LeadingText = styled.h4`
+	// width: 800px;
 	position: relative;
 	z-index: 3;
+	text-align: center;
 	max-width: 100%;
 	margin-top: 10px;
 	margin-bottom: 30px;
@@ -62,6 +66,7 @@ const LeadingText = styled.h3`
 		margin-top: 0px;
 		width: 100%;	
 		margin-bottom: 0px;
+		text-align: left;
 	}
 `;
 
@@ -134,6 +139,11 @@ const InfoText = styled.p`
 
 const services = [
 	{
+		id: 3,
+		title: 'Design',
+		description: 'User centric services are built using research methods, prototyping and service design methodologies.'
+	},
+	{
 		id: 1,
 		title: 'Brand & Identity',
 		description: 'Logo, identity, marketing material and web design projects often start digital projects. I have designed multiple brand identities for startup companies.'
@@ -143,11 +153,7 @@ const services = [
 		title: 'Development',
 		description: 'Full-stack web and mobile app development from planning to production deployment. I build apps from websites to complex SaaS projects from ground up.'
 	},
-	{
-		id: 3,
-		title: 'Design',
-		description: 'User centric services are built using research methods, prototyping and service design methodologies.'
-	},
+
 	{
 		id: 4,
 		title: 'AI Development',
@@ -226,7 +232,7 @@ const Services = () => {
 					</HeroTextContainer>
 					<InfoRow>
 						<div>
-							<LeadingText >Services I can help your company succeed with...</LeadingText>
+							<LeadingText >Services I help companies succeed with...</LeadingText>
 
 							<PillRow>
 								{servicesTags.map((item, i) => {

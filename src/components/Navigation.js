@@ -23,7 +23,7 @@ const NavColorOverlay = styled.div`
 	height: 60px;
 	left: 0;
 	top: 0;
-	background-color: ${props => props.theme.colors.black};
+	// background-color: ${props => props.theme.colors.black};
 	opacity: 0.5;
 	@media ${device.laptop} {
 		display: none;
@@ -31,15 +31,17 @@ const NavColorOverlay = styled.div`
 `;
 
 const MobileNavContainer = styled.div`
+	// background-color: ${props => props.theme.colors.black};
+
 	display: none;	
 	position: fixed;
 	min-width: 100%;
 	z-index: 10000000000000;
 	top: 0;
-	background-color: ${props => (props.navOpen ? '#1C1D20' : 'transparent')};
+	// background-color: ${props => (props.navOpen ? '#1C1D20' : 'transparent')};
 	@media ${device.laptop} {
 		display: block;
-		background-color: ${props => (props.navOpen ? '#1C1D20' : 'transparent')};
+		// background-color: ${props => (props.navOpen ? '#1C1D20' : 'transparent')};
 		// position: ${props => (props.navOpen ? 'fixed' : 'relative')}
 
 `;

@@ -67,8 +67,8 @@ const LeadingText = styled.div`
 	color: #C8CCD4;
 	align-items: center;
   	@media ${device.laptop} {
-	width: 100%;
-    	font-size: 22px;
+		width: 100%;
+    	font-size: 12px;
     	margin-top: 0px;
     	margin-left: 0;
 		display: flex;
@@ -83,6 +83,15 @@ const Role = styled.h6`
   	text-transform: uppercase;
   	margin-left: auto;
 	color: #C8CCD4;
+	@media ${device.laptop} {
+    	font-size: 12px;
+}
+`;
+
+const TitleContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+
 `;
 
 const Title = styled.h6`
@@ -94,19 +103,23 @@ const Title = styled.h6`
 	
 
   @media ${device.laptop} {
-    font-size: 18px;
+    font-size: 20px;
     margin-top: 20px;
+	margin-bottom: 0px;
 
   }
 `;
 
-const Card = ({ role, slug, clientName }) => {
+const Card = ({ role, slug, clientName, leadingText }) => {
 	return (
 		<CardContainer to={`/article/${slug}`}>
 			{/* Add ImageWrapper and CardImageContainer if you have images */}
 			<CardContent>
 				<CardTextContainer>
-					<Title>{clientName}</Title>
+					<TitleContainer>
+						<Title>{clientName}</Title>
+						<p>{leadingText}</p>
+					</TitleContainer>
 					<LeadingText>{role}</LeadingText>
 				</CardTextContainer>
 

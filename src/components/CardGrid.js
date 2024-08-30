@@ -23,7 +23,7 @@ const CardGrid = ({ content }) => {
 					slug={node.node.slug}
 					companyLogo={node.node.companyLogo ? node.node.companyLogo.file.url : null}
 					cardImage={node.node.cardImage ? node.node.cardImage.file.url : null}
-					description={node.node.description}
+					leadingText={node.node.leadingText}
 					ingress={node.node.ingress}
 					role={node.node.professionalRole}
 					clientName={node.node.clientName}

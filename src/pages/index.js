@@ -10,7 +10,7 @@ import { faMapMarkerAlt, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { device } from '../device';
 import Loader from '../components/Loader';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import Pill from '../components/Pill';
+import MovingBackground from '../components/MovingBackground';
 
 const TextAnimation = keyframes`
     100% { transform: translateX(100%); }
@@ -19,7 +19,7 @@ const TextAnimation = keyframes`
 
 const Hero = styled.div`
     position: relative;
-    z-index: 3;
+    z-index: 1000;
     width: 100%;
     display: flex;
 	min-height: 60vh;
@@ -34,7 +34,7 @@ const HeroContent = styled(Container)`
 	margin-top: 100px;
     display: flex;
     flex-direction: column;
-    max-width: 800px;
+    max-width: 900px;
 	height: 100%;
 	@media ${device.laptop} {
 		margin-top: 60px;
@@ -48,7 +48,8 @@ const HeroTitle = styled.h1`
 
 const HeroText = styled.p`
     font-weight: 400;
-    font-size: 20px;
+	line-height: 40px;
+    font-size: 32px;
     position: relative; 
 
 `;
@@ -180,14 +181,13 @@ const PersonImageContainer1 = styled.img`
 
 const PersonImageContainer2 = styled.img`
 	align-self: start;
-	height: 100px;
-	margin-top: 30px;
-	width: 100px;
+	height: 130px;
+	margin-top: 16px;
+	width: 130px;
 	border-radius: 50%;
 	background-repeat: no-repeat;
 	object-fit: cover;
 	margin-right: 32px;
-	min-width: 100px;
 	display: flex;
 	@media ${device.laptop} {
 			display: none;
@@ -314,6 +314,8 @@ const IndexPage = ({ data }) => {
 
 				{/* <ChangingText style={{ color: 'black' }}>{text}</ChangingText> */}
 			</Loader>
+			<MovingBackground />
+
 			<Hero
 				data-sal="fade"
 				data-sal-delay="100"
@@ -322,27 +324,27 @@ const IndexPage = ({ data }) => {
 			>
 				<HeroContent style={{ transform: `translateY(${offsetY * 0.1}px)` }}>
 					<PersonImageContainer1 src='./aleksanteri.png' />
-					<HeroTitle>Freelancer Developer & Designer</HeroTitle>
+					<HeroTitle>Creative Developer & UX Designer</HeroTitle>
 					<Row>
 						<PersonImageContainer2 src='./aleksanteri.png' />
 						<HeroText >
-							Aleksanteri Eliel Heliövaara is an award-winning, tech-forward,
-							culture-driven, Creative Technologist and Freelance Developer & Designer with a background in digital
-							product, branding and entrepreneurship, based in Helsinki
+							Award-winning, tech-forward,
+							culture-driven, Creative Technologist with a strong emphasis in digital
+							product design and development, based in Helsinki
 							Finland. Worked with WHO, Helsinki City, Osuuspankki, Fazer, SSAB
 						</HeroText>
 
 					</Row>
 					<div>
-						<LeadingText >Services I help my clients succeed with:</LeadingText>
+						{/* <LeadingText >Services I help my clients succeed with:</LeadingText> */}
 
-						<PillRow>
+						{/* <PillRow>
 							{servicesTags.map((item, i) => {
 								return (
 									<Pill key={i} title={item.title} />
 								);
 							})}
-						</PillRow>
+						</PillRow> */}
 					</div>
 					<Row>
 						<InfoContainer>
@@ -363,15 +365,17 @@ const IndexPage = ({ data }) => {
 							<a href="tel:+358442360304"><IconText >+358442360304</IconText></a>
 						</InfoContainer>
 					</Row>
-					<Row>
+					{/* <Row>
 						<IconText>My AI SaaS product Hyperfigures has been launched on Product Hunt platform. Please have a look and support my product.</IconText>
 						<a href="https://www.producthunt.com/posts/hyperfigures?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-hyperfigures" target="_blank" rel="noreferrer"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=475586&theme=light" alt="Hyperfigures - AI&#0045;Driven&#0032;Data&#0032;Analysis&#0032;for&#0032;Managers&#0032;and&#0032;Leaders | Product Hunt" style={{ width: '250px', height: '54px' }} /></a>
 
-					</Row>
+					</Row> */}
 				</HeroContent>
 
 			</Hero>
-			<ScrollingTextContainer style={{ transform: `translateY(${offsetY * 0.5}px)` }}>
+			{/* <ScrollingTextContainer style={{ transform: `translateY(${offsetY * 0.5}px)` }}> */}
+
+			<ScrollingTextContainer >
 				<ScrollingText>Aleksanteri Eliel Heliövaara - Aleksanteri Eliel Heliövaara</ScrollingText>
 			</ScrollingTextContainer>
 			<Container>
@@ -432,7 +436,7 @@ export default IndexPage;
 
 export const query = graphql`
   query MyQuery {
-    allContentfulArticle(filter: { professional: { eq: "aleksanteri" } }) {
+    allContentfulArticle(filter: { tags: { eq: "work" } }) {
 		edges {
 			node {
 				orderNumber
@@ -472,16 +476,6 @@ export const query = graphql`
 			}
 			}
 		}
-		contentfulAuthor(contentful_id: { eq: "XTQ8ZZ7WYZR89yVvWcOT9" }) {
-			personEmail
-			slug
-			personName
-			personDesxription
-			personImage {
-				file {
-					url
-				}
-			}
-		}
+		
 	}
 `;
