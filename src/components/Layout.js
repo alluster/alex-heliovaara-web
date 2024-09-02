@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
 		letter-spacing: .03em;
 		transition: background-color  ease; // Add transition for smooth background color change
 
- ${props => props.changeBackground && css`
+ ${props => props.changeBackgroundColor && css`
     background-color: ${props => props.changeBackgroundColor}; // Change this to your selected color
 			`}
 	}
@@ -238,7 +238,7 @@ export default function Layout({ children, page, changeBackground, changeBackgro
 		<React.Fragment>
 
 			<ThemeProvider theme={theme}>
-				<GlobalStyle changeBackground={changeBackground} changeBackgroundColor={null} />
+				<GlobalStyle changeBackground={changeBackground} changeBackgroundColor={changeBackgroundColor} />
 				{/* {
 					page === 'home' || 'services' ?
 						<BackgroundImage src="/bg-circle.svg" />

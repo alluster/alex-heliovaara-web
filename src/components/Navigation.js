@@ -38,7 +38,7 @@ const MobileNavContainer = styled.div`
 	min-width: 100%;
 	z-index: 10000000000000;
 	top: 0;
-	// background-color: ${props => (props.navOpen ? '#1C1D20' : 'transparent')};
+	background-color: ${props => (props.navOpen ? '#1C1D20' : 'transparent')};
 	@media ${device.laptop} {
 		display: block;
 		// background-color: ${props => (props.navOpen ? '#1C1D20' : 'transparent')};

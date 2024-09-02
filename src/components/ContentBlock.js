@@ -101,7 +101,7 @@ const ImageContainer = styled.div`
 	margin-right: auto;
 	padding-left: 40px;
 	padding-right: 40px;
-	max-width: 100%;
+	max-width: 1200px;
 	@media ${device.laptop} {
 		padding-left: 16px;
 		padding-right: 16px;

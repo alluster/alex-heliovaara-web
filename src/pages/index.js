@@ -22,7 +22,7 @@ const Hero = styled.div`
     z-index: 1000;
     width: 100%;
     display: flex;
-	min-height: 60vh;
+	min-height: 100vh;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -42,6 +42,7 @@ const HeroContent = styled(Container)`
 `;
 
 const HeroTitle = styled.h1`
+
     margin-top: 30px;
 
 `;
@@ -140,6 +141,8 @@ const QuoteRow = styled.div`
 `;
 
 const QuoteContainer = styled.div`
+	border: solid 0.5px white;
+	border-radius: 14px;
 	height: 100%;
 	position: relative;
 	z-index: 1000000000;
@@ -150,18 +153,19 @@ const QuoteContainer = styled.div`
 	max-width: 500px;
 	margin-left: auto;
 	margin-right: auto;
-	text-align: center;
-	border-top: 0.5px solid white;
-	padding-top: 40px;
-	padding-bottom: 40px;
 	margin-bottom: 40px;
+	margin-top: 40px;
+	text-align: left;
+	padding: 16px;
 	
 `;
 const QuotePerson = styled.p`
-	justify-self: end;
+	// justify-self: end;
+	font-size: 12px;
 `;
-const Quote = styled.h5`
-	letter-spacing: 1.3px;
+const Quote = styled.p`
+	text-align: center;
+	// font-size: 14px;
 `;
 
 const PersonImageContainer1 = styled.img`
@@ -324,14 +328,13 @@ const IndexPage = ({ data }) => {
 			>
 				<HeroContent style={{ transform: `translateY(${offsetY * 0.1}px)` }}>
 					<PersonImageContainer1 src='./aleksanteri.png' />
-					<HeroTitle>Creative Developer & UX Designer</HeroTitle>
+					<HeroTitle>Product Designer & Developer</HeroTitle>
 					<Row>
 						<PersonImageContainer2 src='./aleksanteri.png' />
 						<HeroText >
-							Award-winning, tech-forward,
-							culture-driven, Creative Technologist with a strong emphasis in digital
+							Hi, I'm Aleksanteri - a Creative Technologist with a passion in digital
 							product design and development, based in Helsinki
-							Finland. Worked with WHO, Helsinki City, Osuuspankki, Fazer, SSAB
+							Finland. I have worked with WHO, Helsinki City, SSAB, Valmet Automotive and more...
 						</HeroText>
 
 					</Row>
@@ -354,7 +357,7 @@ const IndexPage = ({ data }) => {
 								data-sal-easing="ease"
 								data-sal-duration="2000"
 							/>
-							<IconText>Available for projects</IconText>
+							<IconText>Available for project</IconText>
 						</InfoContainer>
 						<InfoContainer>
 							<IconIcon icon={faMapMarkerAlt} />
@@ -370,33 +373,26 @@ const IndexPage = ({ data }) => {
 						<a href="https://www.producthunt.com/posts/hyperfigures?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-hyperfigures" target="_blank" rel="noreferrer"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=475586&theme=light" alt="Hyperfigures - AI&#0045;Driven&#0032;Data&#0032;Analysis&#0032;for&#0032;Managers&#0032;and&#0032;Leaders | Product Hunt" style={{ width: '250px', height: '54px' }} /></a>
 
 					</Row> */}
-				</HeroContent>
+					<QuoteRow>
+						<QuoteContainer
+						// data-sal="fade"
+						// 	data-sal-delay="100"
+						// 	data-sal-easing="ease"
+						// 	data-sal-duration="1000"
+						>
+							<Quote>
+								...Aleksanteri's professionalism, intelligence, and passion for his work became very clear over the more than 2 years of daily collaboration, and he made the entire team better...
+							</Quote>
+							<QuotePerson>
+								- Tuukka Miettinen, Tahto Group Oy
+							</QuotePerson>
+							<Link target='_blank' to="https://www.linkedin.com/in/aleksanteri1/">
+								Read more in LinkedIn
+								<FontAwesomeIcon style={{ fontSize: '20px', marginLeft: '10px', color: 'white' }} icon={faLinkedin} />
+							</Link>
 
-			</Hero>
-			{/* <ScrollingTextContainer style={{ transform: `translateY(${offsetY * 0.5}px)` }}> */}
-
-			<ScrollingTextContainer >
-				<ScrollingText>Aleksanteri Eliel Heliövaara - Aleksanteri Eliel Heliövaara</ScrollingText>
-			</ScrollingTextContainer>
-			<Container>
-				<QuoteRow>
-					<QuoteContainer data-sal="fade"
-						data-sal-delay="100"
-						data-sal-easing="ease"
-						data-sal-duration="1000">
-						<Quote>
-							...Aleksanteri's professionalism, intelligence, and passion for his work became very clear over the more than 2 years of daily collaboration, and he made the entire team better...
-						</Quote>
-						<QuotePerson>
-							- Tuukka Miettinen, Tahto Group Oy
-						</QuotePerson>
-						<Link target='_blank' to="https://www.linkedin.com/in/aleksanteri1/">
-							Read more in LinkedIn
-							<FontAwesomeIcon style={{ fontSize: '20px', marginLeft: '10px', color: 'white' }} icon={faLinkedin} />
-						</Link>
-
-					</QuoteContainer>
-					<QuoteContainer data-sal="fade"
+						</QuoteContainer>
+						{/* <QuoteContainer data-sal="fade"
 						data-sal-delay="100"
 						data-sal-easing="ease"
 						data-sal-duration="1000">
@@ -409,25 +405,31 @@ const IndexPage = ({ data }) => {
 						</QuotePerson>
 						<Link target='_blank' to="https://www.progress.com/sitefinity-cms/user-awards/associations---non-profit-and-most-impactful-digital-experience-2021">
 							<p style={{ textDecoration: 'underline' }}>Read more in www.progress.com</p>
-							{/* <FontAwesomeIcon style={{ fontSize: '20px', marginLeft: '10px', color: 'white' }} icon={faLinkedin} /> */}
 						</Link>
 						<Link to="/article/who-international-website-design/">
 							<p style={{ textDecoration: 'underline' }}>View Project</p>
-							{/* <FontAwesomeIcon style={{ fontSize: '20px', marginLeft: '10px', color: 'white' }} icon={faLinkedin} /> */}
 						</Link>
 
-					</QuoteContainer>
-				</QuoteRow>
+					</QuoteContainer> */}
+					</QuoteRow>
 
-				<RecentWork data-sal="fade"
-					data-sal-delay="100"
-					data-sal-easing="ease"
-					data-sal-duration="1000">Recent Work</RecentWork>
-				<CardGrid data-sal="fade"
-					data-sal-delay="100"
-					data-sal-easing="ease"
-					data-sal-duration="1000" content={data.allContentfulArticle.edges} />
+				</HeroContent>
+
+			</Hero>
+			{/* <ScrollingTextContainer style={{ transform: `translateY(${offsetY * 0.5}px)` }}> */}
+
+			{/* <ScrollingTextContainer >
+				<ScrollingText>Aleksanteri Eliel Heliövaara - Aleksanteri Eliel Heliövaara</ScrollingText>
+			</ScrollingTextContainer> */}
+			<Container>
+
+
+
 			</Container>
+			<CardGrid data-sal="fade"
+				data-sal-delay="100"
+				data-sal-easing="ease"
+				data-sal-duration="1000" content={data.allContentfulArticle.edges} />
 		</Layout>
 	);
 };

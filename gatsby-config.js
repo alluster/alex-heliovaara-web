@@ -68,11 +68,12 @@ module.exports = {
 			}
 		}, 'gatsby-plugin-mdx',
 		{
-			resolve: 'gatsby-plugin-google-fonts',
+			resolve: 'gatsby-plugin-google-fonts-v2',
 			options: {
-				fonts: [
-					'Questrial\:400'
-
+				fonts: [{
+					family: 'Questrial',
+					weights: ['400']
+				}
 				],
 				display: 'swap'
 			}

@@ -93,6 +93,7 @@ const HeroImageContainer = styled.div`
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 100px;
+	max-width: 1200px;
 	@media ${device.laptop} {
 		padding-right: 16px;
 		padding-left: 16px;
@@ -106,7 +107,6 @@ const HeroImage = styled.img`
 	margin-right: auto;
 	z-index: 10000;
 	object-fit: cover;
-	width: 100%
 `;
 
 const Divider = styled.div`
@@ -208,8 +208,8 @@ const ColorLayer = styled.div`
     ${props => props.backgroundColor && `
       filter: brightness(0.8); /* Darkens the background color by 20% */
     `}
-    border-bottom-left-radius: 100% 50vw;
-    border-bottom-right-radius: 100% 50vw;
+    // border-bottom-left-radius: 100% 50vw;
+    // border-bottom-right-radius: 100% 50vw;
     z-index: -1; /* Ensure the pseudo-element is behind the content */
   }
 `;
@@ -333,12 +333,7 @@ const Article = ({ data }) => {
 
 			</ColorLayer>
 
-			<Divider />
-
-			<Divider />
-			<Container>
-				<CardGrid content={data.allContentfulArticle.edges} />
-			</Container>
+			<CardGrid content={data.allContentfulArticle.edges} />
 
 
 		</Layout >
@@ -411,8 +406,7 @@ export const query = graphql`query ($slug: String) {
 			slug
 		}
 		}
-		allContentfulArticle
-		(filter: {tags: {eq: "article"}})
+	    allContentfulArticle(filter: { tags: { eq: "work" } }) 
 			{
 				edges {
 					node {
