@@ -17,7 +17,7 @@ const Hero = styled.div`
 	display: flex;
 	flex-direction: column;
 	z-index: 30000000;
-	max-width: 1000px;
+	max-width: 1400px;
 	margin-left: auto;
 	margin-right: auto;
 	min-height: 100vh;
@@ -28,26 +28,32 @@ const Hero = styled.div`
 `;
 const HeroTextContainer = styled.div`
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	margin-left: auto;
 	margin-right: auto;
-	text-align: center;
+	// text-align: center;
 	height: 100%;
 	max-width: 100%;
 	align-items: center;
 	justify-content: center;
 	@media ${device.laptop} {
+		flex-direction: column;
 		align-items: start;
 		text-align: left;
 		justify-content: start;
 		margin-top: 50px;
+		
 
 	}
 	
 `;
-const HeroText = styled.h1`
+const HeroText = styled.h2`	
+	font-size: 30px;
+	line-height: 30px;
 	@media ${device.laptop} {
 		padding-bottom: 0px;
+			margin-bottom: 40px;
+
 		font-size: 50px;
 		line-height: 50px;
 		margin-top: 100px;
@@ -55,7 +61,9 @@ const HeroText = styled.h1`
 `;
 
 const LeadingText = styled.h3`
-	width: 800px;
+font-size: 23px;
+line-height: 23px;
+	// width: 800px;
 	position: relative;
 	z-index: 3;
 	max-width: 100%;
@@ -76,12 +84,13 @@ const PillRow = styled.div`
 	flex-wrap: wrap;
 	flex-direction: row;
 	gap: 20px;
-	justify-content: center;
+	// justify-content: center;
 	align-items: center;
 	@media ${device.laptop} {
 		margin-top: 20px;
 		gap: 10px;
 		justify-content: start;
+		margin-bottom: 50px;
 
 
     }
@@ -101,7 +110,7 @@ const HeroImageContainer = styled.div`
     }
 `;
 const HeroImage = styled.img`
-	border-radius: 20px;
+	// border-radius: 20px;
 	position: relative;
 	margin-left: auto; 
 	margin-right: auto;
@@ -176,7 +185,7 @@ const InfoTitle = styled.p`
 `;
 const InfoDivider = styled.div`
 	width: 100%;
-	border-bottom: 0.5px solid white;
+	border-bottom: 0.5px solid #E8E8E7;
 `;
 const InfoText = styled.p`
 	margin-top: 20px;
@@ -236,7 +245,7 @@ const Article = ({ data }) => {
 	return (
 		<Layout
 			changeBackground={scrollPosition > heroHeight}
-			changeBackgroundColor={data.contentfulArticle.backgroundColor}
+		// changeBackgroundColor={data.contentfulArticle.backgroundColor}
 		>
 
 			<SEO
@@ -252,19 +261,27 @@ const Article = ({ data }) => {
 
 				<Hero>
 					<HeroTextContainer>
-						<HeroText>{data.contentfulArticle.title}</HeroText>
-						<LeadingText>{data.contentfulArticle.leadingText}</LeadingText>
-						<PillRow>
-							{
-								data.contentfulArticle.services ? data.contentfulArticle.services.map((item, i) => {
-									return (
-										<Pill key={i} title={item} />
-									);
-								})
-									:
-									null
-							}
-						</PillRow>
+						<div>
+							<HeroText>{data.contentfulArticle.title}</HeroText>
+							<LeadingText>{data.contentfulArticle.leadingText}</LeadingText>
+							<PillRow>
+								{
+									data.contentfulArticle.services ? data.contentfulArticle.services.map((item, i) => {
+										return (
+											<Pill key={i} title={item} />
+										);
+									})
+										:
+										null
+								}
+							</PillRow>
+						</div>
+						<div>
+							<HeroImageContainer>
+								<HeroImage src={data.contentfulArticle.image.file.url} />
+							</HeroImageContainer>
+
+						</div>
 
 
 					</HeroTextContainer>
@@ -304,11 +321,10 @@ const Article = ({ data }) => {
 				</Hero>
 			</Container>
 
-			<HeroImageContainer>
-				<HeroImage src={data.contentfulArticle.image.file.url} />
-			</HeroImageContainer>
 
-			<ColorLayer backgroundColor={data.contentfulArticle.backgroundColor}>
+			<ColorLayer
+			// backgroundColor={data.contentfulArticle.backgroundColor}
+			>
 				<ColorLayerContent>
 					{
 						data.contentfulArticle.contentBlock != undefined && data.contentfulArticle.contentBlock.length > 0 ?
@@ -332,8 +348,9 @@ const Article = ({ data }) => {
 
 
 			</ColorLayer>
-
-			<CardGrid content={data.allContentfulArticle.edges} />
+			<Container>
+				<CardGrid content={data.allContentfulArticle.edges} />
+			</Container>
 
 
 		</Layout >

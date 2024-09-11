@@ -7,7 +7,7 @@ const PillContainer = styled.div`
 	padding-left: 16px;
 	padding-right: 16px;
 	height: 30px;
-	background-color: white;
+	background-color: #E8E8E7;
 	border-radius: 15px;
 	@media ${device.laptop} {
 		padding-left: 12px;

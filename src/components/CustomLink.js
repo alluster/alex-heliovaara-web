@@ -8,7 +8,7 @@ import {
 function CustomLink({ children, to }) {
 	const Styled = styled.div`
 		margin-right: 10px;
-		color: ${props => props.theme.colors.white};
+		color: ${props => props.theme.colors.fontDark};
 		
 	`;
 

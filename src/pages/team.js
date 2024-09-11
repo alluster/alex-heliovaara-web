@@ -111,7 +111,7 @@ const Team = ({ data }) => {
 				image={data.contentfulPage.image.file.url}
 				article="true"
 			/>
-		
+
 			<Container>
 
 				<Page>
@@ -122,11 +122,9 @@ const Team = ({ data }) => {
 
 					</Column> */}
 					<Content
-					
+
 					>
-						<HeroText 	data-sal="fade"
-							data-sal-delay="100"
-							data-sal-easing="ease">{data.contentfulPage.title}</HeroText>
+						<HeroText >{data.contentfulPage.title}</HeroText>
 
 						{/* <Markdown
 							

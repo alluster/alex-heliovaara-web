@@ -47,7 +47,7 @@ const ContentColumn = styled.div`
 	max-width: 700px;
 	z-index: 10000000;
 	margin-left: 30px;
-	background-color: #1C1D20;
+	background-color: white;
 	margin-left: -100px;
 	padding: 30px;
 	margin-top: 100px;
@@ -78,6 +78,9 @@ const Markdown = styled.div`
 	// -moz-hyphens: auto;
 	// hyphens: auto;
 	// hyphens: auto;
+	a {
+		color: blue;
+	}
 	li {
 		font-size: 24px;
 		line-height: 40px;

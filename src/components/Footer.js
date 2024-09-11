@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBehance, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { Link } from 'gatsby';
-import ContactForm from './ContactForm';
 import Container from './Container';
 
 library.add(faBehance, faLinkedin);
@@ -19,7 +18,7 @@ const Footer = () => {
 		// background-color: ${props => props.theme.colors.black};
 		height: 100%;
 		margin-top: 150px;
-		padding-bottom: 100px;
+		// padding-bottom: 100px;
 		@media ${device.laptop} {
 			margin-top: 0px;
 	
@@ -34,8 +33,8 @@ const Footer = () => {
 		display: flex;
 		flex-direction: row;
 		padding-top: 64px;
-		padding-bottom: 64px;
-		color: ${props => props.theme.colors.white};
+		// padding-bottom: 64px;
+		color: ${props => props.theme.colors.fontDark};
 		@media ${device.laptop} {
 			flex-direction: column;
 			text-align: center;
@@ -77,7 +76,7 @@ const Footer = () => {
 				<Content>
 					<Column1>
 						<Link to="/">
-							<h5 >A.E HELIÖVAARA</h5>
+							<h4 >A.E HELIÖVAARA</h4>
 
 						</Link>
 						<p>Creative Technologist</p>
@@ -97,7 +96,7 @@ const Footer = () => {
 
 					</Column2>
 				</Content>
-				<ContactForm />
+				{/* <ContactForm /> */}
 
 			</Container>
 

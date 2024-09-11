@@ -1,13 +1,15 @@
-import * as React from 'react';
+import React from 'react';
 import SEO from '../components/seo';
 import Layout from '../components/Layout';
 import Container from '../components/Container';
 import styled from 'styled-components';
 import { device } from '../device';
-import useScrollPosition from '../support-functions/useScrollPosition';
 import Loader from '../components/Loader';
 import ContactForm from '../components/ContactForm';
 import Pill from '../components/Pill';
+import { Link } from 'gatsby';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 
 const Hero = styled.div`
@@ -53,12 +55,10 @@ const HeroText = styled.h1`
 `;
 
 const LeadingText = styled.h4`
-	// width: 800px;
 	position: relative;
 	z-index: 3;
 	text-align: center;
 	max-width: 100%;
-	margin-top: 10px;
 	margin-bottom: 30px;
 	@media ${device.laptop} {
 		padding-top: 0px;
@@ -86,9 +86,6 @@ const PillRow = styled.div`
 
     }
 `;
-
-
-
 
 const InfoContainer = styled.div`
 	display: flex;
@@ -119,10 +116,8 @@ const InfoRow = styled.div`
 		margin-bottom: 80px;
     }
 `;
-const InfoTitle = styled.p`
-	// text-transform: uppercase;
+const InfoTitle = styled.h3`
 	margin-bottom: 10px;
-	font-size: 34px;
 
 `;
 const InfoDivider = styled.div`
@@ -130,11 +125,35 @@ const InfoDivider = styled.div`
 	border-bottom: 0.5px solid white;
 `;
 const InfoText = styled.p`
-	margin-top: 20px;
-	font-size: 18px;
 	color: ${props => props.theme.colors.darkGray}
 `;
 
+
+const QuoteContainer = styled.div`
+	border: solid 0.5px white;
+	border-radius: 14px;
+	height: 100%;
+	position: relative;
+	z-index: 1000000000;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 40px;
+	margin-top: 40px;
+	text-align: left;
+	padding: 16px;
+	
+`;
+const QuotePerson = styled.p`
+	font-size: 12px;
+`;
+const Quote = styled.p`
+	text-align: center;
+`;
 
 
 const services = [
@@ -182,31 +201,16 @@ const servicesTags = [
 ];
 
 const Services = () => {
-	const scrollPosition = useScrollPosition();
-	const heroHeight = 600; // Adjust this based on your Hero section's height
+	// useEffect(() => {
+	// 	window.scroll({
+	// 		top: 0,
+	// 		behavior: 'smooth',
+	// 	});
 
-	const [offsetY, setOffsetY] = React.useState(0);
-	const [offsetX, setOffsetX] = React.useState(0);
-
-	const handleScroll = () => {
-		setOffsetY(window.scrollY);
-		setOffsetX(window.scrollY);
-
-	};
-
-	React.useEffect(() => {
-		window.scroll({
-			top: 0,
-			behavior: 'smooth',
-		});
-		window.addEventListener('scroll', handleScroll);
-
-		return () => window.removeEventListener('scroll', handleScroll);
-	}, []);
+	// }, []);
 
 	return (
 		<Layout
-			changeBackground={scrollPosition > heroHeight}
 			changeBackgroundColor={null}
 		>
 
@@ -230,6 +234,19 @@ const Services = () => {
 
 
 					</HeroTextContainer>
+					<QuoteContainer>
+						<Quote>
+							...Aleksanteri's professionalism, intelligence, and passion for his work became very clear over the more than 2 years of daily collaboration, and he made the entire team better...
+						</Quote>
+						<QuotePerson>
+							- Tuukka Miettinen, Tahto Group Oy
+						</QuotePerson>
+						<Link style={{ color: 'blue' }} target='_blank' to="https://www.linkedin.com/in/aleksanteri1/">
+							Read more in LinkedIn
+							<FontAwesomeIcon style={{ fontSize: '20px', marginLeft: '10px', color: 'white' }} icon={faLinkedin} />
+						</Link>
+
+					</QuoteContainer>
 					<InfoRow>
 						<div>
 							<LeadingText >Services I help companies succeed with...</LeadingText>
@@ -267,8 +284,8 @@ const Services = () => {
 			</Container>
 			<Container>
 				<br></br>
-				<h2 style={{ color: 'white' }}>Contact me for new projects or collaboration</h2>
-				<h4 style={{ color: 'white' }}>Lets work together</h4>
+				<h2>Contact me for new projects or collaboration</h2>
+				<h4>Lets work together</h4>
 				<ContactForm />
 
 			</Container>

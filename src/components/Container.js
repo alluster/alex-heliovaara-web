@@ -5,7 +5,7 @@ import { device } from '../device';
 
 const Wrapper = styled.div`
 	max-width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 32px;

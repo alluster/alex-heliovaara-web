@@ -8,7 +8,6 @@ import styled from 'styled-components';
 import { device } from '../device';
 
 const GlobalStyle = createGlobalStyle`
-
     body, html {
 	    scroll-behavior: smooth;
 		scrollbar-width: none; 
@@ -18,25 +17,23 @@ const GlobalStyle = createGlobalStyle`
 		min-height: 100vh;
 		font-family: 'Questrial', sans-serif !important;
 		font-display: swap;
-		color: ${props => props.theme.colors.white};
+		color: ${props => props.theme.colors.fontDark};
 		hyphens: manual;
 		text-rendering: optimizeLegibility;
-		background-color: ${props => props.theme.colors.black};
+		// background-color: ${props => props.theme.colors.black};
 		overflow-x: hidden;
-		letter-spacing: .03em;
 		transition: background-color  ease; // Add transition for smooth background color change
 
- ${props => props.changeBackgroundColor && css`
-    background-color: ${props => props.changeBackgroundColor}; // Change this to your selected color
-			`}
-	}
+		${props => props.changeBackgroundColor && css`
+			background-color: ${props => props.changeBackgroundColor}; // Change this to your selected color
+					`}
+			}
     
     h1 {
-		// font-family: 'Libre Baskerville', sans-serif !important;
-		font-size: 90px;
-		line-height: 100px;
-		letter-spacing: 0.02em;
-		margin-bottom: 40px;
+		font-size: 40px;
+		margin: 14px 0px 14px 0px !important;
+		line-height: 44px;
+		letter-spacing: 0.01em;
 		font-weight: 300;
 		hyphens: none;
 		@media ${device.laptop} {
@@ -52,12 +49,12 @@ const GlobalStyle = createGlobalStyle`
 		}
 	}	
     h2 {
-		font-size: 70px;
-		line-height: 80px;
-		margin-top: 24px;
-		margin-bottom: 24px;
+		font-size: 34px;
+		line-height: 36px;
+		// margin-top: 24px;
+		// margin-bottom: 24px;
 		font-weight: 400;
-		letter-spacing: 0px;
+		letter-spacing: 0.01em;
 		@media ${device.tablet} {
 			font-size: 38px;
 			line-height: 40px;
@@ -67,12 +64,12 @@ const GlobalStyle = createGlobalStyle`
     }
     h3 {
 		// font-family: 'Libre Baskerville', sans-serif !important;
-		font-size: 45.23px;
-		line-height: 60px;
-		margin-top: 24px;
-		margin-bottom: 24px;
+		font-size: 26px;
+		line-height: 30px;
+		// margin-top: 24px;
+		// margin-bottom: 24px;
 		font-weight: 400;
-		letter-spacing: 0px;
+		letter-spacing: 0.01em;
 		@media ${device.tablet} {
 			font-size: 22.78px;
 			line-height: 32px;
@@ -81,12 +78,12 @@ const GlobalStyle = createGlobalStyle`
 		 }
     }
     h4 {
-		font-size: 31.99px;
-		line-height: 40px;
-		margin-top: 24px;
-		margin-bottom: 24px;
+		font-size: 20px;
+		line-height: 24px;
+		// margin-top: 24px;
+		// margin-bottom: 24px;
 		font-weight: 400;
-		letter-spacing: 0px;
+		letter-spacing: 0.01em;
 		@media ${device.tablet} {
 			font-size: 28px;
 			line-height: 33px;
@@ -95,12 +92,12 @@ const GlobalStyle = createGlobalStyle`
 		 }
     }
     h5 {
-		font-size: 22.62px;
-		line-height: 32px;
-		margin-top: 16px;
-		margin-bottom: 16px;
+		font-size: 18px;
+		line-height: 22px;
+		// margin-top: 16px;
+		// margin-bottom: 16px;
 		font-weight: 400;
-		letter-spacing: 0px;
+		letter-spacing: 0.01em;
 		@media ${device.tablet} {
 			font-size: 18px;
 			line-height: 24px;
@@ -108,10 +105,11 @@ const GlobalStyle = createGlobalStyle`
     }
     h6 {
 		font-size: 16px;
-		line-height: 24px;
-		margin-top: 16px;
-		margin-bottom: 16px;
+		line-height: 20px;
+		// margin-top: 16px;
+		// margin-bottom: 16px;
 		font-weight: 400;
+		letter-spacing: 0.01em;
 		@media ${device.tablet} {
 			font-size: 16px;
 			line-height: 24px;

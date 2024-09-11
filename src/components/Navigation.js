@@ -12,6 +12,7 @@ const NavContainer = styled.div`
 	min-width: 100%;
 	z-index: 100000000;
 	top: 0;
+	backdrop-filter: blur(20px);
 	@media ${device.laptop} {
 		display: none;
 `;
@@ -51,7 +52,7 @@ const BurgerIcon = styled(FontAwesomeIcon)`
 	font-size: 22px;
 	text-align: right;
 	margin-right: 10px;
-	// color: ${props => props.theme.colors.white};
+	// color: ${props => props.theme.colors.fontDark};
     :hover {
 		cursor: pointer;
 	}
@@ -78,7 +79,7 @@ const LogoContainer = styled.div`
 const LogoText = styled.p`
 	white-space: nowrap;
 	font-size: 14px;
-	color: white;
+	color: ${props => props.theme.colors.fontDark};
 
 `;
 
@@ -168,7 +169,7 @@ const Divider = styled.div`
 	margin-top: 40px;
 	margin-bottom: 40px;
 	width: 100%;
-	border-bottom: 0.5px solid white;
+	border-bottom: 0.5px solid black;
 `;
 const Navigation = ({ className }) => {
 	const [navOpen, setNavOpen] = useState(false);

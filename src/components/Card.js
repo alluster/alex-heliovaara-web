@@ -5,16 +5,15 @@ import { Link } from 'gatsby';
 import { device } from '../device';
 
 const CardContainer = styled(Link)`
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  max-width: 390px;
-      min-width: 390px;
-
-  flex: 1;
-  margin-bottom: 20px;
+  	box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+  	-webkit-box-sizing: border-box;
+  	display: flex;
+  	flex-direction: column;
+  	// max-width: 390px;
+	min-width: 390px;
+  	flex: 1;
+  	margin-bottom: 20px;
 //   width: calc(50% - 20px);
 
   @media ${device.laptop} {

@@ -131,7 +131,9 @@ const PlayerContainer = styled(Container)`
 const ContentBlock = ({ title, content, images, video, backgroundColor }) => {
 
 	return (
-		<Wrapper backgroundColor={backgroundColor}>
+		<Wrapper
+		// backgroundColor={backgroundColor}
+		>
 
 			<TextContainer>
 				<Title>

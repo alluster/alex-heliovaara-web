@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 
 
 const Input = styled.input`
-	color: white !important;
+	color: ${props => props.theme.colors.fontDark} !important;
 	height: 42px;
 	width: 100%;
 	margin-bottom: 32px;
@@ -50,14 +50,14 @@ const Button = styled.button`
 	flex-direction: row;
 	padding-left: 20px;
 	padding-right: 20px;
-	border: ${props => props.disabled ? css`2px solid ${props => props.theme.colors.darkGray}` : css`2px white solid`};
-	color: ${props => props.disabled ? css`${props => props.theme.colors.darkGray}` : css`white`};
+	border: ${props => props.disabled ? css`2px solid ${props => props.theme.colors.darkGray}` : css`2px black solid`};
+	color: ${props => props.disabled ? css`${props => props.theme.colors.darkGray}` : css`black`};
 	
 	&:hover {
-		cursor: ${props => props.disabled ? css`not-allowed` : css`not-allowed`}!important;
-		background-color: ${props => props.disabled ? css`transparent` : css`white`};
-		border: ${props => props.disabled ? css`2px solid ${props => props.theme.colors.darkGray}` : css`2px white solid`};
-		color: ${props => props.disabled ? css`${props => props.theme.colors.darkGray}` : css`black`};
+		cursor: ${props => props.disabled ? css`not-allowed` : css`pointer`}!important;
+		background-color: ${props => props.disabled ? css`transparent` : css`black`};
+		border: ${props => props.disabled ? css`2px solid ${props => props.theme.colors.darkGray}` : css`2px black solid`};
+		color: ${props => props.disabled ? css`${props => props.theme.colors.darkGray}` : css`white`};
 	}
 
 `;
@@ -78,7 +78,7 @@ const ButtonIcon = styled(FontAwesomeIcon)`
 `;
 const Label = styled.label`
 	font-size: 18px;
-	color: white;
+	color: ${props => props.theme.colors.fontDark};
 	
 `;
 
@@ -123,7 +123,7 @@ const ContactForm = () => {
 						type="text"
 						name="name"
 						id="name"
-						style={{ color: 'white' }}
+						// style={{ color: 'white' }}
 						value={formValues.name}
 						onChange={handleInputChange}
 					/>

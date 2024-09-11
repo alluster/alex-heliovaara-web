@@ -211,9 +211,7 @@ const HeroHome = () => {
 						<Ingress>
 							{/* <Title ><span style={{ textDecoration: 'underline' }}>Creative Technology</span> and <span style={{ fontWeight: 400 }}>Design Agency</span></Title> */}
 							<h5 style={{ fontWeight: 400 }}>Based in <BoldText>Helsinki Finland</BoldText>, we provide innovative and forward looking technology solutions and User Experience driven Digital Design.</h5>
-							<ButtonUs data-sal="slide-up"
-								data-sal-delay="300"
-								data-sal-easing="ease" to='/about'>
+							<ButtonUs >
 								<ButtonText>Read more</ButtonText>
 								<ButtonIconContainer>
 									<ButtonIcon icon={faArrowRight} />
