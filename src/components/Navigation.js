@@ -13,6 +13,7 @@ const NavContainer = styled.div`
 	z-index: 100000000;
 	top: 0;
 	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
 	@media ${device.laptop} {
 		display: none;
 `;
@@ -33,13 +34,14 @@ const NavColorOverlay = styled.div`
 
 const MobileNavContainer = styled.div`
 	// background-color: ${props => props.theme.colors.black};
-
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
 	display: none;	
 	position: fixed;
 	min-width: 100%;
 	z-index: 10000000000000;
 	top: 0;
-	background-color: ${props => (props.navOpen ? '#1C1D20' : 'transparent')};
+	background-color: ${props => (props.navOpen ? 'white' : 'transparent')};
 	@media ${device.laptop} {
 		display: block;
 		// background-color: ${props => (props.navOpen ? '#1C1D20' : 'transparent')};
@@ -90,7 +92,7 @@ const OpenNav = styled.div`
 	min-height: 100vh;
 	text-align: center;
 	padding-top: 50px;
-	background-color: ${props => props.theme.colors.black};
+	background-color: ${props => props.theme.colors.white};
 	z-index: 10000000000;
 	width: 100vw;
 	// @media ${device.laptop} {

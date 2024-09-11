@@ -17,7 +17,7 @@ const CardContainer = styled(Link)`
 //   width: calc(50% - 20px);
 
   @media ${device.laptop} {
-    min-width: 390px;
+    min-width: 100%;
 	max-width: 100vw;
     // width: 100%;
 	// height: 100%;
