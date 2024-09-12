@@ -67,6 +67,7 @@ const IconIcon = styled(FontAwesomeIcon)`
 
 const IconText = styled.p`
     font-size: 16px;
+	line-height: 12px;
 `;
 
 const AvailabilityIndicator = styled.div`
@@ -93,24 +94,24 @@ const IndexPage = ({ data }) => {
 			<Hero>
 				<Container>
 					<HeroContent >
-						<h1>Product Designer & Developer</h1>
-						<h3 >
-							Hi, I'm Aleksanteri - a Creative Technologist with a passion in digital
-							product design and development, based in Helsinki
-							Finland. I have worked with WHO, Helsinki City, SSAB, Valmet Automotive and more...
+						<h1>Creative Technologist & Developer</h1>
+
+						<h3 style={{ color: '#9F9F9F' }}>
+							Digital Product Designer with passion for Brands, Marketing and Development - a Creative Technologist based in Helsinki
+							Finland.
 						</h3>
 						<Row>
 							<InfoContainer>
 								<AvailabilityIndicator />
-								<IconText>Available for a project</IconText>
+								<IconText style={{ color: '#D6D6D6' }}>Available for a project</IconText>
 							</InfoContainer>
 							<InfoContainer>
 								<IconIcon icon={faMapMarkerAlt} />
-								<IconText>Current location: @Helsinki Finland </IconText>
+								<IconText style={{ color: '#D6D6D6' }}>Current location: @Helsinki Finland </IconText>
 							</InfoContainer>
 							<InfoContainer>
 								<IconIcon icon={faPhone} />
-								<a href="tel:+358442360304"><IconText >+358442360304</IconText></a>
+								<a href="tel:+358442360304"><IconText style={{ color: '#D6D6D6' }} >+358442360304</IconText></a>
 							</InfoContainer>
 						</Row>
 					</HeroContent>

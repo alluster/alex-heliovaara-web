@@ -40,38 +40,12 @@ const HeroTextContainer = styled.div`
 		align-items: start;
 		text-align: left;
 		justify-content: start;
-		margin-top: 50px;
-	}
-`;
-
-const HeroText = styled.h2`	
-	font-size: 30px;
-	line-height: 30px;
-	@media ${device.laptop} {
-		padding-bottom: 0px;
-		margin-bottom: 40px;
-		font-size: 50px;
-		line-height: 50px;
 		margin-top: 100px;
 	}
 `;
 
-const LeadingText = styled.h3`
-	font-size: 23px;
-	line-height: 23px;
-	position: relative;
-	z-index: 3;
-	max-width: 100%;
-	margin-top: 10px;
-	margin-bottom: 30px;
-	@media ${device.laptop} {
-		padding-top: 0px;
-		padding-bottom: 0px;
-		margin-top: 0px;
-		width: 100%;	
-		margin-bottom: 0px;
-	}
-`;
+
+
 
 const PillRow = styled.div`
 	display: flex;
@@ -80,6 +54,7 @@ const PillRow = styled.div`
 	flex-direction: row;
 	gap: 20px;
 	align-items: center;
+	margin-top: 30px;
 	@media ${device.laptop} {
 		margin-top: 20px;
 		gap: 10px;
@@ -185,8 +160,9 @@ const Article = ({ data }) => {
 				<Hero>
 					<HeroTextContainer>
 						<div>
-							<HeroText>{data.contentfulArticle.title}</HeroText>
-							<LeadingText>{data.contentfulArticle.leadingText}</LeadingText>
+							<h1>{data.contentfulArticle.title}</h1>
+							<h3 style={{ color: '#818181' }}>
+								{data.contentfulArticle.leadingText}</h3>
 							<PillRow>
 								{
 									data.contentfulArticle.services ? data.contentfulArticle.services.map((item, i) => {

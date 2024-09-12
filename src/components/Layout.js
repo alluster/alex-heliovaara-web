@@ -32,8 +32,8 @@ const GlobalStyle = createGlobalStyle`
 		font-weight: 300;
 		hyphens: none;
 		@media ${device.laptop} {
-			font-size: 65px;
-			line-height: 60px;
+			font-size: 48px;
+			line-height: 48px;
 			margin-top: 20px;
 			margin-bottom: 20px;
 			hyphens: auto;
@@ -48,13 +48,14 @@ const GlobalStyle = createGlobalStyle`
 		font-weight: 400;
 		letter-spacing: 0.01em;
 		@media ${device.tablet} {
-			font-size: 38px;
-			line-height: 40px;
+			font-size: 42px;
+			line-height: 46px;
 			margin-bottom: 0px;
 		 }
     }
     h3 {
 		font-size: 26px;
+		margin: 10px 0px 10px 0px !important;
 		line-height: 30px;
 		font-weight: 400;
 		letter-spacing: 0.01em;
@@ -69,6 +70,7 @@ const GlobalStyle = createGlobalStyle`
 		line-height: 24px;
 		font-weight: 400;
 		letter-spacing: 0.01em;
+		margin-bottom: 
 		@media ${device.tablet} {
 			font-size: 28px;
 			line-height: 33px;
