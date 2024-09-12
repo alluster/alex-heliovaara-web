@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import React from 'react';
 import { device } from '../device';
 
-
 const PillContainer = styled.div`
 	padding-left: 16px;
 	padding-right: 16px;
@@ -14,10 +13,9 @@ const PillContainer = styled.div`
 		padding-right: 12px;
 		height: 20px;
 		border-radius: 10px;
-
     }
-  
 `;
+
 const PillText = styled.p`
 	white-space: nowrap;
 	margin: 0px;
@@ -33,19 +31,17 @@ const PillText = styled.p`
 		margin-right: auto;
 		text-align: center;
 		font-size: 12px;
-
     }
 `;
+
 const Pill = ({ title }) => {
 	return (
 		<PillContainer>
 			<PillText>
 				{title}
 			</PillText>
-
 		</PillContainer>
 	);
 };
-
 
 export default Pill;

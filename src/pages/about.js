@@ -7,14 +7,13 @@ import styled from 'styled-components';
 import { device } from '../device';
 import { useEffect } from 'react';
 
-
 const HeroText = styled.h1`
-	// color: ${props => props.theme.colors.black};	
 	@media ${device.laptop} {
 		padding-top: 30px;
 		padding-bottom: 0px;
 	}
 `;
+
 const Page = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -39,9 +38,9 @@ const ImageColumn = styled.div`
 		margin-right: 0px;
 		position: relative;		
 		width: 100%;
-
 	}
 `;
+
 const ContentColumn = styled.div`
 	flex: 3;
 	max-width: 700px;
@@ -56,9 +55,9 @@ const ContentColumn = styled.div`
 		margin-top: 0px;
 		padding: 0px;
 		margin-left: 0px;
-
 	}
 `;
+
 const ImageContainer = styled.img`
 	position: relative;
 	z-index: 1;
@@ -72,12 +71,6 @@ const ImageContainer = styled.img`
 `;
 
 const Markdown = styled.div`
-	// word-wrap: break-word;
-	// overflow-wrap: break-word;
-	// -webkit-hyphens: auto;
-	// -moz-hyphens: auto;
-	// hyphens: auto;
-	// hyphens: auto;
 	a {
 		color: blue;
 	}
@@ -85,7 +78,6 @@ const Markdown = styled.div`
 		font-size: 24px;
 		line-height: 40px;
 	}
-
 	max-width: 900px;
 	@media ${device.laptop} {
 		margin-top: 30px;
@@ -95,8 +87,6 @@ const Markdown = styled.div`
 		}
 	}
 `;
-
-
 
 const About = ({ data }) => {
 	useEffect(() => {
@@ -116,35 +106,22 @@ const About = ({ data }) => {
 
 			<Container>
 
-				<Page
-				// data-sal="fade"
-				// data-sal-delay="100"
-				// data-sal-easing="ease"
-				// data-sal-duration="1000"
-				>
+				<Page>
 					<ImageColumn>
-						<ImageContainer src={data.contentfulPage.image.file.url} />
-
+						<ImageContainer alt={data.contentfulPage.title} src={data.contentfulPage.image.file.url} />
 					</ImageColumn>
-					<ContentColumn
-
-					>
+					<ContentColumn>
 						<HeroText >{data.contentfulPage.title}</HeroText>
 						<p>{data.contentfulPage.leadingText}</p>
 						<p>{data.contentfulPage.description}</p>
 						<Markdown
-
-
 							dangerouslySetInnerHTML={{
 								__html: data.contentfulPage.content.childMarkdownRemark.html,
 							}}
 						/>
-
 					</ContentColumn>
-
 				</Page>
 			</Container>
-
 		</Layout>
 	);
 };

@@ -201,23 +201,12 @@ const servicesTags = [
 ];
 
 const Services = () => {
-	// useEffect(() => {
-	// 	window.scroll({
-	// 		top: 0,
-	// 		behavior: 'smooth',
-	// 	});
-
-	// }, []);
-
 	return (
-		<Layout
-			changeBackgroundColor={null}
-		>
-
+		<Layout>
 			<SEO
-				title='Sevices'
-				description='These are the services provided'
-				image={null}
+				title="Aleksanteri Heliövaara"
+				description="Creative Technologist"
+				image="/seo.jpeg"
 				article={false}
 			/>
 			<Loader >
@@ -229,10 +218,6 @@ const Services = () => {
 					<HeroTextContainer>
 						<HeroText >Helping companies succeed in the digital world</HeroText>
 						<LeadingText >Brands from around the world have trusted my expertise in digital design and development projects.</LeadingText>
-
-
-
-
 					</HeroTextContainer>
 					<QuoteContainer>
 						<Quote>
@@ -245,12 +230,10 @@ const Services = () => {
 							Read more in LinkedIn
 							<FontAwesomeIcon style={{ fontSize: '20px', marginLeft: '10px', color: 'white' }} icon={faLinkedin} />
 						</Link>
-
 					</QuoteContainer>
 					<InfoRow>
 						<div>
 							<LeadingText >Services I help companies succeed with...</LeadingText>
-
 							<PillRow>
 								{servicesTags.map((item, i) => {
 									return (
@@ -259,7 +242,6 @@ const Services = () => {
 								})}
 							</PillRow>
 						</div>
-
 						{
 							services.map((item, i) => {
 								return (
@@ -276,10 +258,8 @@ const Services = () => {
 								);
 							})
 						}
-
 					</InfoRow>
 				</Hero>
-
 				<InfoDivider />
 			</Container>
 			<Container>
@@ -287,10 +267,7 @@ const Services = () => {
 				<h2>Contact me for new projects or collaboration</h2>
 				<h4>Lets work together</h4>
 				<ContactForm />
-
 			</Container>
-
-
 		</Layout >
 	);
 };

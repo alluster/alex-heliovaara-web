@@ -10,10 +10,8 @@ const Wrapper = styled.div`
 	position: relative;
 	@media ${device.laptop} {
 		padding-left: 0px;
-
 	}
 `;
-
 
 const Input = styled.input`
 	color: ${props => props.theme.colors.fontDark} !important;
@@ -22,11 +20,9 @@ const Input = styled.input`
 	margin-bottom: 32px;
 	font-size: 18px;
 	border-radius: 4px;
-  }
 	@media ${device.laptop} {
 		padding-left: 0px;
 	}
-	
 `;
 
 const TextArea = styled.textarea`
@@ -39,7 +35,6 @@ const TextArea = styled.textarea`
 	@media ${device.laptop} {
 		padding-left: 0px;
 	}
-
 `;
 
 const Button = styled.button`
@@ -52,7 +47,6 @@ const Button = styled.button`
 	padding-right: 20px;
 	border: ${props => props.disabled ? css`2px solid ${props => props.theme.colors.darkGray}` : css`2px black solid`};
 	color: ${props => props.disabled ? css`${props => props.theme.colors.darkGray}` : css`black`};
-	
 	&:hover {
 		cursor: ${props => props.disabled ? css`not-allowed` : css`pointer`}!important;
 		background-color: ${props => props.disabled ? css`transparent` : css`black`};
@@ -61,6 +55,7 @@ const Button = styled.button`
 	}
 
 `;
+
 const ButtonText = styled.p`
 	margin: 0px !important;
 	line-height: 48px;
@@ -79,29 +74,20 @@ const ButtonIcon = styled(FontAwesomeIcon)`
 const Label = styled.label`
 	font-size: 18px;
 	color: ${props => props.theme.colors.fontDark};
-	
 `;
-
 
 const InputContainer = styled.div`
 	padding-top: 40px;
 	border-top: 0.5px solid ${props => props.theme.colors.darkGray};
-
 `;
 
 const ContactForm = () => {
+	const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 	const [formValues, setFormValues] = useState({
 		name: '',
 		email: '',
 		message: ''
 	});
-
-	const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-
-	useEffect(() => {
-		const isFormValid = Object.values(formValues).every(value => value.trim() !== '');
-		setIsButtonDisabled(!isFormValid);
-	}, [formValues]);
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
@@ -110,6 +96,11 @@ const ContactForm = () => {
 			[name]: value
 		});
 	};
+
+	useEffect(() => {
+		const isFormValid = Object.values(formValues).every(value => value.trim() !== '');
+		setIsButtonDisabled(!isFormValid);
+	}, [formValues]);
 
 	return (
 		<Wrapper>
@@ -123,7 +114,6 @@ const ContactForm = () => {
 						type="text"
 						name="name"
 						id="name"
-						// style={{ color: 'white' }}
 						value={formValues.name}
 						onChange={handleInputChange}
 					/>
@@ -146,7 +136,7 @@ const ContactForm = () => {
 						What services are you looking for?
 					</Label>
 					<TextArea
-						placeholder='Web Design, App Development... *'
+						placeholder='Web Design, App Development, Brand Identity... *'
 						name="message"
 						id="message"
 						wrap="hard"
@@ -164,7 +154,6 @@ const ContactForm = () => {
 				</Button>
 			</form>
 		</Wrapper>
-
 	);
 };
 

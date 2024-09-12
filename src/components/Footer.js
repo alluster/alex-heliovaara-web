@@ -80,7 +80,6 @@ const Footer = () => {
 
 						</Link>
 						<p>Creative Technologist</p>
-						{/* <p>aleksanteri@helau.io</p> */}
 						<Link to="https://www.behance.net/aleksanterb9c4">
 							<FontAwesomeIcon style={{ fontSize: '40px', color: 'white' }} icon={faBehance} />
 						</Link>
@@ -90,8 +89,7 @@ const Footer = () => {
 					</Column1>
 					<div></div>
 					<Column2 >
-						{/* <h3 style={{ marginTop: '0px' }}>Helau Solutions</h3> */}
-						{/* <h4>We are the rebels of digital design, the ones who dare to challenge the status quo and create something truly meaningful. We are on a mission to use technology and design to make a positive impact on the world. That&apos;s why we welcome all bold and curious companies to join us on this journey. Together, we&apos;ll create modern digital experiences that bring about a more open and connected world. Are you ready to join the rebellion?</h4> */}
+
 						<h5>2020 - 2024 © Code & Design by Aleksanteri Heliövaara</h5>
 
 					</Column2>

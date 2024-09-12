@@ -7,11 +7,10 @@ const Wrapper = styled.div`
 	display: flex;	
 	z-index: 1000000;
 	margin-bottom: 50px;
-	overflow: hidden; /* Prevent parent scrolling */
+	overflow: hidden; 
 	justify-content: center;
 	margin-left: auto;
 	margin-right: auto;
-	
 `;
 
 const Grid = styled.div`
@@ -21,19 +20,15 @@ const Grid = styled.div`
 	width: 100%;
 	gap: 10px;
 	margin-top: 50px;
-	// margin-bottom: 50px;
-	overflow: hidden; /* Prevent parent scrolling */
+	overflow: hidden;
 	justify-content: start;
-
 `;
+
 const CardGrid = ({ content }) => {
 	return (
 		<Wrapper>
 			<Grid>
-
 				{content.sort((a, b) => a.node.orderNumber - b.node.orderNumber).map((node, i) => (
-
-
 					<Card
 						key={i}
 						slug={node.node.slug}
@@ -46,7 +41,6 @@ const CardGrid = ({ content }) => {
 					/>
 				))}
 			</Grid>
-
 		</Wrapper >
 	);
 };

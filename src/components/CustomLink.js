@@ -1,19 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {
-	Link
-} from 'gatsby';
+import { Link } from 'gatsby';
 
-function CustomLink({ children, to }) {
-	const Styled = styled.div`
+const Styled = styled.div`
 		margin-right: 10px;
 		color: ${props => props.theme.colors.fontDark};
-		
 	`;
 
-
-
+const CustomLink = ({ children, to }) => {
 	return (
 		<Link to={to}  >
 			<Styled >
@@ -22,15 +16,6 @@ function CustomLink({ children, to }) {
 		</Link>
 
 	);
-}
-
-CustomLink.propTypes = {
-	children: PropTypes.any,
-	to: PropTypes.any,
-	theme: PropTypes.any,
-	pathName: PropTypes.string,
-	color: PropTypes.any,
-	activeColor: PropTypes.any
-
 };
+
 export default CustomLink;

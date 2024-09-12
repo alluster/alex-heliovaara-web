@@ -10,32 +10,20 @@ const CardContainer = styled(Link)`
   	-webkit-box-sizing: border-box;
   	display: flex;
   	flex-direction: column;
-  	// max-width: 390px;
 	min-width: 390px;
   	flex: 1;
   	margin-bottom: 20px;
-//   width: calc(50% - 20px);
-
-  @media ${device.laptop} {
-    min-width: 100%;
-	max-width: 100vw;
-    // width: 100%;
-	// height: 100%;
-    // margin: 1%;
-    // min-height: 100%;
-    // margin-bottom: 40px;
-    // overflow: hidden; /* Ensure no overflow */
-  }
+	@media ${device.laptop} {
+		min-width: 100%;
+		max-width: 100vw;
+	}
 `;
-
-
 
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
   transition: transform 0.5s ease;
-
   &:hover {
 	transform: scale(1.01);
     &::before {
@@ -45,8 +33,8 @@ const ImageWrapper = styled.div`
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.1); // Adjust the alpha value for transparency
-      z-index: 1; // Ensure overlay is above the image
+      background-color: rgba(0, 0, 0, 0.1);
+      z-index: 1;
     }
   }
 `;
@@ -55,12 +43,13 @@ const LogoImageWrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2; // Ensure logo is above the overlay
-  opacity: 0; // Initially hide the logo
+  z-index: 2; 
+  opacity: 0; 
   transition: opacity 0.2s ease;
   pointer-events:none
  
 `;
+
 const CardImageContainer = styled.div`
 	border-radius: 4px;
 	height: auto;
@@ -68,26 +57,19 @@ const CardImageContainer = styled.div`
 	overflow: hidden;
 	position: relative;
 	&:hover ${LogoImageWrapper} {
-		opacity: 1; // Show the logo on hover
+		opacity: 1;
 	}
-	@media ${device.laptop} {
-		// height: 300px;
-	}
-`;
-const LogoImage = styled.img`
-  width: 200px; // Adjust the height as needed
-  object-fit: cover;
 `;
 
 const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover !important;
-  z-index: 0; // Ensure image is behind the overlay
+	width: 100%;
+	height: 100%;
+	object-fit: cover !important;
+	z-index: 0;
 `;
 
 const CardContent = styled.div`
-  align-content: center;
+	align-content: center;
 `;
 
 const CardTextContainer = styled.div`
@@ -102,14 +84,13 @@ const CardTextContainer = styled.div`
 `;
 
 const LeadingText = styled.h6`
-  font-size: 12px;
-  margin: 0px;
-  line-height: 16px;
-  color: ${props => props.theme.colors.fontDark};
-  @media ${device.laptop} {
-    font-size: 12px;
-    // margin-top: 0px;
-  }
+	font-size: 12px;
+	margin: 0px;
+	line-height: 16px;
+	color: ${props => props.theme.colors.fontDark};
+	@media ${device.laptop} {
+		font-size: 12px;
+	}
 `;
 
 const Title = styled.h6`
@@ -120,40 +101,29 @@ const Title = styled.h6`
  	@media ${device.laptop} {
     	font-size: 12px;
     	margin-top: 10px;
-		// display: none;
   }
 `;
+
 const Card = (props) => {
 	return (
 		<CardContainer to={`/article/${props.slug}`}>
-
 			<CardImageContainer>
-				<LogoImageWrapper>
-					{/* <LogoImage src={props.companyLogo} /> */}
-				</LogoImageWrapper>
 				<ImageWrapper >
-					<Image src={props.cardImage} />
+					<Image alt={props.leadingText} src={props.cardImage} />
 				</ImageWrapper>
 			</CardImageContainer>
-
 			<CardContent>
 				<CardTextContainer>
-
 					<Title>
 						{props.clientName}
 					</Title>
 					<LeadingText>
 						{props.leadingText}
 					</LeadingText>
-
 				</CardTextContainer>
-
 			</CardContent>
-
 		</CardContainer>
-
 	);
 };
-
 
 export default Card;

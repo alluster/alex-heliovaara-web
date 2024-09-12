@@ -106,15 +106,11 @@ const ImageContainer = styled.div`
 		padding-left: 16px;
 		padding-right: 16px;
 		margin-bottom: 80px;
-
 	}
 `;
 
 const Image = styled.img`
 	width: 100%;
-	
-
-	
 `;
 
 const PlayerContainer = styled(Container)`
@@ -128,13 +124,9 @@ const PlayerContainer = styled(Container)`
 
 
 
-const ContentBlock = ({ title, content, images, video, backgroundColor }) => {
-
+const ContentBlock = ({ title, content, images, video }) => {
 	return (
-		<Wrapper
-		// backgroundColor={backgroundColor}
-		>
-
+		<Wrapper>
 			<TextContainer>
 				<Title>
 					{title}
@@ -144,21 +136,18 @@ const ContentBlock = ({ title, content, images, video, backgroundColor }) => {
 						__html: content,
 					}}
 				/>
-
 			</TextContainer>
 			{
 				images != undefined && images.length > 0 ?
 					images.map((item, i) => {
 						return (
 							<ImageContainer key={i} >
-								<Image src={item.file.url} />
+								<Image alt={i + item.title} src={item.file.url} />
 							</ImageContainer>
 						);
 					}) :
 					null
 			}
-
-
 			{
 				video != undefined ?
 					<PlayerContainer>
@@ -170,15 +159,11 @@ const ContentBlock = ({ title, content, images, video, backgroundColor }) => {
 							url={video}
 							playsinline
 							muted
-
-
 						/>
 					</PlayerContainer>
-
 					: null
 			}
 		</Wrapper>
-
 	);
 };
 

@@ -6,12 +6,10 @@ import Container from '../components/Container';
 import styled from 'styled-components';
 import { device } from '../device';
 import ContentBlock from '../components/ContentBlock';
-import useScrollPosition from '../support-functions/useScrollPosition';
 import Loader from '../components/Loader';
 import { useEffect } from 'react';
 import CardGrid from '../components/CardGrid';
 import Pill from '../components/Pill';
-
 
 const Hero = styled.div`
 	display: flex;
@@ -26,6 +24,7 @@ const Hero = styled.div`
 		height: 100%;
 	}
 `;
+
 const HeroTextContainer = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -42,18 +41,15 @@ const HeroTextContainer = styled.div`
 		text-align: left;
 		justify-content: start;
 		margin-top: 50px;
-		
-
 	}
-	
 `;
+
 const HeroText = styled.h2`	
 	font-size: 30px;
 	line-height: 30px;
 	@media ${device.laptop} {
 		padding-bottom: 0px;
-			margin-bottom: 40px;
-
+		margin-bottom: 40px;
 		font-size: 50px;
 		line-height: 50px;
 		margin-top: 100px;
@@ -61,9 +57,8 @@ const HeroText = styled.h2`
 `;
 
 const LeadingText = styled.h3`
-font-size: 23px;
-line-height: 23px;
-	// width: 800px;
+	font-size: 23px;
+	line-height: 23px;
 	position: relative;
 	z-index: 3;
 	max-width: 100%;
@@ -84,15 +79,12 @@ const PillRow = styled.div`
 	flex-wrap: wrap;
 	flex-direction: row;
 	gap: 20px;
-	// justify-content: center;
 	align-items: center;
 	@media ${device.laptop} {
 		margin-top: 20px;
 		gap: 10px;
 		justify-content: start;
 		margin-bottom: 50px;
-
-
     }
 `;
 
@@ -110,45 +102,12 @@ const HeroImageContainer = styled.div`
     }
 `;
 const HeroImage = styled.img`
-	// border-radius: 20px;
 	position: relative;
 	margin-left: auto; 
 	margin-right: auto;
 	z-index: 10000;
 	object-fit: cover;
 `;
-
-const Divider = styled.div`
-	height: 100px;
-`;
-
-const Markdown = styled.div`
-	position: relative;
-	z-index: 3;
-	h3 {
-		margin-bottom: 60px;
-	}
-	li {
-		font-size: 16px;
-		line-height: 24px;
-	}
-	  a {
-		text-decoration: none !important;
-		all: unset;
-    }
-	@media ${device.laptop} {
-		h3 {
-			margin-bottom: 20px;
-		}
-		li {
-			font-size: 16px;
-			line-height: 24px;
-		}
-	}
-`;
-
-
-
 
 const InfoRow = styled.div`
 	display: flex;
@@ -181,55 +140,23 @@ const InfoTitle = styled.p`
 	text-transform: uppercase;
 	margin-bottom: 10px;
 	font-size: 14px;
-
 `;
+
 const InfoDivider = styled.div`
 	width: 100%;
 	border-bottom: 0.5px solid #E8E8E7;
 `;
+
 const InfoText = styled.p`
 	margin-top: 20px;
 	font-size: 20px;
 `;
 
-
-const ColorLayer = styled.div`
-  position: relative;
-  z-index: 1000000;
-  display: flex;
-  flex-direction: column;
-  width: 200vw;
-  min-height: calc(100% + 50vh);
-  justify-content: center;
-  align-items: center;
-  transform: translateX(-25%);
-  border-bottom-left-radius: 100% 50vw;
-  border-bottom-right-radius: 100% 50vw;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: ${props => props.backgroundColor || 'transparent'};
-    ${props => props.backgroundColor && `
-      filter: brightness(0.8); /* Darkens the background color by 20% */
-    `}
-    // border-bottom-left-radius: 100% 50vw;
-    // border-bottom-right-radius: 100% 50vw;
-    z-index: -1; /* Ensure the pseudo-element is behind the content */
-  }
-`;
-
-const ColorLayerContent = styled.div`
+const Content = styled.div`
 	width: 100vw;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 100px;
-
-
 `;
 
 const Article = ({ data }) => {
@@ -240,12 +167,8 @@ const Article = ({ data }) => {
 		});
 	}, []);
 
-	const scrollPosition = useScrollPosition();
-	const heroHeight = 600; // Adjust this based on your Hero section's height
 	return (
 		<Layout
-			changeBackground={scrollPosition > heroHeight}
-		// changeBackgroundColor={data.contentfulArticle.backgroundColor}
 		>
 
 			<SEO
@@ -278,12 +201,9 @@ const Article = ({ data }) => {
 						</div>
 						<div>
 							<HeroImageContainer>
-								<HeroImage src={data.contentfulArticle.image.file.url} />
+								<HeroImage alt={data.contentfulArticle.title} src={data.contentfulArticle.image.file.url} />
 							</HeroImageContainer>
-
 						</div>
-
-
 					</HeroTextContainer>
 					<InfoRow>
 						<InfoContainer>
@@ -293,7 +213,6 @@ const Article = ({ data }) => {
 							<InfoDivider />
 							<InfoText>
 								{data.contentfulArticle.clientName}
-
 							</InfoText>
 						</InfoContainer>
 						<InfoContainer>
@@ -303,7 +222,6 @@ const Article = ({ data }) => {
 							<InfoDivider />
 							<InfoText>
 								{data.contentfulArticle.professionalRole}
-
 							</InfoText>
 						</InfoContainer>
 						<InfoContainer>
@@ -313,58 +231,42 @@ const Article = ({ data }) => {
 							<InfoDivider />
 							<InfoText>
 								@{data.contentfulArticle.location} {data.contentfulArticle.year}
-
-
 							</InfoText>
 						</InfoContainer>
 					</InfoRow>
 				</Hero>
 			</Container>
-
-
-			<ColorLayer
-			// backgroundColor={data.contentfulArticle.backgroundColor}
-			>
-				<ColorLayerContent>
-					{
-						data.contentfulArticle.contentBlock != undefined && data.contentfulArticle.contentBlock.length > 0 ?
-							data.contentfulArticle.contentBlock.map((item, i) => {
-								return (
-									<ContentBlock
-										key={i}
-										backgroundColor={item.backgroundColor}
-										title={item.title}
-										content={item.content.childMarkdownRemark.html}
-										images={item.images}
-										video={item.video ? item.video.file.url : null}
-									/>
-								);
-							})
-							: null
-					}
-
-
-				</ColorLayerContent>
-
-
-			</ColorLayer>
+			<Content>
+				{
+					data.contentfulArticle.contentBlock != undefined && data.contentfulArticle.contentBlock.length > 0 ?
+						data.contentfulArticle.contentBlock.map((item, i) => {
+							return (
+								<ContentBlock
+									key={i}
+									backgroundColor={item.backgroundColor}
+									title={item.title}
+									content={item.content.childMarkdownRemark.html}
+									images={item.images}
+									video={item.video ? item.video.file.url : null}
+								/>
+							);
+						})
+						: null
+				}
+			</Content>
 			<Container>
 				<CardGrid content={data.allContentfulArticle.edges} />
 			</Container>
-
-
 		</Layout >
 	);
 };
 export default Article;
 
 export const query = graphql`query ($slug: String) {
-	
     contentfulArticle(slug: { eq: $slug }) {
 		id
 		clientName
 		professionalRole
-		backgroundColor
 		services
 		year
 		location
@@ -402,26 +304,12 @@ export const query = graphql`query ($slug: String) {
 				contentType
 			}
 		}
-		
 		title
 		leadingText
 		description {
 			description
 		}
-		
 		tags
-		author {
-			id
-			personImage {
-				file {
-					url
-				}
-			}
-			personEmail
-			personDesxription
-			personName
-			slug
-		}
 		}
 	    allContentfulArticle(filter: { tags: { eq: "work" } }) 
 			{
@@ -434,25 +322,11 @@ export const query = graphql`query ($slug: String) {
 						id
 						ingress
 						slug
-						author {
-							personEmail
-							personName
-							personImage {
-								file {
-									url
-								}
-							}
-						}
 						tags
 						clientName
 						title
 						leadingText
 						image {
-							file {
-								url
-							}
-						}
-						companyLogo {
 							file {
 								url
 							}
@@ -465,16 +339,6 @@ export const query = graphql`query ($slug: String) {
 					}
 						
 				}
-			}
-			contentfulAuthor(contentful_id: {eq: "XTQ8ZZ7WYZR89yVvWcOT9"}) {
-				personEmail
-				personDesxription
-				slug
-				personImage {
-					file {
-						url
-					}
-				}
-			}
+			}	
 }`;
 
