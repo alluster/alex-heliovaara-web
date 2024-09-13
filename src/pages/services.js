@@ -40,7 +40,7 @@ const HeroTextContainer = styled.div`
 		align-items: start;
 		text-align: left;
 		justify-content: start;
-		margin-top: 50px;
+		margin-top: 100px;
 
 	}
 	
