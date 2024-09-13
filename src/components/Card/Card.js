@@ -111,7 +111,7 @@ const Card = ({
 	clientName
 }) => {
 	return (
-		<CardContainer data-testid="slug" to={`/article/${slug}`}>
+		<CardContainer data-testid={`card-${slug}`} to={`/article/${slug}`}>
 			<CardImageContainer>
 				<ImageWrapper >
 					<Image data-testid="image" alt={leadingText} src={cardImage} />

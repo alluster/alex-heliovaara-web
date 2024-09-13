@@ -10,7 +10,6 @@ describe('Card component', () => {
 				clientName="Client Name"
 				leadingText="Leading Text"
 				image="image.jpg"
-				slug="some-article"
 			/>
 		);
 
@@ -23,9 +22,6 @@ describe('Card component', () => {
 		const image = screen.getByTestId('image');
 		expect(image).toBeInTheDocument();
 		expect(image).toHaveAttribute('alt', 'Leading Text');
-
-		const slug = screen.getByTestId('slug');
-		expect(slug).toBeInTheDocument();
 
 	});
 });
