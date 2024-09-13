@@ -96,7 +96,7 @@ const IndexPage = ({ data }) => {
 					<HeroContent >
 						<h1>Creative Technologist & Developer</h1>
 
-						<h3 style={{ color: '#9F9F9F' }}>
+						<h3 style={{ color: '#4C4C4C' }}>
 							Digital Product Designer with passion for Brands, Marketing and Development - a Creative Technologist based in Helsinki
 							Finland.
 						</h3>
@@ -107,11 +107,11 @@ const IndexPage = ({ data }) => {
 							</InfoContainer>
 							<InfoContainer>
 								<IconIcon icon={faMapMarkerAlt} />
-								<IconText style={{ color: '#D6D6D6' }}>Current location: @Helsinki Finland </IconText>
+								<IconText style={{ color: '#8F8F8F' }}>Current location: @Helsinki Finland </IconText>
 							</InfoContainer>
 							<InfoContainer>
 								<IconIcon icon={faPhone} />
-								<a href="tel:+358442360304"><IconText style={{ color: '#D6D6D6' }} >+358442360304</IconText></a>
+								<a href="tel:+358442360304"><IconText style={{ color: '#8F8F8F' }} >+358442360304</IconText></a>
 							</InfoContainer>
 						</Row>
 					</HeroContent>
