@@ -61,8 +61,10 @@
 		"@parcel/watcher-linux-x64-glibc": "^2.0.0"
 	},
 	"devDependencies": {
+		"@testing-library/dom": "^10.4.0",
 		"@testing-library/jest-dom": "^6.5.0",
 		"@testing-library/react": "^16.0.1",
+		"@testing-library/user-event": "^14.5.2",
 		"babel-jest": "^29.7.0",
 		"babel-preset-gatsby": "^3.13.2",
 		"identity-obj-proxy": "^3.0.0",

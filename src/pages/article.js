@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import SEO from '../components/seo';
-import Layout from '../components/Layout';
-import Container from '../components/Container';
+import Layout from '../components/Layout/Layout';
+import Container from '../components/Container/Container';
 import styled from 'styled-components';
 import { device } from '../device';
-import ContentBlock from '../components/ContentBlock';
-import Loader from '../components/Loader';
+import ContentBlock from '../components/ContentBlock/ContentBlock';
+import Loader from '../components/Loader/Loader';
 import { useEffect } from 'react';
-import CardGrid from '../components/CardGrid';
-import Pill from '../components/Pill';
+import CardGrid from '../components/CardGrid/CardGrid';
+import Pill from '../components/Pill/Pill';
 
 const Hero = styled.div`
 	display: flex;
@@ -18,6 +18,7 @@ const Hero = styled.div`
 	max-width: 1400px;
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 100px;
 	min-height: 100vh;
 	justify-content: center;
 	@media ${device.laptop} {
@@ -177,7 +178,7 @@ const Article = ({ data }) => {
 						</div>
 						<div>
 							<HeroImageContainer>
-								<HeroImage alt={data.contentfulArticle.title} src={data.contentfulArticle.image.file.url} />
+								<HeroImage alt={data.contentfulArticle.title || 'article-image'} src={data.contentfulArticle.image.file.url} />
 							</HeroImageContainer>
 						</div>
 					</HeroTextContainer>

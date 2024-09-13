@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import SEO from '../components/seo';
-import Layout from '../components/Layout';
-import Container from '../components/Container';
+import Layout from '../components/Layout/Layout';
+import Container from '../components/Container/Container';
 import styled from 'styled-components';
 import { device } from '../device';
 import { useEffect } from 'react';
@@ -101,7 +101,7 @@ const About = ({ data }) => {
 				title={data.contentfulPage.title}
 				description={data.contentfulPage.description}
 				image={data.contentfulPage.image.file.url}
-				article="true"
+				article={false}
 			/>
 
 			<Container>

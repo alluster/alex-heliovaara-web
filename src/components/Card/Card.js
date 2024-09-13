@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { device } from '../device';
+import { device } from '../../device';
 
 const CardContainer = styled(Link)`
   	box-sizing: border-box;
@@ -93,7 +93,7 @@ const LeadingText = styled.h6`
 	}
 `;
 
-const Title = styled.h6`
+const ClientName = styled.h6`
 	margin: 0px;
 	margin-bottom: 4px;
   	font-size: 14px;
@@ -104,21 +104,26 @@ const Title = styled.h6`
   }
 `;
 
-const Card = (props) => {
+const Card = ({
+	slug,
+	cardImage,
+	leadingText,
+	clientName
+}) => {
 	return (
-		<CardContainer to={`/article/${props.slug}`}>
+		<CardContainer data-testid="slug" to={`/article/${slug}`}>
 			<CardImageContainer>
 				<ImageWrapper >
-					<Image alt={props.leadingText} src={props.cardImage} />
+					<Image data-testid="image" alt={leadingText} src={cardImage} />
 				</ImageWrapper>
 			</CardImageContainer>
 			<CardContent>
 				<CardTextContainer>
-					<Title>
-						{props.clientName}
-					</Title>
-					<LeadingText>
-						{props.leadingText}
+					<ClientName data-testid="client-name">
+						{clientName}
+					</ClientName>
+					<LeadingText data-testid="leading-text">
+						{leadingText}
 					</LeadingText>
 				</CardTextContainer>
 			</CardContent>

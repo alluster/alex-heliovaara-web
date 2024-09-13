@@ -1,13 +1,12 @@
 import React from 'react';
 import SEO from '../components/seo';
-import Layout from '../components/Layout';
-import Container from '../components/Container';
+import Layout from '../components/Layout/Layout';
+import Container from '../components/Container/Container';
 import styled from 'styled-components';
 import { device } from '../device';
-import Loader from '../components/Loader';
-import ContactForm from '../components/ContactForm';
-import Pill from '../components/Pill';
-import { Link } from 'gatsby';
+import Loader from '../components/Loader/Loader';
+import ContactForm from '../components/ContactForm/ContactForm';
+import Pill from '../components/Pill/Pill';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
@@ -226,10 +225,10 @@ const Services = () => {
 						<QuotePerson>
 							- Tuukka Miettinen, Tahto Group Oy
 						</QuotePerson>
-						<Link style={{ color: 'blue' }} target='_blank' to="https://www.linkedin.com/in/aleksanteri1/">
+						<a style={{ color: 'blue' }} target='_blank' href="https://www.linkedin.com/in/aleksanteri1/" rel="noreferrer">
 							Read more in LinkedIn
 							<FontAwesomeIcon style={{ fontSize: '20px', marginLeft: '10px', color: 'white' }} icon={faLinkedin} />
-						</Link>
+						</a>
 					</QuoteContainer>
 					<InfoRow>
 						<div>

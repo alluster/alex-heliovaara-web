@@ -1,10 +1,10 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { device } from '../device';
+import { device } from '../../device';
 import ReactPlayer from 'react-player/lazy';
 
-import Container from './Container';
+import Container from '../Container/Container';
 
 
 const Wrapper = styled.div`
@@ -142,7 +142,7 @@ const ContentBlock = ({ title, content, images, video }) => {
 					images.map((item, i) => {
 						return (
 							<ImageContainer key={i} >
-								<Image alt={i + item.title} src={item.file.url} />
+								<Image alt={i + item.title || 'content-image'} src={item.file.url} />
 							</ImageContainer>
 						);
 					}) :

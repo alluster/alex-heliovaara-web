@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
-import { device } from '../device';
+import { device } from '../../device';
 
 const PillContainer = styled.div`
 	padding-left: 16px;

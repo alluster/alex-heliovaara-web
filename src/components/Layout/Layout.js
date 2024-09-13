@@ -1,10 +1,10 @@
 import React from 'react';
 import { createGlobalStyle, css, ThemeProvider } from 'styled-components';
-import theme from '../theme';
-import Navigation from './Navigation';
-import Footer from './Footer';
+import theme from '../../theme';
+import Navigation from '../Navigation/Navigation';
+import Footer from '../Footer/Footer';
 
-import { device } from '../device';
+import { device } from '../../device';
 
 const GlobalStyle = createGlobalStyle`
     body, html {

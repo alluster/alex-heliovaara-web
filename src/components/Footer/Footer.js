@@ -1,18 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { device } from '../device';
-// import Markdown from '../Markdown';
+import { device } from '../../device';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBehance, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { Link } from 'gatsby';
-import Container from './Container';
+import Container from '../Container/Container';
 
 library.add(faBehance, faLinkedin);
 
-const Footer = () => {
-
-	const CustomContainer = styled.div`
+const CustomContainer = styled.div`
 		position: relative;
 		z-index: 3;
 		// background-color: ${props => props.theme.colors.black};
@@ -26,7 +23,7 @@ const Footer = () => {
 	
 `;
 
-	const Content = styled.div`
+const Content = styled.div`
 		// max-width: 1500px;
 		margin-left:auto;
 		margin-right: auto;
@@ -44,14 +41,14 @@ const Footer = () => {
 		}
 `;
 
-	const Column1 = styled.div`
+const Column1 = styled.div`
 		flex: 1;
 		@media ${device.laptop} {
 			flex: 1;
 			margin: 24px;	
 		}
 	`;
-	const Column2 = styled.div`
+const Column2 = styled.div`
 		flex: 3;
 		margin: 40px;	
 		@media ${device.laptop} {
@@ -61,13 +58,9 @@ const Footer = () => {
 	
 		}
 	`;
+const Footer = () => {
 
 
-
-	useEffect(() => {
-		// context.GetFooterContent("4g3oxVSEZ0pvZelnhxZVHL",`${context.lang}`)
-		// eslint-disable-next-line
-	}, [])
 
 	return (
 		<CustomContainer>
@@ -80,12 +73,19 @@ const Footer = () => {
 
 						</Link>
 						<p>Creative Technologist</p>
-						<Link to="https://www.behance.net/aleksanterb9c4">
+						<a
+							target='_blank'
+							rel="noreferrer"
+							href="https://www.behance.net/aleksanterb9c4">
 							<FontAwesomeIcon style={{ fontSize: '40px', color: 'white' }} icon={faBehance} />
-						</Link>
-						<Link to="https://www.linkedin.com/in/aleksanteri1/">
+						</a>
+						<a
+							target='_blank'
+							rel="noreferrer"
+							href="https://www.linkedin.com/in/aleksanteri1/"
+						>
 							<FontAwesomeIcon style={{ fontSize: '40px', marginLeft: '40px', color: 'white' }} icon={faLinkedin} />
-						</Link>
+						</a>
 					</Column1>
 					<div></div>
 					<Column2 >
@@ -94,7 +94,6 @@ const Footer = () => {
 
 					</Column2>
 				</Content>
-				{/* <ContactForm /> */}
 
 			</Container>
 

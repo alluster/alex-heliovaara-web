@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Container from './Container';
+import Container from '../Container/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { device } from '../device';
-import CustomLink from './CustomLink';
+import { device } from '../../device';
+import CustomLink from '../CustomLink/CustomLink';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const NavContainer = styled.div`
@@ -41,11 +41,11 @@ const MobileNavContainer = styled.div`
 	min-width: 100%;
 	z-index: 10000000000000;
 	top: 0;
-	background-color: ${props => (props.navOpen ? 'white' : 'transparent')};
+	background-color: ${props => (props.$navOpen ? 'white' : 'transparent')};
 	@media ${device.laptop} {
 		display: block;
-		// background-color: ${props => (props.navOpen ? '#1C1D20' : 'transparent')};
-		// position: ${props => (props.navOpen ? 'fixed' : 'relative')}
+		// background-color: ${props => (props.$navOpen ? '#1C1D20' : 'transparent')};
+		// position: ${props => (props.$navOpen ? 'fixed' : 'relative')}
 
 `;
 
@@ -178,7 +178,10 @@ const Navigation = ({ className }) => {
 
 	return (
 		<>
-			<NavContainer className={className} navOpen={navOpen} >
+			<NavContainer
+				className={className}
+				$navOpen={navOpen} // $ prevents the prop from being sent to dom
+			>
 
 				<Row>
 					<CustomLink to="/" >
@@ -198,7 +201,10 @@ const Navigation = ({ className }) => {
 			</NavContainer >
 			<NavColorOverlay />
 
-			<MobileNavContainer className={className} navOpen={navOpen} >
+			<MobileNavContainer
+				className={className}
+				$navOpen={navOpen} // $ prevents the prop from being sent to dom
+			>
 				<Row>
 					<CustomLink to="/" >
 						<LogoContainer>

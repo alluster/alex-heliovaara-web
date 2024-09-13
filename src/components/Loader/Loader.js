@@ -1,6 +1,6 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import React from 'react';
-import Container from './Container';
+import Container from '../Container/Container';
 
 const moveUp = keyframes`
     0% { 
@@ -64,23 +64,15 @@ const AnimationContainer = styled.div`
     top: 0;
 	justify-content: center;
 	align-items: center;
-	${props => props.speed === true && css`
-			animation: ${moveUp} 1s forwards;
-
-		`}
+	
 	animation: ${moveUp} 1s forwards;
 
 `;
 
 
 const Loader = ({ children }) => {
-	// const [loader, setLoader] = useState(false);
-	// useEffect(() => {
-	// 	if (sessionStorage.getItem('loader')) { setLoader(true); }
-
-	// }, []);
 	return (
-		<AnimationContainer speed={true}>
+		<AnimationContainer >
 			<Bg >
 				<Content>
 					{children}

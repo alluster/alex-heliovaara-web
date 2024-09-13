@@ -1,14 +1,14 @@
 import React from 'react';
-import Layout from '../components/Layout';
+import Layout from '../components/Layout/Layout';
 import { graphql } from 'gatsby';
-import Container from '../components/Container';
+import Container from '../components/Container/Container';
 import styled from 'styled-components';
 import SEO from '../components/seo';
-import CardGrid from '../components/CardGrid';
+import CardGrid from '../components/CardGrid/CardGrid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { device } from '../device';
-import Loader from '../components/Loader';
+import Loader from '../components/Loader/Loader';
 
 const Hero = styled.div`
     position: relative;
