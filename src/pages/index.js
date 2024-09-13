@@ -103,7 +103,7 @@ const IndexPage = ({ data }) => {
 						<Row>
 							<InfoContainer>
 								<AvailabilityIndicator />
-								<IconText style={{ color: '#D6D6D6' }}>Available for a project</IconText>
+								<IconText style={{ color: '#8F8F8F' }}>Available for a project</IconText>
 							</InfoContainer>
 							<InfoContainer>
 								<IconIcon icon={faMapMarkerAlt} />
