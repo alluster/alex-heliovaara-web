@@ -14,15 +14,15 @@ www.alexheliovaara.com
 
 1.  **Run unit tests**
 
-    Navigate into site’s directory and start it up.
+    Navigate into site’s directory and run tests:
 
     ```shell
     npm run test
     ```
 
-2.  **Start command.**
+2.  **Start command**
 
-    Navigate into site’s directory and start it up.
+    Navigate into site’s directory and start it up:
 
     ```shell
     npm run start
