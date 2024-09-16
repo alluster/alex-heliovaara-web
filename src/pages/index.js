@@ -65,7 +65,7 @@ const IconIcon = styled(FontAwesomeIcon)`
     font-size: 12px;
 `;
 
-const IconText = styled.p`
+const InfoText = styled.p`
     font-size: 16px;
 	line-height: 12px;
 `;
@@ -103,15 +103,15 @@ const IndexPage = ({ data }) => {
 						<Row>
 							<InfoContainer>
 								<AvailabilityIndicator />
-								<IconText style={{ color: '#8F8F8F' }}>Available for a project</IconText>
+								<InfoText >Available for a project</InfoText>
 							</InfoContainer>
 							<InfoContainer>
 								<IconIcon icon={faMapMarkerAlt} />
-								<IconText style={{ color: '#8F8F8F' }}>Current location: @Helsinki Finland </IconText>
+								<InfoText >Current location: @Helsinki Finland </InfoText>
 							</InfoContainer>
 							<InfoContainer>
 								<IconIcon icon={faPhone} />
-								<a href="tel:+358442360304"><IconText style={{ color: '#8F8F8F' }} >+358442360304</IconText></a>
+								<a href="tel:+358442360304"><InfoText >+358442360304</InfoText></a>
 							</InfoContainer>
 						</Row>
 					</HeroContent>
