@@ -65,7 +65,7 @@ const IconIcon = styled(FontAwesomeIcon)`
     font-size: 12px;
 `;
 
-const InfoText = styled.p`
+const InfoText = styled.h3`
     font-size: 16px;
 	line-height: 12px;
 `;
@@ -78,12 +78,26 @@ const AvailabilityIndicator = styled.div`
     margin-right: 16px;
 `;
 
+const Ingress = styled.h2`
+	font-size: 26px;
+	margin: 10px 0px 10px 0px !important;
+	line-height: 30px;
+	font-weight: 400;
+	letter-spacing: 0.01em;
+	@media ${device.tablet} {
+		font-size: 22.78px;
+		line-height: 32px;
+		margin-bottom: 0px;
+	}
+`;
+
+
 
 const IndexPage = ({ data }) => {
 	return (
 		<Layout page="home" >
 			<SEO
-				title="Aleksanteri Heliövaara"
+				title="Home | Aleksanteri Heliövaara"
 				description="Creative Technologist"
 				image="/seo.jpeg"
 				article={false}
@@ -96,10 +110,10 @@ const IndexPage = ({ data }) => {
 					<HeroContent >
 						<h1>Creative Technologist & Developer</h1>
 
-						<h3 style={{ color: '#4C4C4C' }}>
+						<Ingress style={{ color: '#4C4C4C' }}>
 							Digital Product Designer with passion for Brands, Marketing and Development - a Creative Technologist based in Helsinki
 							Finland.
-						</h3>
+						</Ingress>
 						<Row>
 							<InfoContainer>
 								<AvailabilityIndicator />
@@ -111,7 +125,7 @@ const IndexPage = ({ data }) => {
 							</InfoContainer>
 							<InfoContainer>
 								<IconIcon icon={faPhone} />
-								<a href="tel:+358442360304"><InfoText >+358442360304</InfoText></a>
+								<a aria-label="Phone number: +358442360304" href="tel:+358442360304"><InfoText >+358442360304</InfoText></a>
 							</InfoContainer>
 						</Row>
 					</HeroContent>

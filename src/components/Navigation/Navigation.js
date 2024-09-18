@@ -146,21 +146,6 @@ const MenuButton = styled.div`
 `;
 
 
-
-const MenuText = styled.div`
-	margin-top: 0x;
-	font-size: 14px;
-	font-weight: 400;
-	text-decoration: none !important;
-//  color: white;
-	:hover {
-		cursor: pointer;
-	}
-	@media ${device.laptop} {
-
-	}
-`;
-
 const Row = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -184,17 +169,32 @@ const Navigation = ({ className }) => {
 			>
 
 				<Row>
-					<CustomLink to="/" >
+					<CustomLink
+						aria-label="Home"
+						to="/"
+					>
 						<LogoContainer>
 							<LogoText>A.E HELIÖVAARA</LogoText>
 						</LogoContainer>
 					</CustomLink>
 					<MenuButtonContainer  >
 						<MenuButton>
-							<CustomLink className="text-white" to="/services">SERVICES</CustomLink>
+							<CustomLink
+								aria-label="Services"
+								className="text-white"
+								to="/services"
+							>
+								SERVICES
+							</CustomLink>
 						</MenuButton>
 						<MenuButton>
-							<CustomLink className="text-white" to="/about">ABOUT</CustomLink>
+							<CustomLink
+								aria-label="About"
+								className="text-white"
+								to="/about"
+							>
+								ABOUT
+							</CustomLink>
 						</MenuButton>
 					</MenuButtonContainer>
 				</Row>
@@ -235,11 +235,28 @@ const Navigation = ({ className }) => {
 					>
 						<Container >
 							<LinkTextMobile onClick={() => setNavOpen(false)} >
-								<CustomLink className="text-white" to="/services">
+								<CustomLink
+									aria-label="Home"
+									className="text-white"
+									to="/"
+								>
+									Home
+								</CustomLink>
+								<Divider />
+
+								<CustomLink
+									aria-label="Services"
+									className="text-white"
+									to="/services"
+								>
 									Services
 								</CustomLink>
 								<Divider />
-								<CustomLink className="text-white" to="/about">
+								<CustomLink
+									aria-label="About"
+									className="text-white"
+									to="/about"
+								>
 									About
 								</CustomLink>
 							</LinkTextMobile>

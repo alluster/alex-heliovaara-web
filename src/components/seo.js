@@ -23,7 +23,7 @@ const SEO = ({
 	} = site.siteMetadata;
 
 	const seo = {
-		title: title || defaultTitle,
+		title: title || titleTemplate,
 		description: description || defaultDescription,
 		image: `https:${image}` || defaultImage,
 		url: `${siteUrl}${pathname}`,
@@ -32,7 +32,7 @@ const SEO = ({
 	return (
 		<Helmet
 			title={seo.title}
-			titleTemplate={titleTemplate}
+			titleTemplate={seo.title || defaultTitle}
 			htmlAttributes={{ lang: 'fi' }}
 		>
 			<meta name="description" content={seo.description} />

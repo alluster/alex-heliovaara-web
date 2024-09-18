@@ -203,7 +203,7 @@ const Services = () => {
 	return (
 		<Layout>
 			<SEO
-				title="Aleksanteri Heliövaara"
+				title="Services | Aleksanteri Heliövaara"
 				description="Creative Technologist"
 				image="/seo.jpeg"
 				article={false}
@@ -225,7 +225,7 @@ const Services = () => {
 						<QuotePerson>
 							- Tuukka Miettinen, Tahto Group Oy
 						</QuotePerson>
-						<a style={{ color: 'blue' }} target='_blank' href="https://www.linkedin.com/in/aleksanteri1/" rel="noreferrer">
+						<a aria-label="LinkedIn" style={{ color: 'blue' }} target='_blank' href="https://www.linkedin.com/in/aleksanteri1/" rel="noreferrer">
 							Read more in LinkedIn
 							<FontAwesomeIcon style={{ fontSize: '20px', marginLeft: '10px', color: 'white' }} icon={faLinkedin} />
 						</a>

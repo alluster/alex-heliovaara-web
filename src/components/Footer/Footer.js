@@ -74,12 +74,14 @@ const Footer = () => {
 						</Link>
 						<p>Creative Technologist</p>
 						<a
+							aria-label="Aleksanteri Behance profile"
 							target='_blank'
 							rel="noreferrer"
 							href="https://www.behance.net/aleksanterb9c4">
 							<FontAwesomeIcon style={{ fontSize: '40px', color: 'white' }} icon={faBehance} />
 						</a>
 						<a
+							aria-label="Aleksanteri LinkedIn profile"
 							target='_blank'
 							rel="noreferrer"
 							href="https://www.linkedin.com/in/aleksanteri1/"

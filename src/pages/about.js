@@ -98,7 +98,7 @@ const About = ({ data }) => {
 	return (
 		<Layout>
 			<SEO
-				title={data.contentfulPage.title}
+				title="About | Aleksanteri Heliövaara"
 				description={data.contentfulPage.description}
 				image={data.contentfulPage.image.file.url}
 				article={false}

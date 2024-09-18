@@ -135,6 +135,18 @@ const Content = styled.div`
 	margin-bottom: 100px;
 `;
 
+const Ingress = styled.h2`
+	font-size: 26px;
+	margin: 10px 0px 10px 0px !important;
+	line-height: 30px;
+	font-weight: 400;
+	letter-spacing: 0.01em;
+	@media ${device.tablet} {
+		font-size: 22.78px;
+		line-height: 32px;
+		margin-bottom: 0px;
+	}
+`;
 const Article = ({ data }) => {
 	useEffect(() => {
 		window.scroll({
@@ -142,13 +154,15 @@ const Article = ({ data }) => {
 			behavior: 'smooth',
 		});
 	}, []);
-
+	const SeoTitle = 'Article';
+	const seoTitle = { title: data.contentfulArticle.title || SeoTitle };
 	return (
-		<Layout
+
+		<Layout Layout
 		>
 
 			<SEO
-				title={data.contentfulArticle.title}
+				title={`Article: ${seoTitle.title}`}
 				description={data.contentfulArticle.description.description}
 				image={data.contentfulArticle.image.file.url}
 				article={true}
@@ -162,8 +176,8 @@ const Article = ({ data }) => {
 					<HeroTextContainer>
 						<div>
 							<h1>{data.contentfulArticle.title}</h1>
-							<h3 style={{ color: '#818181' }}>
-								{data.contentfulArticle.leadingText}</h3>
+							<Ingress style={{ color: '#818181' }}>
+								{data.contentfulArticle.leadingText}</Ingress>
 							<PillRow>
 								{
 									data.contentfulArticle.services ? data.contentfulArticle.services.map((item, i) => {

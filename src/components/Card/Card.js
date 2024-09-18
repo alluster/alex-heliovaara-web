@@ -83,17 +83,9 @@ const CardTextContainer = styled.div`
 	}
 `;
 
-const LeadingText = styled.h6`
-	font-size: 12px;
-	margin: 0px;
-	line-height: 16px;
-	color: ${props => props.theme.colors.fontDark};
-	@media ${device.laptop} {
-		font-size: 12px;
-	}
-`;
 
-const ClientName = styled.h6`
+
+const ClientName = styled.h4`
 	margin: 0px;
 	margin-bottom: 4px;
   	font-size: 14px;
@@ -104,6 +96,15 @@ const ClientName = styled.h6`
   }
 `;
 
+const LeadingText = styled.h5`
+	font-size: 12px;
+	margin: 0px;
+	line-height: 16px;
+	color: ${props => props.theme.colors.fontDark};
+	@media ${device.laptop} {
+		font-size: 12px;
+	}
+`;
 const Card = ({
 	slug,
 	cardImage,
@@ -111,7 +112,11 @@ const Card = ({
 	clientName
 }) => {
 	return (
-		<CardContainer data-testid={`card-${slug}`} to={`/article/${slug}`}>
+		<CardContainer
+			aria-label={`Read more about ${clientName} ${leadingText}`}
+			data-testid={`card-${slug}`}
+			to={`/article/${slug}`}
+		>
 			<CardImageContainer>
 				<ImageWrapper >
 					<Image data-testid="image" alt={leadingText} src={cardImage} />
